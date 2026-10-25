@@ -21,7 +21,7 @@ services/inference/models/
 .preview/
 flutter_windows_*/
 .vercel/
-public/
+/public/
 .cache/
 **/node_modules/
 **/.gradle/

@@ -6,7 +6,7 @@
 .env.*
 !.env.example
 flutter_windows_*
-public
+/public
 **/build
 **/.dart_tool
 **/.gradle

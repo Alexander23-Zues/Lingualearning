@@ -86,6 +86,7 @@ The API tests cover owner-derived private resource creation, administrator/educa
 - A separate validation environment installed the exact top-level Python dependency versions from `requirements.txt`. All 22 API tests and seven deployment/configuration tests passed there. Two dataset preparation tests passed as well.
 - Deployment checks verified public health, protected API routes, preservation of email PKCE callback parameters, and rejection of server secrets and local endpoints in frontend configuration.
 - GitHub Actions is configured for these checks and a Linux Flutter build using a pinned official SDK archive with SHA-256 verification. That Linux/cloud path is not claimed as executed until the workflow/deployment reports success.
+- The first Linux analysis caught a packaging issue: an unanchored `public/` ignore rule also excluded the landing-page source directory. Both Git and deployment ignores now target only the generated root `/public/` folder, and the landing-page source is included in the repository.
 - Vercel production deployment and production email callbacks require the Vercel connection, environment variables, and the actual HTTPS address in Supabase's redirect settings. The local build does not confirm a live deployment.
 
 ## Remaining external checks
