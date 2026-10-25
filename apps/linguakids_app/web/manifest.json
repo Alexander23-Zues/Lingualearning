@@ -1,0 +1,11 @@
+{
+  "name": "LinguaKids",
+  "short_name": "LinguaKids",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#FFFDF7",
+  "theme_color": "#16324F",
+  "description": "Educator-led English–Filipino language and literacy workspace",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false
+}

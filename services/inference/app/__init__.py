@@ -1,0 +1,1 @@
+"""LinguaKids inference service."""

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "fastapi",
+  "buildCommand": "python3 scripts/build_vercel.py",
+  "functions": {
+    "index.py": {
+      "maxDuration": 60,
+      "excludeFiles": "{apps/**,ml/**,services/inference/**,services/api/tests/**,docs/**,scripts/**,supabase/**,public/**,flutter_windows_*/**,.tools/**,.preview/**,.cache/**,.vercel/**,.git/**,tests/**,**/__pycache__/**,**/*.log}"
+    }
+  },
+  "headers": [
+    {
+      "source": "/index.html",
+      "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+    },
+    {
+      "source": "/flutter_bootstrap.js",
+      "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+    }
+  ]
+}

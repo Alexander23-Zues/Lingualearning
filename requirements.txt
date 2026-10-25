@@ -1,0 +1,6 @@
+# Vercel runtime only. Keep aligned with services/api/pyproject.toml.
+fastapi==0.162.0
+uvicorn[standard]==0.38.0
+httpx==0.28.1
+pydantic-settings==2.11.0
+python-multipart==0.0.20
