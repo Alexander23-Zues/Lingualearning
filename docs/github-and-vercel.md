@@ -4,7 +4,7 @@ The complete source repository contains Flutter, the protected Python API, Supab
 
 ## Deploy the app and API together
 
-1. Import `Alexander23-Zues/Lingualearning` into Vercel. Use the repository root, not `apps/linguakids_app`.
+1. Import the GitHub repository containing this system into Vercel, such as `rumajibedania-hub/lingualearning` or `Alexander23-Zues/Lingualearning`. Use the repository root, not `apps/linguakids_app`.
 2. Keep the **FastAPI** framework preset. `vercel.json` supplies the build command. `.python-version` selects Python 3.12.
 3. Set `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in the project's environment using the existing Linguakids project. Never substitute a secret/service-role key.
 4. Optionally set `ADMIN_SETUP_EMAIL` for the invited owner's setup link. This does not grant a role; Supabase's verified invitation remains authoritative.
