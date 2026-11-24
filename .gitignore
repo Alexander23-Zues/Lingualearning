@@ -10,7 +10,9 @@
 **/.venv/
 **/*.py[cod]
 ml/data/*.csv
+ml/data/raw/
 !ml/data/translation_template.csv
+!ml/data/classroom_smoke_test.csv
 ml/outputs/
 services/inference/models/
 *.safetensors
@@ -19,8 +21,10 @@ services/inference/models/
 *.pth
 .tools/
 .preview/
+.flutter-appdata/
 flutter_windows_*/
 .vercel/
+.railway-upload/
 /public/
 .cache/
 **/node_modules/
@@ -36,3 +40,10 @@ flutter_windows_*/
 *.log
 .DS_Store
 supabase/.temp/
+**/dist/
+apps/linguakids_web/public/config.json
+
+**/*.sqlite*
+**/collection.json
+**/Private*login*
+.railway/.cac-migration.json

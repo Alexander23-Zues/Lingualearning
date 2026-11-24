@@ -1,0 +1,48 @@
+services:
+  api-gw:
+    ports: !reset []
+  supavisor:
+    ports: !reset []
+  linguakids:
+    image: linguakids:offline-cpu
+    pull_policy: never
+    restart: unless-stopped
+    depends_on:
+      api-gw:
+        condition: service_healthy
+    environment:
+      ENVIRONMENT: production
+      PORT: 8080
+      SUPABASE_URL: http://api-gw:8000
+      PUBLIC_SUPABASE_URL: ${SITE_URL}
+      SUPABASE_PUBLISHABLE_KEY: ${ANON_KEY}
+      SUPABASE_SECRET_KEY: ${SERVICE_ROLE_KEY}
+      INFERENCE_SHARED_SECRET: ${LINGUAKIDS_INFERENCE_SECRET}
+      ALLOW_BUNDLED_STUDENT_MODEL: ${ALLOW_BUNDLED_STUDENT_MODEL:-false}
+      ENABLE_TRAINING_WORKER: ${ENABLE_TRAINING_WORKER:-false}
+    volumes:
+      - linguakids_data:/data
+  https:
+    image: caddy:2.10.2-alpine
+    restart: unless-stopped
+    depends_on:
+      - linguakids
+    environment:
+      SITE_URL: ${SITE_URL}
+    ports:
+      - "${LINGUAKIDS_BIND:-0.0.0.0}:${LINGUAKIDS_HTTPS_PORT:-443}:${LINGUAKIDS_HTTPS_PORT:-443}"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - linguakids_tls:/data
+    networks:
+      - default
+      - frontend
+
+volumes:
+  linguakids_data:
+  linguakids_tls:
+
+networks:
+  default:
+    internal: true
+  frontend:

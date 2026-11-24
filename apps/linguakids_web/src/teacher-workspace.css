@@ -1,0 +1,261 @@
+/* Adult workspace only. Learning content and the student PWA keep their own theme. */
+:root:root .workspace[data-role="educator"] {
+  --purple:#4f46e5; --purple-dark:#4338ca; --ink:#182234; --muted:#64748b;
+  --line:#e2e8f0; --lavender:#eef2ff; --green:#15803d; --radius:12px;
+  color:#182234; background:#f6f8fb;
+  font-family:Inter,"Segoe UI",system-ui,sans-serif; font-size:1.0625rem;
+}
+:root:root .workspace[data-role="educator"] :is(h1,h2,h3,h4,.brand,.student-name,.roster-name,.button,button,input,select,textarea) {
+  font-family:Inter,"Segoe UI",system-ui,sans-serif; letter-spacing:normal;
+}
+:root:root .workspace[data-role="educator"] :is(h1,h2,h3,h4) {color:#182234;font-weight:650;line-height:1.35}
+:root:root .workspace[data-role="educator"] p {color:#64748b;line-height:1.65}
+:root:root .workspace[data-role="educator"] strong {font-family:inherit}
+:root:root .workspace[data-role="educator"] .workspace-body {background:#f6f8fb}
+:root:root .workspace[data-role="educator"] .workspace-main {padding:30px 32px 36px;max-width:1600px;min-width:0;background:#f6f8fb}
+:root:root .workspace[data-role="educator"] .workspace-main .page-intro h2 {color:#182234}
+:root:root .workspace[data-role="educator"] .workspace-main .page-intro p {color:#64748b}
+:root:root .workspace[data-role="educator"] .workspace-header {background:#fff;border-bottom:1px solid #e2e8f0;box-shadow:none;min-height:72px;padding:14px 32px;gap:16px}
+:root:root .workspace[data-role="educator"] .workspace-header h1 {font-size:1.25rem;font-weight:650;letter-spacing:-.015em;color:#182234}
+:root:root .workspace[data-role="educator"] .workspace-header .user-avatar {background:#eef2ff;color:#4f46e5;width:36px;height:36px;font:650 .85rem Inter,"Segoe UI",sans-serif;border:1px solid #e0e7ff}
+:root:root .workspace[data-role="educator"] .user-label strong {font-size:1rem;color:#334155}
+:root:root .workspace[data-role="educator"] .user-label small {font-size:.9375rem;color:#64748b}
+:root:root .workspace[data-role="educator"] .workspace-footer {display:none}
+:root:root .workspace[data-role="educator"] .sidebar {background:#111827;border:0;padding:24px 14px 16px;box-shadow:none}
+:root:root .workspace[data-role="educator"] .sidebar-brand {padding:0 10px}
+:root:root .workspace[data-role="educator"] .sidebar-brand .brand {font-size:1.5rem;color:#f8fafc;font-weight:750;letter-spacing:-.045em}
+:root:root .workspace[data-role="educator"] .sidebar-brand .brand>span:last-child {color:#c7d2fe}
+:root:root .workspace[data-role="educator"] .brand-icon {color:#c7d2fe;background:#252e4a;border-radius:8px;box-shadow:none}
+:root:root .workspace[data-role="educator"] .sidebar .workspace-role {background:none;border:0;color:#94a3b8;padding:0;margin:8px 10px 24px;font-size:.875rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+:root:root .workspace[data-role="educator"] .sidebar-search {background:#1c2535;border:1px solid #354052;border-radius:8px;margin:0 4px 22px;color:#94a3b8}
+:root:root .workspace[data-role="educator"] .sidebar-search input {color:#e2e8f0;background:transparent;border:0;box-shadow:none;font-size:1rem;min-height:42px}
+:root:root .workspace[data-role="educator"] .sidebar-search input::placeholder {color:#94a3b8}
+:root:root .workspace[data-role="educator"] .sidebar-search button {color:#cbd5e1}
+:root:root .workspace[data-role="educator"] .navigation-section-label {font-size:.8125rem;letter-spacing:.12em;text-transform:uppercase;color:#8793a8;padding:0 10px;margin:0 0 9px;font-weight:700}
+:root:root .workspace[data-role="educator"] .navigation-group {margin-bottom:12px}
+:root:root .workspace[data-role="educator"] .navigation-group-toggle {color:#aab6ca;border-radius:7px;font-size:1rem;font-weight:550;min-height:42px;padding:10px}
+:root:root .workspace[data-role="educator"] .navigation-group-toggle:is(:hover,[aria-expanded="true"]) {background:#1f293b;color:#e2e8f0}
+:root:root .workspace[data-role="educator"] .navigation-links {border-left:1px solid #334155;margin:4px 0 0 17px;padding-left:8px}
+:root:root .workspace[data-role="educator"] .navigation-links>a {font-size:1rem;min-height:42px;border-radius:7px;color:#c1cbdb;padding:10px 11px;line-height:1.4;font-weight:450;margin-bottom:4px;box-shadow:none}
+:root:root .workspace[data-role="educator"] .navigation-links>a:hover {background:#202c40;color:white}
+:root:root .workspace[data-role="educator"] .navigation-links>a[aria-current="page"] {background:#4f46e5;color:#fff;font-weight:600;border:0;box-shadow:none}
+:root:root .workspace[data-role="educator"] .navigation-primary .navigation-links {border:0;margin:0;padding:0}
+:root:root .workspace[data-role="educator"] .navigation-direct .navigation-links {border:0;margin:0;padding:0}
+:root:root .workspace[data-role="educator"] .navigation-primary .navigation-links>a {padding:11px 12px;min-height:44px}
+:root:root .workspace[data-role="educator"] .navigation-primary {padding-bottom:15px;border-bottom:1px solid #293347;margin-bottom:16px}
+:root:root .workspace[data-role="educator"] .sidebar .icon-button {color:#cbd5e1;background:transparent;border-color:#334155}
+:root:root .workspace[data-role="educator"] :is(.navigation-result,.navigation-empty,.navigation-empty p) {color:#cbd5e1}
+:root:root .workspace[data-role="educator"] .page-intro {margin-bottom:24px;gap:20px}
+:root:root .workspace[data-role="educator"] .page-intro h2 {font-size:2rem;letter-spacing:-.035em;margin:0 0 8px;line-height:1.25;font-weight:700}
+:root:root .workspace[data-role="educator"] .page-intro p {font-size:1rem;line-height:1.6;margin:0;max-width:72ch}
+:root:root .workspace[data-role="educator"] .panel {background:#fff;border:1px solid #e2e8f0;border-radius:12px;box-shadow:0 1px 2px #0f172a03;padding:22px}
+:root:root .workspace[data-role="educator"] .panel h2 {font-size:1.125rem;letter-spacing:-.015em;margin:0 0 8px}
+:root:root .workspace[data-role="educator"] .panel h3 {font-size:1.0625rem}
+:root:root .workspace[data-role="educator"] .stats .stat {border:1px solid #e2e8f0;border-radius:10px;background:#fff;box-shadow:0 1px 2px #0f172a03}
+:root:root .workspace[data-role="educator"] .stats .stat-icon {background:#eef2ff;color:#818cf8;border-radius:8px;width:36px;height:36px}
+:root:root .workspace[data-role="educator"] .stats .stat strong {color:#1e293b;font-size:2rem;font-weight:650;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+:root:root .workspace[data-role="educator"] .stats .stat small {color:#64748b;font-size:.9375rem}
+:root:root .workspace[data-role="educator"] .button {min-height:40px;padding:10px 15px;font-size:1rem;font-weight:600;border-radius:7px;line-height:1.4;gap:7px;box-shadow:none;transition:background-color .15s,border-color .15s,box-shadow .15s;transform:none;border:1px solid transparent}
+:root:root .workspace[data-role="educator"] .button:not(.secondary):not(.ghost):not(.danger):not(:disabled) {background:#4f46e5;border-color:#4f46e5;color:white;box-shadow:0 1px 2px #0f172a0a}
+:root:root .workspace[data-role="educator"] .button:not(.secondary):not(.ghost):not(.danger):not(:disabled):hover {background:#4338ca;border-color:#4338ca;transform:none}
+:root:root .workspace[data-role="educator"] .button.secondary {background:#fff;border:1px solid #d9e0e9;color:#334155;box-shadow:0 1px 2px #0f172a04}
+:root:root .workspace[data-role="educator"] .button.secondary:hover {background:#f8fafc;border-color:#a5b4fc}
+:root:root .workspace[data-role="educator"] .button.ghost {background:transparent;color:#53627a;border-color:transparent;box-shadow:none}
+:root:root .workspace[data-role="educator"] .button.ghost:hover {background:#eef2ff;color:#4338ca}
+:root:root .workspace[data-role="educator"] .button.danger {background:#fff1f2;border-color:#fecdd3;color:#be123c;box-shadow:none}
+:root:root .workspace[data-role="educator"] .button:disabled {box-shadow:none;opacity:.5;transform:none}
+:root:root .workspace[data-role="educator"] .icon-button {background:transparent;border-radius:7px;color:#64748b;box-shadow:none}
+:root:root .workspace[data-role="educator"] :is(button,a,input,textarea,select,summary):focus-visible {outline:3px solid #818cf8;outline-offset:3px}
+:root:root .workspace[data-role="educator"] .field>span:first-child {font-size:.9375rem;font-weight:600;color:#475569}
+:root:root .workspace[data-role="educator"] :is(input,select,textarea) {border:1px solid #d5dde8;border-radius:7px;box-shadow:0 1px 2px #0f172a02;color:#1e293b;background:#fff;font-size:1rem;accent-color:#4f46e5}
+:root:root .workspace[data-role="educator"] :is(input,select,textarea):focus {border-color:#818cf8;box-shadow:0 0 0 3px #eef2ff}
+:root:root .workspace[data-role="educator"] .toolbar-search .search {background:#fff;border:1px solid #d5dde8;border-radius:8px;color:#94a3b8;box-shadow:0 1px 2px #0f172a02}
+:root:root .workspace[data-role="educator"] .toolbar-search .search input {border:0;box-shadow:none;background:transparent;min-height:44px;font-size:1rem}
+:root:root .workspace[data-role="educator"] .filter-toggle {border-radius:8px;border:1px solid #d5dde8;color:#475569;background:#fff;font-size:1rem;min-height:44px;box-shadow:0 1px 2px #0f172a02}
+:root:root .workspace[data-role="educator"] .filter-toggle[aria-expanded="true"] {background:#eef2ff;border-color:#c7d2fe;color:#4338ca}
+:root:root .workspace[data-role="educator"] .filter-fields[data-expanded="true"] {border:1px solid #e2e8f0;border-radius:10px;background:#fff}
+:root:root .workspace[data-role="educator"] .notice {border:1px solid #dbeafe;border-radius:8px;background:#eff6ff;color:#334e75;box-shadow:none;font-size:1rem;line-height:1.6;padding:13px 16px}
+:root:root .workspace[data-role="educator"] .notice.error {background:#fff1f2;color:#9f1239;border-color:#fecdd3}
+:root:root .workspace[data-role="educator"] :is(.badge,.language-tag) {background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;border-radius:5px;font:550 .6875rem/1.4 Inter,"Segoe UI",sans-serif;padding:4px 7px;letter-spacing:0}
+:root:root .workspace[data-role="educator"] :is(.pills,.admin-section-nav) {gap:4px}
+:root:root .workspace[data-role="educator"] .pills button {color:#64748b;background:transparent;border:1px solid transparent;border-radius:7px;font-size:1rem;font-weight:550;box-shadow:none;min-height:40px}
+:root:root .workspace[data-role="educator"] .pills button.active {background:#eef2ff;color:#4338ca;border-color:#e0e7ff}
+:root:root .workspace[data-role="educator"] .admin-section-nav a {border-radius:7px;border-color:#e2e8f0;background:#fff;color:#64748b;font-size:1rem}
+:root:root .workspace[data-role="educator"] .admin-section-nav a[aria-current="page"] {background:#eef2ff;border-color:#e0e7ff;color:#4338ca}
+:root:root .workspace[data-role="educator"] .material-filter-chip {background:#eef2ff;border-color:#e0e7ff;color:#4338ca;border-radius:7px}
+:root:root .workspace[data-role="educator"] .table-wrap {border:1px solid #e2e8f0;border-radius:8px;background:#fff}
+:root:root .workspace[data-role="educator"] .table-wrap::before {background:#f8fafc;color:#64748b}
+:root:root .workspace[data-role="educator"] table {font-size:1rem;color:#334155}
+:root:root .workspace[data-role="educator"] thead th {background:#f8fafc;color:#64748b;font-size:.875rem;letter-spacing:.05em;padding:13px 16px;font-weight:650;border-bottom:1px solid #e2e8f0}
+:root:root .workspace[data-role="educator"] tbody td {padding:16px;border-bottom:1px solid #edf1f5;color:#334155;font-size:1rem}
+:root:root .workspace[data-role="educator"] tbody tr:hover {background:#fafbfe}
+:root:root .workspace[data-role="educator"] .student-id {color:#64748b;font-size:.875rem;line-height:1.5;margin-top:4px}
+:root:root .workspace[data-role="educator"] .gradebook-mission-progress {display:grid;gap:6px;min-width:145px;font-size:.9375rem;line-height:1.4}
+:root:root .workspace[data-role="educator"] .gradebook-mission-progress .mission-status {justify-self:start}
+:root:root .workspace[data-role="educator"] .gradebook-mission-progress small {font-size:.875rem;color:#64748b}
+:root:root .workspace[data-role="educator"] .record-card {border:1px solid #e2e8f0;border-radius:10px;box-shadow:none;background:#fff;padding:20px}
+:root:root .workspace[data-role="educator"] .record-icon {background:#eef2ff;color:#6366f1;border-radius:8px}
+:root:root .workspace[data-role="educator"] .material-card {border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 1px 2px #0f172a04;transform:none;transition:border-color .15s,box-shadow .15s}
+:root:root .workspace[data-role="educator"] .material-card:hover {transform:none;box-shadow:0 4px 12px #0f172a07;border-color:#c7d2fe}
+:root:root .workspace[data-role="educator"] .material-cover {height:128px;min-height:0;border-radius:0;background:#eef2f6}
+:root:root .workspace[data-role="educator"] .card-body h3 {font-size:1.0625rem;line-height:1.45;font-weight:650}
+:root:root .workspace[data-role="educator"] .card-body p {font-size:1rem}
+:root:root .workspace[data-role="educator"] :is(.garden-feature,.download-suggestions) {background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:none}
+:root:root .workspace[data-role="educator"] .garden-feature h3 {color:#334155;font-size:1.25rem}
+:root:root .workspace[data-role="educator"] .empty {border:1px dashed #cbd5e1;background:#fff;border-radius:10px;padding:36px 24px}
+:root:root .workspace[data-role="educator"] .empty-icon {background:#f1f5f9;color:#94a3b8;border-radius:10px;box-shadow:none}
+:root:root .workspace[data-role="educator"] .empty h3 {font-size:1.125rem}
+:root:root .workspace[data-role="educator"] .teacher-progress-refresh {margin:16px 0;gap:12px}
+:root:root .workspace[data-role="educator"] .teacher-progress-refresh small {font-size:.875rem;color:#64748b}
+:root:root .workspace[data-role="educator"] .teacher-progress-refresh .button {min-height:36px;font-size:.9375rem;padding:8px 12px}
+:root:root .workspace[data-role="educator"] .mission-status {border-radius:5px;font-size:.875rem;line-height:1.45;font-weight:550;padding:4px 7px;background:#f1f5f9;color:#475569;white-space:normal;max-width:100%}
+:root:root .workspace[data-role="educator"] .mission-status:is(.in-progress,.current) {background:#eef2ff;color:#4338ca}
+:root:root .workspace[data-role="educator"] .mission-status:is(.reading-review,.quiz-retry,.needs_review) {background:#fff7ed;color:#9a3412}
+:root:root .workspace[data-role="educator"] .mission-status.completed {background:#ecfdf5;color:#047857}
+:root:root .workspace[data-role="educator"] .mission-status:is(.pending-scoring,.pending_online_scoring,.unavailable) {background:#fff1f2;color:#9f1239}
+:root:root .workspace[data-role="educator"] .student-mission-summary {border:1px solid #e2e8f0;background:#f8fafc;border-radius:8px;padding:14px}
+:root:root .workspace[data-role="educator"] .student-mission-summary progress {accent-color:#6366f1}
+:root:root .workspace[data-role="educator"] .student-profile-info {margin-top:22px;color:#64748b;font-size:1rem}
+:root:root .workspace[data-role="educator"] .student-profile-info>summary {cursor:pointer;min-height:36px;align-content:center}
+
+/* Classroom overview: current counts and completion. */
+:root:root .workspace[data-role="educator"] .teacher-class-dashboard .teacher-class-metrics {gap:16px;margin:22px 0}
+:root:root .workspace[data-role="educator"] .teacher-class-metrics>a {padding:20px;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 1px 2px #0f172a03;gap:16px;position:relative;color:#1e293b;transition:border-color .15s,box-shadow .15s}
+:root:root .workspace[data-role="educator"] .teacher-class-metrics>a:hover {border-color:#a5b4fc;box-shadow:0 3px 10px #0f172a06}
+:root:root .workspace[data-role="educator"] .teacher-metric-label {display:flex;justify-content:space-between;align-items:center;gap:12px;color:#64748b;font-size:.9375rem;font-weight:550}
+:root:root .workspace[data-role="educator"] .teacher-metric-label svg {color:#818cf8;width:18px;height:18px}
+:root:root .workspace[data-role="educator"] .teacher-class-metrics strong {font-size:2.375rem;line-height:1;font-weight:650;letter-spacing:-.045em;color:#0f172a;font-variant-numeric:tabular-nums}
+:root:root .workspace[data-role="educator"] .teacher-home-actions {gap:8px}
+:root:root .workspace[data-role="educator"] .teacher-dashboard-columns {display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;margin:22px 0;align-items:stretch}
+:root:root .workspace[data-role="educator"] .teacher-dashboard-columns>.panel {margin:0;min-width:0}
+:root:root .workspace[data-role="educator"] .teacher-section-head {display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px}
+:root:root .workspace[data-role="educator"] .teacher-section-head p {font-size:.9375rem;margin:5px 0 0;line-height:1.6}
+:root:root .workspace[data-role="educator"] .teacher-section-head>a {font-size:.9375rem;font-weight:550;color:#4f46e5;white-space:nowrap}
+:root:root .workspace[data-role="educator"] .teacher-watchlist {gap:0}
+:root:root .workspace[data-role="educator"] .teacher-watchlist>a {padding:14px 0;border:0;border-top:1px solid #eef2f6;border-radius:0;gap:14px;background:transparent}
+:root:root .workspace[data-role="educator"] .teacher-watchlist strong {font-size:1rem;font-weight:600;color:#334155}
+:root:root .workspace[data-role="educator"] .teacher-watchlist small {font-size:.9375rem;color:#64748b}
+:root:root .workspace[data-role="educator"] .teacher-attention-empty {min-height:170px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:12px;padding:20px;color:#64748b}
+:root:root .workspace[data-role="educator"] .teacher-attention-empty>svg {color:#94a3b8;width:25px;height:25px}
+:root:root .workspace[data-role="educator"] .teacher-attention-empty p {font-size:1rem;max-width:36ch;margin:0}
+:root:root .workspace[data-role="educator"] .teacher-grade-progress {display:grid;gap:20px;margin:8px 0}
+:root:root .workspace[data-role="educator"] .teacher-grade-progress>div>div {display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:.9375rem;margin-bottom:8px}
+:root:root .workspace[data-role="educator"] .teacher-grade-progress strong {font-weight:600;color:#334155}
+:root:root .workspace[data-role="educator"] .teacher-grade-progress span {color:#64748b;font-variant-numeric:tabular-nums}
+:root:root .workspace[data-role="educator"] .teacher-grade-progress progress {display:block;width:100%;height:6px;accent-color:#6366f1;border:0;border-radius:20px;overflow:hidden}
+:root:root .workspace[data-role="educator"] progress::-webkit-progress-bar {background:#edf0f7;border-radius:20px}
+:root:root .workspace[data-role="educator"] progress::-webkit-progress-value {background:#6366f1;border-radius:20px}
+:root:root .workspace[data-role="educator"] .teacher-grade-progress .mission-legend {font-size:.875rem;line-height:1.6;color:#64748b;margin:0}
+:root:root .workspace[data-role="educator"] .teacher-recent-activity .table-wrap {border:0;border-radius:0;margin:0 -6px}
+:root:root .workspace[data-role="educator"] .teacher-recent-activity td {font-size:1rem}
+:root:root .workspace[data-role="educator"] .teacher-help {color:#64748b;font-size:1rem;margin:22px 0}
+:root:root .workspace[data-role="educator"] .teacher-help summary {cursor:pointer;min-height:40px;align-content:center;font-weight:550}
+:root:root .workspace[data-role="educator"] .teacher-help p {font-size:1rem;max-width:85ch}
+
+/* A single accessible roster, presented as compact rows or phone records. */
+:root:root .workspace[data-role="educator"] .teacher-roster {background:#fff;border:1px solid #e2e8f0;border-radius:10px;overflow-x:auto;max-width:100%;box-shadow:0 1px 2px #0f172a03}
+:root:root .workspace[data-role="educator"] .teacher-roster-table {min-width:850px;table-layout:auto;font-size:1rem}
+:root:root .workspace[data-role="educator"] .teacher-roster-table tbody th {padding:19px 16px;text-transform:none;letter-spacing:0;white-space:normal;border-bottom:1px solid #edf1f5;min-width:175px;max-width:240px;background:transparent;font-weight:400}
+:root:root .workspace[data-role="educator"] .teacher-roster-table td {min-width:0;vertical-align:middle;padding:16px 12px}
+:root:root .workspace[data-role="educator"] .roster-person {display:flex;align-items:center;gap:11px}
+:root:root .workspace[data-role="educator"] .roster-person>div {min-width:0}
+:root:root .workspace[data-role="educator"] .roster-initial {display:grid;place-items:center;width:34px;height:34px;border-radius:8px;background:#eef2ff;border:1px solid #e0e7ff;color:#6366f1;font-weight:650;font-size:1rem;flex-shrink:0}
+:root:root .workspace[data-role="educator"] .roster-name {text-align:left;background:transparent;border:0;padding:0;color:#1e293b;font-size:1rem;line-height:1.5;font-weight:600;overflow-wrap:anywhere}
+:root:root .workspace[data-role="educator"] .roster-name:hover {color:#4f46e5;text-decoration:underline}
+:root:root .workspace[data-role="educator"] .teacher-roster small {display:block;font-size:.875rem;font-weight:400;color:#64748b;line-height:1.5;margin-top:4px}
+:root:root .workspace[data-role="educator"] .roster-task {display:block;font-size:1rem;color:#334155;line-height:1.5;min-width:150px;max-width:260px}
+:root:root .workspace[data-role="educator"] .roster-progress {min-width:105px;max-width:150px}
+:root:root .workspace[data-role="educator"] .roster-progress>span {display:flex;align-items:baseline;gap:10px;justify-content:space-between;margin-bottom:8px;font-variant-numeric:tabular-nums}
+:root:root .workspace[data-role="educator"] .roster-progress small {margin:0;white-space:nowrap}
+:root:root .workspace[data-role="educator"] .roster-progress strong {font-size:.9375rem;font-weight:600}
+:root:root .workspace[data-role="educator"] .roster-progress progress {width:100%;height:5px;accent-color:#6366f1;display:block}
+:root:root .workspace[data-role="educator"] .roster-actions {display:flex;align-items:center;gap:5px;white-space:nowrap}
+:root:root .workspace[data-role="educator"] .roster-actions .button {font-size:.9375rem;min-height:36px;padding:8px 10px;flex:0 0 auto;white-space:nowrap}
+:root:root .workspace[data-role="educator"] .roster-actions .roster-icon-action {padding:8px;min-width:34px}
+:root:root .workspace[data-role="educator"] .roster-icon-action svg {width:16px;height:16px}
+:root:root .workspace[data-role="educator"] .roster-mobile-label {display:none}
+:root:root .workspace[data-role="educator"] .roster-muted {color:#94a3b8}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Teacher dialogs are neutral as well; student-mode dialogs do not match this scope. */
+:root:root body:has(.workspace[data-role="educator"]) dialog {--purple:#4f46e5;--ink:#182234;--muted:#64748b;--line:#e2e8f0;background:#fff;color:#182234;font-family:Inter,"Segoe UI",system-ui,sans-serif;border:1px solid #e2e8f0;border-radius:14px;box-shadow:0 24px 70px #0f172a30}
+:root:root body:has(.workspace[data-role="educator"]) dialog :is(h1,h2,h3,h4,button,input,select,textarea) {font-family:Inter,"Segoe UI",system-ui,sans-serif;letter-spacing:normal}
+:root:root body:has(.workspace[data-role="educator"]) dialog .modal-head h2 {font-size:1.5rem;font-weight:650;color:#1e293b}
+:root:root body:has(.workspace[data-role="educator"]) dialog h3 {font-size:1.125rem;font-weight:600;color:#1e293b}
+:root:root body:has(.workspace[data-role="educator"]) dialog p {color:#64748b;font-size:1rem;line-height:1.65}
+:root:root body:has(.workspace[data-role="educator"]) dialog .button {border-radius:7px;box-shadow:none;font-size:1rem;min-height:42px;transform:none}
+:root:root body:has(.workspace[data-role="educator"]) dialog .button:not(.secondary):not(.ghost):not(:disabled) {background:#4f46e5;border-color:#4f46e5;color:white;box-shadow:none}
+:root:root body:has(.workspace[data-role="educator"]) dialog .button.secondary {color:#334155;border:1px solid #d5dde8;background:#fff;box-shadow:none}
+:root:root body:has(.workspace[data-role="educator"]) dialog .pills button {border-radius:7px;color:#64748b;background:#f8fafc;font-size:1rem}
+:root:root body:has(.workspace[data-role="educator"]) dialog .pills button.active {color:#4338ca;background:#eef2ff;box-shadow:none}
+:root:root body:has(.workspace[data-role="educator"]) dialog :is(input,select,textarea) {border-radius:7px;border-color:#d5dde8;color:#1e293b;accent-color:#4f46e5;font-size:1rem}
+:root:root body:has(.workspace[data-role="educator"]) dialog .student-mission-summary {border:1px solid #e2e8f0;background:#f8fafc;border-radius:9px}
+:root:root body:has(.workspace[data-role="educator"]) dialog :is(.mission-next,.mission-level-record) {border-color:#e2e8f0;border-radius:9px}
+:root:root body:has(.workspace[data-role="educator"]) dialog progress {accent-color:#6366f1}
+
+@media(max-width:1100px){
+  :root:root .workspace[data-role="educator"] .workspace-header {padding:12px 20px;min-height:66px}
+  :root:root .workspace[data-role="educator"] .workspace-main {padding:26px 22px 30px}
+  :root:root .workspace[data-role="educator"] .sidebar {padding-top:max(22px,env(safe-area-inset-top))}
+  :root:root .workspace[data-role="educator"] .mobile-bottom-nav {background:#fff;border-top:1px solid #e2e8f0;box-shadow:0 -2px 8px #0f172a03;grid-template-columns:repeat(5,minmax(0,1fr))}
+  :root:root .workspace[data-role="educator"] .mobile-bottom-nav>a {color:#64748b;border-radius:6px;font-size:.875rem}
+  :root:root .workspace[data-role="educator"] .mobile-bottom-nav>a[aria-current="page"],:root:root .workspace[data-role="educator"] .mobile-bottom-nav>button.active {background:#eef2ff;color:#4f46e5}
+}
+@media(max-width:800px){
+  :root:root .workspace[data-role="educator"] :is(input,select,textarea),:root:root .workspace[data-role="educator"] .toolbar-search .search input {font-size:1.125rem}
+  :root:root .workspace[data-role="educator"] .roster-actions .roster-icon-action {min-width:44px}
+  :root:root .workspace[data-role="educator"] .teacher-dashboard-columns {grid-template-columns:minmax(0,1fr)}
+  :root:root .workspace[data-role="educator"] .teacher-class-dashboard .teacher-class-metrics {grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  :root:root .workspace[data-role="educator"] .teacher-roster {overflow:visible;border:0;box-shadow:none;background:transparent}
+  :root:root .workspace[data-role="educator"] .teacher-roster-table {min-width:0;display:block;width:100%}
+  :root:root .workspace[data-role="educator"] .teacher-roster-table caption {position:absolute}
+  :root:root .workspace[data-role="educator"] .teacher-roster-table thead {position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+  :root:root .workspace[data-role="educator"] .teacher-roster-table tbody {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  :root:root .workspace[data-role="educator"] .teacher-roster-table tr {display:flex;flex-direction:column;border:1px solid #e2e8f0;border-radius:10px;background:#fff;padding:18px;min-width:0;box-shadow:0 1px 2px #0f172a03}
+  :root:root .workspace[data-role="educator"] .teacher-roster-table tbody th {display:block;padding:0 0 14px;border-bottom:1px solid #edf1f5;max-width:none;min-width:0}
+  :root:root .workspace[data-role="educator"] .teacher-roster-table td {display:grid;grid-template-columns:85px minmax(0,1fr);padding:11px 0;border-bottom:1px solid #f1f5f9;width:auto;max-width:none;gap:4px 12px;align-items:start}
+  :root:root .workspace[data-role="educator"] .teacher-roster-table td[data-label]:before {content:attr(data-label);font-size:.875rem;font-weight:500;color:#64748b;grid-column:1;grid-row:1 / span 2;padding-top:2px}
+  :root:root .workspace[data-role="educator"] .teacher-roster-table td[data-label]>* {grid-column:2}
+  :root:root .workspace[data-role="educator"] .teacher-roster-table td[data-label]>small {margin:0}
+  :root:root .workspace[data-role="educator"] .roster-task {min-width:0;max-width:none;font-size:1rem}
+  :root:root .workspace[data-role="educator"] .roster-progress {max-width:none;min-width:0;width:100%}
+  :root:root .workspace[data-role="educator"] .teacher-roster-table .roster-action-cell {display:block;border:0;margin-top:auto;padding:14px 0 0}
+  :root:root .workspace[data-role="educator"] .roster-actions {gap:8px}
+  :root:root .workspace[data-role="educator"] .roster-actions>.button {min-height:44px}
+  :root:root .workspace[data-role="educator"] .roster-actions>.button:first-child {flex:1}
+  :root:root .workspace[data-role="educator"] .roster-mobile-label {display:inline}
+}
+@media(max-width:680px){
+  :root:root .workspace[data-role="educator"] .teacher-roster-table tbody {grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:520px){
+  :root:root .workspace[data-role="educator"] .workspace-main {padding:22px 16px 28px}
+  :root:root .workspace[data-role="educator"] .workspace-header {padding:10px 14px;min-height:62px}
+  :root:root .workspace[data-role="educator"] :is(input,select,textarea),:root:root .workspace[data-role="educator"] .sidebar-search input {font-size:1.125rem}
+  :root:root .workspace[data-role="educator"] .toolbar-search .search input {font-size:1.125rem}
+  :root:root .workspace[data-role="educator"] .roster-actions .roster-icon-action {min-width:44px}
+  :root:root .workspace[data-role="educator"] .roster-icon-action:has(.roster-mobile-label) svg {display:none}
+  :root:root .workspace[data-role="educator"] .page-intro {gap:16px;margin-bottom:20px}
+  :root:root .workspace[data-role="educator"] .page-intro h2 {font-size:1.5rem}
+  :root:root .workspace[data-role="educator"] .page-intro p {font-size:1rem}
+  :root:root .workspace[data-role="educator"] .teacher-class-metrics>a {padding:16px;gap:18px}
+  :root:root .workspace[data-role="educator"] .teacher-metric-label {font-size:.875rem;gap:6px;align-items:flex-start}
+  :root:root .workspace[data-role="educator"] .teacher-metric-label svg {width:16px;height:16px;flex-shrink:0}
+  :root:root .workspace[data-role="educator"] .teacher-class-metrics strong {font-size:2rem}
+  :root:root .workspace[data-role="educator"] .panel {padding:18px}
+  :root:root .workspace[data-role="educator"] .teacher-roster-table tbody {grid-template-columns:minmax(0,1fr)}
+  :root:root .workspace[data-role="educator"] .teacher-home-actions>.button {flex:1 1 140px;min-height:44px}
+  :root:root .workspace[data-role="educator"] .teacher-progress-refresh>.button {width:auto;min-height:40px}
+  :root:root .workspace[data-role="educator"] .teacher-watchlist>a {align-items:flex-start}
+  :root:root .workspace[data-role="educator"] .teacher-section-head {gap:12px}
+  :root:root .workspace[data-role="educator"] .teacher-section-head>a {font-size:.875rem}
+  :root:root .workspace[data-role="educator"] .teacher-recent-activity .table-wrap {overflow:auto}
+}
+:root:root .workspace[data-role="educator"] .workspace-main[data-section="reports"] .table-wrap {max-height:70vh;isolation:isolate}
+:root:root .workspace[data-role="educator"] .workspace-main[data-section="reports"] .table-wrap thead th {position:sticky;top:0;z-index:2}
+:root:root .workspace[data-role="educator"] .workspace-main[data-section="reports"] .table-wrap :is(th,td):first-child {position:sticky;left:0;background:#fff;z-index:1;box-shadow:1px 0 0 #e2e8f0}
+:root:root .workspace[data-role="educator"] .workspace-main[data-section="reports"] .table-wrap thead th:first-child {z-index:3;background:#f8fafc}
+@media(prefers-reduced-motion:reduce){:root:root .workspace[data-role="educator"] *, :root:root .workspace[data-role="educator"] *:before,:root:root .workspace[data-role="educator"] *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.reading-baselines{min-width:0}.baseline-heading{display:flex;justify-content:space-between;align-items:start;gap:1rem;flex-wrap:wrap}.baseline-review{font-size:1rem;padding:.4rem .65rem;border-radius:.4rem;background:#fff4d5;color:#775214}.baseline-pending{padding:.8rem 0;font-weight:600}.baseline-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:.75rem}.baseline-metrics>div{padding:.8rem;background:#f6f8fc;border:1px solid #e3e8f0;border-radius:.5rem}.baseline-metrics dt{font-size:.9375rem;color:#526176}.baseline-metrics dd{margin:.3rem 0 0;font-weight:700;color:#1e293b}.baseline-detail{margin-top:1rem}.baseline-detail details{margin-top:1rem}.baseline-table-wrap{overflow:auto;max-width:100%;border:1px solid #e3e8f0;border-radius:.65rem}.baseline-table-wrap table{border-collapse:collapse;width:100%;min-width:790px;font-size:1rem}.baseline-table-wrap caption{text-align:left;padding:.8rem;color:#526176}.baseline-table-wrap th,.baseline-table-wrap td{text-align:left;vertical-align:top;padding:.8rem;border-top:1px solid #e3e8f0}.baseline-table-wrap thead{background:#f6f8fc}.baseline-table-wrap small{display:block;margin-top:.3rem;color:#64748b}.baseline-student{padding:0;background:transparent;border:0;box-shadow:none;color:#2549b8;font:inherit;font-weight:600;text-align:left;min-height:44px}.reading-baselines .muted{font-size:.9375rem;line-height:1.6;color:#526176}
+@media(max-width:680px){.baseline-table-wrap{overflow:visible;border:0}.baseline-table-wrap table{min-width:0;display:block}.baseline-table-wrap caption{display:block;padding:.5rem 0}.baseline-table-wrap thead{display:none}.baseline-table-wrap tbody{display:grid;gap:.8rem}.baseline-table-wrap tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid #e2e8f0;border-radius:.6rem;overflow:hidden}.baseline-table-wrap th[scope=row]{grid-column:1/-1;background:#f6f8fc}.baseline-table-wrap td{display:block;min-width:0;overflow-wrap:anywhere}.baseline-table-wrap td:before{content:attr(data-label);display:block;font-size:.9375rem;font-weight:600;color:#64748b;margin-bottom:.4rem}.baseline-table-wrap small{font-size:1rem}.baseline-student{font-size:.95rem}}
+:root:root dialog.wide:has(.reading-baselines){width:min(1120px,calc(100vw - 32px));max-width:calc(100vw - 32px)}.baseline-table-wrap td{overflow-wrap:normal;word-break:normal}.baseline-table-wrap th[scope=row]{text-transform:none;letter-spacing:normal;background:#f8fafc}.baseline-table-wrap th[scope=row] small{font-weight:400}.baseline-student{background:transparent!important;box-shadow:none!important}

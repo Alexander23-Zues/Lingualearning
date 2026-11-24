@@ -1,0 +1,5 @@
+.lesson-source{margin:12px 0 20px;border:1px solid #e4deed;border-radius:12px;background:#faf8fe;font-size:14px;line-height:1.6;color:#50465e}
+.lesson-source>summary{padding:12px 16px;cursor:pointer;min-height:44px;font-weight:700;color:#503486}
+.lesson-source>div{padding:0 16px 16px;overflow-wrap:anywhere}
+.lesson-source p{margin:8px 0}
+.lesson-source a{color:#533396;text-decoration:underline;text-underline-offset:3px;display:inline-flex;align-items:center;min-height:44px}

@@ -1,14 +1,21 @@
+from .runtime_status import checked_model_status
+from .offline_transfer import router as offline_transfer_router
+from .grade_admissions import router as grade_admissions_router
 import csv
 import io
+import json
 from typing import Annotated, Any
 from uuid import UUID
 
 import httpx
 from fastapi import Depends, FastAPI, File, Header, HTTPException, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.concurrency import run_in_threadpool
 
 from .config import Settings, get_settings
 from .gateway import DataGateway
+from .lesson_import import MAX_LESSON_FILE_BYTES, extract_lesson_text
+from .language_check import assert_source_language
 from .models import (
     CurrentUser,
     DatasetPair,
@@ -26,7 +33,7 @@ from .models import (
     TranslationResponse,
     ChildTranslationRequest,
 )
-from .security import administrator, current_user, educator, get_gateway
+from .security import administrator, current_user, educator, get_gateway, student_learning_state
 
 
 def create_app() -> FastAPI:
@@ -43,6 +50,16 @@ def create_app() -> FastAPI:
         allow_methods=["GET", "POST", "PATCH", "DELETE"],
         allow_headers=["Authorization", "Content-Type"],
     )
+    from .ai_routes import router as ai_router
+    from .ai_body_limit import AiBodyLimit
+    app.add_middleware(AiBodyLimit)
+    app.include_router(ai_router)
+    app.include_router(grade_admissions_router)
+    app.include_router(offline_transfer_router)
+    from .recording_review import router as recording_review_router
+    app.include_router(recording_review_router)
+    from .dictionary import router as dictionary_router
+    app.include_router(dictionary_router)
 
     @app.get("/health", tags=["system"])
     async def health() -> dict[str, str]:
@@ -58,7 +75,25 @@ def create_app() -> FastAPI:
         user: Annotated[CurrentUser, Depends(educator)],
         gateway: Annotated[DataGateway, Depends(get_gateway)],
     ) -> dict[str, Any]:
+        if payload.grade_level not in user.grade_levels:
+            raise HTTPException(403,"This account can use only its assigned grade.")
         return await gateway.create_resource(user.id, payload)
+
+    @app.post("/v1/lessons/import", tags=["resources"])
+    async def import_lesson(
+        user: Annotated[CurrentUser, Depends(current_user)],
+        file: UploadFile = File(...),
+    ) -> dict[str, str]:
+        try:
+            content = await file.read(MAX_LESSON_FILE_BYTES + 1)
+            if len(content) > MAX_LESSON_FILE_BYTES:
+                raise HTTPException(status_code=413, detail="Choose a file under 2 MB.")
+            text = await run_in_threadpool(extract_lesson_text, file.filename or "", content)
+            return {"text": text}
+        except ValueError as error:
+            raise HTTPException(status_code=422, detail=str(error)) from error
+        finally:
+            await file.close()
 
     @app.post("/v1/sessions/sync", response_model=list[SessionSyncResult], tags=["sessions"])
     async def sync_sessions(
@@ -66,6 +101,8 @@ def create_app() -> FastAPI:
         user: Annotated[CurrentUser, Depends(educator)],
         gateway: Annotated[DataGateway, Depends(get_gateway)],
     ) -> list[SessionSyncResult]:
+        if any(event.grade_level not in user.grade_levels for event in payload.events):
+            raise HTTPException(403,"This account can use only its assigned grade.")
         results = []
         for event in payload.events:
             event_status = await gateway.sync_session(user.id, event)
@@ -139,6 +176,37 @@ def create_app() -> FastAPI:
     ) -> dict[str, Any]:
         return await gateway.rollback_model(user.id)
 
+    @app.get("/v1/model-status", tags=["system"])
+    async def model_status(
+        gateway: Annotated[DataGateway, Depends(get_gateway)],
+        settings: Annotated[Settings, Depends(get_settings)],
+    ) -> dict[str, Any]:
+        """Check if translation model is available via path or database."""
+        if settings.model_package_path and settings.model_package_path.exists():
+            manifest_path = settings.model_package_path / "manifest.json"
+            if manifest_path.exists():
+                try:
+                    with manifest_path.open() as f:
+                        manifest = json.load(f)
+                    return await checked_model_status(settings,{
+                        "available": True,
+                        "source": "environment",
+                        "version": manifest.get("model_version"),
+                    })
+                except Exception:
+                    pass
+        
+        model = await gateway.active_model()
+        if model:
+            return await checked_model_status(settings,{
+                "available": True,
+                "source": "database",
+                "version": model["version"],
+                "name": model.get("name"),
+            })
+        
+        return await checked_model_status(settings,{"available": False, "source": None, "version": None})
+
     @app.get("/v1/students", response_model=list[StudentRecord], tags=["students"])
     async def list_students(
         user: Annotated[CurrentUser, Depends(educator)],
@@ -152,6 +220,8 @@ def create_app() -> FastAPI:
         user: Annotated[CurrentUser, Depends(educator)],
         gateway: Annotated[DataGateway, Depends(get_gateway)],
     ) -> dict[str, Any]:
+        if payload.grade_level not in user.grade_levels:
+            raise HTTPException(403,"This account can use only its assigned grade.")
         return await gateway.create_student(user.id, payload)
 
     @app.post("/v1/students/{student_id}/unlock", tags=["students"])
@@ -203,18 +273,40 @@ def create_app() -> FastAPI:
         gateway: Annotated[DataGateway, Depends(get_gateway)],
         settings: Annotated[Settings, Depends(get_settings)],
     ) -> TranslationResponse:
-        del user
         if len(payload.text) > settings.translation_max_characters:
             raise HTTPException(
                 status_code=422,
                 detail=f"Text must not exceed {settings.translation_max_characters} characters.",
             )
-        model = await gateway.active_model()
+        
+        try:
+            await run_in_threadpool(assert_source_language, payload.text, payload.source_language)
+        except ValueError as error:
+            raise HTTPException(422, str(error)) from error
+        # Check if MODEL_PACKAGE_PATH is set and use it directly
+        model = None
+        if settings.model_package_path and settings.model_package_path.exists():
+            manifest_path = settings.model_package_path / "manifest.json"
+            if manifest_path.exists():
+                try:
+                    with manifest_path.open() as f:
+                        manifest = json.load(f)
+                    model = {
+                        "version": manifest.get("model_version"),
+                        "artifact_checksum": None,  # Not needed for direct path usage
+                    }
+                except Exception:
+                    pass  # Fall back to database lookup
+        
+        # Fall back to database lookup if MODEL_PACKAGE_PATH is not set or invalid
         if model is None:
-            raise HTTPException(
-                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-                detail="Translation is not available yet. An administrator must activate a trained model.",
-            )
+            model = await gateway.active_model()
+            if model is None:
+                raise HTTPException(
+                    status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                    detail="Translation is not available yet. An administrator must activate a trained model.",
+                )
+        
         if not settings.inference_shared_secret:
             raise HTTPException(status_code=503, detail="The private translation service is not configured.")
         try:
@@ -225,14 +317,24 @@ def create_app() -> FastAPI:
                     json={
                         **payload.model_dump(),
                         "model_version": model["version"],
+                        "model_checksum": model.get("artifact_checksum"),
                     },
                 )
             response.raise_for_status()
         except (httpx.TimeoutException, httpx.NetworkError) as error:
             raise HTTPException(status_code=503, detail="Translation service is temporarily unavailable.") from error
         except httpx.HTTPStatusError as error:
-            raise HTTPException(status_code=502, detail="Translation service rejected the request.") from error
+            code=error.response.status_code
+            if code in (429,503,504):raise HTTPException(status_code=code,detail="Translation service is busy. Please try again shortly.",headers={"Retry-After":"2"}) from error
+            if code==422:raise HTTPException(status_code=422,detail="Use a shorter sentence in the selected language.") from error
+            raise HTTPException(status_code=502, detail="Translation service could not complete this request.") from error
         result = response.json()
+        if payload.save_history:
+            await gateway._request('POST', 'ai_translation_history', json={
+                'created_by': str(user.id), 'source_text': payload.text,
+                'translation': result['translation'], 'source_language': payload.source_language,
+                'target_language': payload.target_language, 'model_version': model['version'],
+            })
         return TranslationResponse(
             translation=result["translation"],
             model_version=model["version"],
@@ -242,20 +344,25 @@ def create_app() -> FastAPI:
     async def student_translate(payload: ChildTranslationRequest, settings: Annotated[Settings, Depends(get_settings)]) -> TranslationResponse:
         if len(payload.text) > settings.translation_max_characters:
             raise HTTPException(status_code=422, detail="Use a sentence of at most 300 characters.")
-        if not settings.supabase_url or not settings.supabase_publishable_key:
-            raise HTTPException(status_code=503, detail="The learning service is not configured.")
+        try:
+            await run_in_threadpool(assert_source_language, payload.text, payload.source_language)
+        except ValueError as error:
+            raise HTTPException(422, str(error)) from error
+        state = await student_learning_state(payload.student_token, settings)
+        model = state.get("active_model")
+        if model is None and settings.allow_bundled_student_model:
+            manifest_path = settings.model_package_path / "manifest.json"
+            try:
+                manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+                model = {"version": manifest["model_version"]}
+            except (OSError, ValueError, KeyError):
+                pass
+        if not model:
+            raise HTTPException(status_code=503, detail="Translation is not available yet. An administrator must activate a trained model.")
+        if not settings.inference_shared_secret:
+            raise HTTPException(status_code=503, detail="The private translation service is not configured.")
         try:
             async with httpx.AsyncClient(timeout=25) as client:
-                state = await client.post(f"{settings.supabase_url}/rest/v1/rpc/student_learning_state",
-                    headers={"apikey":settings.supabase_publishable_key,"Content-Type":"application/json"},
-                    json={"p_token":payload.student_token})
-                if state.status_code != 200:
-                    raise HTTPException(status_code=403, detail="Ask an adult to reopen your learning profile.")
-                model = state.json().get("active_model")
-                if not model:
-                    raise HTTPException(status_code=503, detail="Translation is not available yet. An administrator must activate a trained model.")
-                if not settings.inference_shared_secret:
-                    raise HTTPException(status_code=503, detail="The private translation service is not configured.")
                 result = await client.post(f"{settings.inference_base_url}/translate",headers={"X-Inference-Key":settings.inference_shared_secret},
                     json={"text":payload.text,"source_language":payload.source_language,"target_language":payload.target_language,"model_version":model["version"]})
                 result.raise_for_status()
@@ -263,6 +370,9 @@ def create_app() -> FastAPI:
         except (httpx.TimeoutException,httpx.NetworkError) as error:
             raise HTTPException(status_code=503, detail="Translation is temporarily unavailable.") from error
         except httpx.HTTPStatusError as error:
+            code=error.response.status_code
+            if code in (429,503,504):raise HTTPException(status_code=code,detail="Translation service is busy. Please try again shortly.",headers={"Retry-After":"2"}) from error
+            if code==422:raise HTTPException(status_code=422,detail="Use a shorter sentence in the selected language.") from error
             raise HTTPException(status_code=502, detail="Translation service could not complete this request.") from error
 
     return app

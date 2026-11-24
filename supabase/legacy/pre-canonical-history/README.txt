@@ -1,0 +1,1 @@
+Earlier source migration filenames did not match the recorded hosted history. These files are retained for history; canonical applied migrations are in supabase/migrations. Do not replay both sets. Deployment never resets or migrates the hosted database automatically.

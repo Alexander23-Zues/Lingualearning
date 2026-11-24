@@ -25,7 +25,7 @@ def main() -> None:
         raise FileExistsError("Output package already exists; model packages are immutable.")
     shutil.copytree(args.model_dir, args.output_dir / "model")
     files = {
-        str(path.relative_to(args.output_dir)): sha256(path)
+        path.relative_to(args.output_dir).as_posix(): sha256(path)
         for path in sorted(args.output_dir.rglob("*"))
         if path.is_file()
     }

@@ -89,6 +89,7 @@ def user(role: AccountRole, status: AccountStatus = AccountStatus.active) -> Cur
         name=role.value.title(),
         role=role,
         status=status,
+        grade_levels=[3] if role==AccountRole.educator else [],
     )
 
 
@@ -125,7 +126,7 @@ def test_educator_creates_only_owned_private_resource():
     client, _ = client_for(AccountRole.educator)
     response = client.post(
         "/v1/resources",
-        json={"title": "Word Cards", "resource_type": "activity", "grade_level": 2},
+        json={"title": "Word Cards", "resource_type": "activity", "grade_level": 3},
     )
     assert response.status_code == 201
     assert response.json()["owner_id"] == str(EDUCATOR_ID)
@@ -135,7 +136,7 @@ def test_administrator_cannot_use_educator_resource_endpoint():
     client, _ = client_for(AccountRole.administrator)
     response = client.post(
         "/v1/resources",
-        json={"title": "Word Cards", "resource_type": "activity", "grade_level": 2},
+        json={"title": "Word Cards", "resource_type": "activity", "grade_level": 3},
     )
     assert response.status_code == 403
 
@@ -246,3 +247,9 @@ def test_suspended_account_is_denied_before_protected_operation(monkeypatch):
     with pytest.raises(Exception) as caught:
         asyncio.run(current_user("Bearer valid", settings, gateway))
     assert getattr(caught.value, "status_code", None) == 403
+
+def test_fixed_grade_rejects_other_grade_resource_student_and_sync():
+    client,gateway=client_for(AccountRole.educator)
+    assert client.post('/v1/resources',json={'title':'Wrong grade','resource_type':'activity','grade_level':2}).status_code==403
+    assert client.post('/v1/students',json={'nickname':'Wrong grade','grade_level':2,'avatar_key':'owl','learning_level':'beginner'}).status_code==403
+    assert client.post('/v1/sessions/sync',json={'events':[{'event_id':str(uuid4()),'class_label':'Wrong grade','grade_level':2,'session_date':'2026-11-24'}]}).status_code==403

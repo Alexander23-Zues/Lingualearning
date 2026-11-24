@@ -1,0 +1,17 @@
+.offline-library { max-width: 1120px; margin: 0 auto; padding: clamp(14px,4vw,36px); }
+.offline-library-header, .offline-library-categories, .offline-library-filters { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.offline-library-header { justify-content: space-between; margin-bottom: 24px; }
+.offline-library-intro { background: #f4efff; padding: clamp(16px,4vw,32px); border-radius: 20px; margin-bottom: 20px; }
+.offline-library-intro h1 { margin: 0; }
+.offline-library-categories { margin: 0 0 16px; }
+.offline-library-filters { margin-bottom: 16px; align-items: end; }
+.offline-library-filters .field { margin: 0; }
+.offline-library-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 12px; }
+.offline-library-grid .panel { padding: 16px; margin: 0; overflow-wrap: anywhere; }
+.offline-library-grid h2 { font-size: 1.15rem; margin: 6px 0 12px; }
+.offline-words dt { font-weight: 700; }
+.offline-words dd { margin: 4px 0 0; }
+@media (max-width: 520px) {
+  .offline-library-filters { display: grid; grid-template-columns: minmax(0,1fr); }
+  .offline-library-filters .search { max-width: none; }
+}

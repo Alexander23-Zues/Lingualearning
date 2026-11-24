@@ -1,5 +1,8 @@
 # LinguaKids
 
+Current deployment: the React web application/PWA, protected API, and private AI service are built by the root Dockerfile. Start with [the current release guide](docs/current-web-release.md). The Flutter setup below describes the earlier client retained in this repository.
+
+
 LinguaKids is a Flutter mobile and responsive web workspace for adult-led English–Filipino language and literacy instruction in Grades 1–6. Its authenticated adult roles are `administrator` and `educator`. Elementary students use minimal child profiles created by an authorized adult, without child email accounts. See `docs/end-users-and-permissions.md` for the profile fields and learning permissions.
 
 ## Repository layout

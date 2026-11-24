@@ -4,3 +4,7 @@ uvicorn[standard]==0.38.0
 httpx==0.28.1
 pydantic-settings==2.11.0
 python-multipart==0.0.20
+pypdf==7.1.0
+defusedxml==0.7.1
+lingua-language-detector==2.1.1
+edge-tts==7.3.1

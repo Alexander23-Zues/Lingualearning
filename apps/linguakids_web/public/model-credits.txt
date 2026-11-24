@@ -1,0 +1,17 @@
+LinguaKids model credits
+
+Translation
+Helsinki-NLP OPUS-MT English–Tagalog and Tagalog–English, Apache 2.0.
+https://huggingface.co/Helsinki-NLP/opus-mt-en-tl
+https://huggingface.co/Helsinki-NLP/opus-mt-tl-en
+
+Reading recognition
+OpenAI Whisper tiny, converted and distributed by SYSTRAN.
+https://huggingface.co/Systran/faster-whisper-tiny
+
+Pronunciation for the noncommercial school release
+Meta Massively Multilingual Speech, English and Tagalog, CC BY-NC 4.0.
+The original model weights are used with LinguaKids text input and WAV rendering.
+https://huggingface.co/facebook/mms-tts-eng
+https://huggingface.co/facebook/mms-tts-tgl
+https://creativecommons.org/licenses/by-nc/4.0/

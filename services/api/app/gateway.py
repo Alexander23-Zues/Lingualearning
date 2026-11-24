@@ -3,7 +3,7 @@ from uuid import UUID
 
 import httpx
 
-from .config import Settings
+from .config import Settings, supabase_headers
 from .models import (
     AccountStatus,
     CurrentUser,
@@ -47,8 +47,7 @@ class SupabaseGateway:
     @property
     def _headers(self) -> dict[str, str]:
         return {
-            "apikey": self.settings.supabase_publishable_key if self.user_token else self.settings.supabase_secret_key,
-            "Authorization": f"Bearer {self.user_token or self.settings.supabase_secret_key}",
+            **supabase_headers(self.settings.supabase_publishable_key if self.user_token else self.settings.supabase_secret_key, self.user_token),
             "Content-Type": "application/json",
         }
 
@@ -66,9 +65,13 @@ class SupabaseGateway:
         rows = await self._request(
             "GET",
             "profiles",
-            params={"id": f"eq.{user_id}", "select": "id,email,name,role,status"},
+            params={"id": f"eq.{user_id}", "select": "id,email,name,role,status,grade_levels,account_kind,teacher_approved_at,registered_grade,retired_at"},
         )
-        return CurrentUser.model_validate(rows[0]) if rows else None
+        if not rows:return None
+        row=rows[0]
+        if row.get('retired_at') is not None:return None
+        if row['role']=='educator' and row.get('account_kind','teacher')=='teacher' and (not row.get('teacher_approved_at') or row.get('registered_grade') is None):return None
+        return CurrentUser.model_validate(row)
 
     async def create_resource(self, owner_id: UUID, payload: ResourceCreate) -> dict[str, Any]:
         rows = await self._request(
