@@ -3,8 +3,9 @@ import {fireEvent,render,screen,waitFor,within} from '@testing-library/react';
 import {TeacherPlacement} from './TeacherPlacement';
 import {normalizeMissionBands,addMission} from './mission-difficulty';
 import {learnerProgress} from './teacher-progress';
-const fixture=vi.hoisted(()=>({repository:{rpc:vi.fn()},data:{records:[]},refresh:vi.fn()}));
+const fixture=vi.hoisted(()=>({repository:{rpc:vi.fn()},data:{records:[]},refresh:vi.fn(),progressRefresh:vi.fn()}));
 vi.mock('../context',()=>({useApp:()=>fixture}));
+vi.mock('./TeacherProgressContext',()=>({useTeacherProgress:()=>({refresh:fixture.progressRefresh})}));
 const child={id:'synthetic-child',grade_level:1};
 const path=()=>({revision:7,stages:Array.from({length:6},(_,index)=>({id:`mission-${index+1}`,title:`Mission ${index+1}`,difficulty:['beginner','intermediate','advanced'][Math.floor(index/2)],steps:[]}))});
 beforeEach(()=>{vi.clearAllMocks();fixture.data.records=[];fixture.repository.rpc.mockImplementation(async name=>name==='educator_adventure'?path():name==='educator_placement'?{placement:null,has_started:false,adventure:{placement:null}}:{});});
@@ -22,6 +23,7 @@ it('requires an explicit teacher decision using English evidence and the current
  fireEvent.click(screen.getByLabelText('I reviewed the English assessment and confirm this starting mission.'));
  fireEvent.submit(screen.getByRole('button',{name:'Confirm starting mission'}).closest('form'));
  await waitFor(()=>expect(fixture.repository.rpc).toHaveBeenCalledWith('confirm_adventure_placement',{p_child_id:child.id,p_evidence_id:'evidence-1',p_stage_id:'mission-3',p_revision:7,p_reason:'Teacher reviewed the synthetic English evidence.'}));
+ await waitFor(()=>expect(fixture.progressRefresh).toHaveBeenCalledTimes(1));
 });
 it('normalizes legacy groups and inserts an empty draft without changing existing mission IDs',()=>{
  const normalized=normalizeMissionBands({revision:1,stages:Array.from({length:5},(_,i)=>({id:`old-${i}`,steps:[]}))});

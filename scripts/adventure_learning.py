@@ -126,6 +126,8 @@ class Adventure:
         passed=result.get('correct_count') is not None and (step['kind']!='quiz' or result['correct_count']*100>=result['total_count']*80)
         row=self.data['progress'].setdefault(child['id'],{}).setdefault(step['id'],{})
         row.update(passed=row.get('passed',False) or passed,status='completed' if passed else 'pending_online_scoring' if result.get('correct_count') is None else 'current',last_attempt_id=result['id'])
+        from mission_rewards import sync_awards
+        sync_awards(self,child)
         return {**result,'adventure_passed':passed,'adventure':self.progress(child)}
 
     def reading_context(self,child,step_id,page,part):
@@ -153,7 +155,9 @@ class Adventure:
 
     def teacher_progress(self,grade):
         self.path(grade)
-        return [{'child_id':c['id'],'nickname':c['nickname'],'adventure':self.progress(c),'quiz_attempts':[a for a in self.state['attempts'] if a['child_id']==c['id'] and a.get('adventure_step_id') and a['activity_kind']=='quiz']} for c in self.state['children'] if c['active'] and c['grade_level']==int(grade)]
+        from mission_rewards import class_rewards,reward_summary
+        boards={demo:class_rewards(self,grade,demo) for demo in (False,True)}
+        return [{'child_id':c['id'],'nickname':c['nickname'],'adventure':self.progress(c),'rewards':reward_summary(self,c,boards[bool(c.get('is_demo'))]),'quiz_attempts':[a for a in self.state['attempts'] if a['child_id']==c['id'] and a.get('adventure_step_id') and a['activity_kind']=='quiz']} for c in self.state['children'] if c['active'] and c['grade_level']==int(grade) and c.get('adult_id')==self.profile['id']]
 
     def approve(self,child,step_id,reason):
         step=self.current(child,step_id)

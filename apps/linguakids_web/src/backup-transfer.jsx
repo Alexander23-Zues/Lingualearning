@@ -22,7 +22,7 @@ export function OnlineBackupTransfer(){
  {!!result.pending_details?.length&&<details><summary>{uiText('Transfer review details')}</summary><ul>{result.pending_details.slice(0,20).map((item,index)=><li key={index}>{item.reason}</li>)}</ul></details>}
  {!!result.items_needing_review&&<p>{uiText('Transfer the same file again to continue a large collection. Changed or unavailable activities stay in the private backup for manual review.')}</p>}</Notice>}
  <Button variant="secondary" disabled={action.busy} onClick={()=>action.run(load)}>{uiText('Show my online backups')}</Button>
- {archives&&<ul>{archives.map(a=><li key={a.id}>{new Date(a.created_at).toLocaleString()} · {a.status} <Button variant="secondary" disabled={action.busy} onClick={()=>action.run(()=>repository.downloadCollectionArchive(a.id))}>{uiText('Download private backup')}</Button></li>)}{!archives.length&&<li>{uiText('No online backups saved yet.')}</li>}</ul>}
+ {archives&&<ul>{archives.map(a=><li key={a.id}>{new Date(a.created_at).toLocaleString()} · {a.status} <Button variant="secondary" disabled={action.busy} onClick={()=>action.run(()=>repository.downloadCollectionArchive(a.id))}>{uiText('Download private backup')}</Button>{a.status==='needs_review'&&<Button variant="secondary" disabled={action.busy} onClick={()=>action.run(async()=>{setResult(await repository.api(`/v1/offline/archives/${encodeURIComponent(a.id)}/retry`,{},{signal:AbortSignal.timeout(240000)}));await refresh();await load();})}>{uiText('Continue saved transfer')}</Button>}</li>)}{!archives.length&&<li>{uiText('No online backups saved yet.')}</li>}</ul>}
  </details>;
 }
 export function ModelEvidence(){

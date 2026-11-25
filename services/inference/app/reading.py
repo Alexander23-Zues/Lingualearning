@@ -1,62 +1,18 @@
 """Reading recognition, deliberately NOT phoneme/pronunciation assessment."""
 import io
-import re
-import unicodedata
 import wave
 from dataclasses import dataclass
-from difflib import SequenceMatcher
 
 import numpy as np
 
 from .memory import trim_memory
+from .reading_comparison import compare_reading, tokens, words
 
 
 @dataclass(frozen=True)
 class Recognition:
     transcript: str
     unclear: bool = False
-
-
-def tokens(text: str) -> list[str]:
-    return re.findall(r"[^\W_]+(?:['’][^\W_]+)*", unicodedata.normalize('NFKC', text))
-
-
-def words(text: str) -> list[str]:
-    return [token.casefold().replace("’", "'") for token in tokens(text)]
-
-
-def compare_reading(expected: str, recognized: str, *, unclear: bool = False) -> dict:
-    target, spoken = words(expected), words(recognized)
-    if unclear or not spoken:
-        return {'transcript': '', 'speech_detected': unclear,
-                'recognition_status': 'unclear' if unclear else 'no_speech', 'matched_words': [],
-                'missing_words': [], 'extra_words': [], 'word_results': [],
-                'expected_word_count': len(target), 'assessment_type': 'reading_recognition',
-                'pronunciation_assessment_available': False}
-    matched, missing, extra = [], [], []
-    correct_positions = set()
-    for tag, a, b, c, d in SequenceMatcher(None, target, spoken, autojunk=False).get_opcodes():
-        if tag == 'equal':
-            matched.extend(target[a:b])
-            correct_positions.update(range(a, b))
-        else:
-            missing.extend(target[a:b])
-            extra.extend(spoken[c:d])
-    
-    # Build word-level results array matching expected text word order
-    word_results = [
-        {'word': word, 'correct': index in correct_positions, 'confidence': float(index in correct_positions)}
-        for index, word in enumerate(tokens(expected))
-    ]
-    
-    return {'transcript': recognized, 'speech_detected': True, 'recognition_status': 'recognized',
-            'matched_words': matched, 'missing_words': missing,
-            'extra_words': extra, 'expected_word_count': len(target),
-            'word_results': word_results,
-            'feedback': ('We heard all the reading words. Well done!'
-                         if target and not missing else
-                         'The app could not confirm every word. Listen to your recording and try again if needed.'),
-            'assessment_type': 'reading_recognition', 'pronunciation_assessment_available': False}
 
 
 def validate_wav(data: bytes) -> float:

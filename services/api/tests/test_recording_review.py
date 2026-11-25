@@ -61,6 +61,22 @@ def test_fresh_recognition_uses_scoped_session_and_always_closes_it(monkeypatch)
  with pytest.raises(HTTPException) as error:run(review.check(UUID(OWNER),UUID(REC),user,Gateway(),settings))
  assert error.value.status_code==409 and not calls
 
+def test_inactive_learner_and_changed_access_return_review_errors_not_500(monkeypatch):
+ rec={'id':REC,'child_id':CHILD,'language':'en','complete':True,'adventure_step_id':'story:1:read','part_index':0,'expected_text':'The bird.','learner_active':False}
+ async def load(*args):return rec,b'wav'
+ calls=[]
+ class Gateway:
+  async def _request(self,*args,**kwargs):
+   calls.append(args)
+   response=httpx.Response(403,request=httpx.Request('POST','https://example.test/rpc/open_child_session'))
+   response.raise_for_status()
+ monkeypatch.setattr(review,'load_recording',load)
+ with pytest.raises(HTTPException) as error:run(review.check(UUID(OWNER),UUID(REC),user,Gateway(),settings))
+ assert error.value.status_code==409 and not calls
+ rec['learner_active']=True
+ with pytest.raises(HTTPException) as error:run(review.check(UUID(OWNER),UUID(REC),user,Gateway(),settings))
+ assert error.value.status_code==409 and len(calls)==1
+
 def test_audio_index_is_server_computed_and_retry_does_not_upload_again():
  raw=b'wav';rec={'id':REC,'child_id':CHILD,'file':'audio/'+REC+'.wav','sha256':hashlib.sha256(raw).hexdigest(),'audio_object_path':'forged'}
  source=io.BytesIO()

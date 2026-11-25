@@ -46,7 +46,7 @@ def pairs_summary(rows, max_pairs=50000):
     
     Args:
         rows: List of translation pair dictionaries
-        max_pairs: Maximum dataset size (default 30000 for local CPU training)
+        max_pairs: Maximum dataset size (default 50000; training resources still need review)
     """
     if not 20 <= len(rows) <= max_pairs:
         raise ValueError(f'Use 20-{max_pairs:,} reviewed bilingual pairs; the smoke-test CSV is not a training corpus.')

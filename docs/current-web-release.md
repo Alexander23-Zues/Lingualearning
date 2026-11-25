@@ -10,6 +10,12 @@ the assigned sequence and need 80% on each quiz. Recognition compares heard
 words; it is not validated pronunciation grading. Mother Tongue assessments
 do not automatically determine English placement.
 
+Mission completion awards one badge per learner, grade and mission. Class
+rankings display aliases and order completed missions first, then assigned
+completion percentage; equal results share a rank. Skipped missions and
+unverified answers earn no badge. Offline awards remain pending independent
+cloud verification. Grade and real/demonstration classroom scopes are separate.
+
 Recordings collected on the prepared laptop can be backed up, transferred
 privately, played by their own teacher, and checked online against the exact
 current English story part. Exported scores and reading flags are not trusted.
@@ -28,15 +34,26 @@ Build checks:
 npm ci --prefix apps/linguakids_web
 npm test --prefix apps/linguakids_web -- --maxWorkers=1 --exclude 'src/live-*'
 python scripts/build_react.py --preview
-python -m pytest services/api/tests
-python -m pytest tests/test_offline_collection.py tests/test_offline_restore.py tests/test_mission_placement.py tests/test_adventure_collection.py
+python -m pytest tests/test_offline_collection.py tests/test_offline_restore.py tests/test_mission_placement.py tests/test_adventure_collection.py tests/test_mission_rewards.py
+```
+
+Run the API suite from the `services/api` directory:
+
+```
+python -m pytest tests
 ```
 
 Deploy only this reviewed source. Preserve the existing `/data` volume and
 server-side variables. The Docker build downloads pinned baseline translation,
 Whisper, and noncommercial school voices. It does not activate a training run,
-reset data, or apply SQL migrations. The 28 canonical migrations match the hosted
+reset data, or apply SQL migrations. The 29 canonical migrations match the hosted
 history as of this release. See `deploy/README.md` for runtime configuration.
+
+Browser checks on the production frontend passed 80 layout cases and 10
+PWA offline cases in an isolated Microsoft Edge session. Ranking integration
+checks passed search, pagination, tie display, safe all-page CSV export and
+student-record navigation with 26 synthetic learners. These are browser tests,
+not physical-device or classroom-concurrency validation.
 
 Remaining release gates: verify actual confirmation/reset email delivery after
 correcting Gmail SMTP; teacher-labeled English speech/content evaluation; real

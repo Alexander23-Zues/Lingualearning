@@ -56,6 +56,8 @@ def create_app() -> FastAPI:
     app.include_router(ai_router)
     app.include_router(grade_admissions_router)
     app.include_router(offline_transfer_router)
+    from .offline_retry import router as offline_retry_router
+    app.include_router(offline_retry_router)
     from .recording_review import router as recording_review_router
     app.include_router(recording_review_router)
     from .dictionary import router as dictionary_router

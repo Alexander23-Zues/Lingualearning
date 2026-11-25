@@ -38,7 +38,7 @@ begin
  perform pg_advisory_xact_lock(hashtextextended('english-assessment:'||auth.uid()::text||':'||(body->>'source_key'),0));
  select * into previous from public.workspace_records where owner_id=auth.uid() and kind='english_assessment' and data->>'source_key'=body->>'source_key';
  if found then if previous.data<>body then raise exception 'Source already recorded; use a new assessment version' using errcode='23505';end if;return previous.id;end if;
- insert into public.workspace_records(owner_id,kind,title,status,data) values(auth.uid(),'english_assessment',left('English assessment Â· '||(body->>'source_title'),180),'draft',body) returning id into result;
+ insert into public.workspace_records(owner_id,kind,title,status,data) values(auth.uid(),'english_assessment',left('English assessment Ã‚Â· '||(body->>'source_title'),180),'draft',body) returning id into result;
  insert into public.audit_logs(actor_id,action,entity_type,entity_id,metadata) values(auth.uid(),'english_assessment_recorded','child_profile',child.id,jsonb_build_object('evidence_id',result));
  return result;
 end $$;
@@ -212,3 +212,4 @@ end $function$
 -- fetched by the authenticated API after checking archive and learner ownership.
 update storage.buckets set allowed_mime_types=array(select distinct mime from unnest(coalesce(allowed_mime_types,array['application/zip'])||array['audio/wav']) mime) where id='offline-collections';
 notify pgrst,'reload schema';
+

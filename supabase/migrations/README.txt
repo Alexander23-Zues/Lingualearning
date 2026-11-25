@@ -1,0 +1,1 @@
+Canonical hosted history: 29 migrations as of 25 November 2026. Files match recorded version/name/SQL. Historical source variants and unapplied proposals are archived under supabase/legacy with .disabled extensions. Do not run archived SQL or reset the school database. New deployment builds do not automatically apply database migrations.

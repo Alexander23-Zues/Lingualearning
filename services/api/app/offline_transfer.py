@@ -126,7 +126,7 @@ async def import_backup(user:Annotated[CurrentUser,Depends(educator)],file:Uploa
             known={}
             for start in range(0,len(doc['students']),100):
                 ids=','.join(c['id'] for c in doc['students'][start:start+100])
-                rows=await backend._request('GET','child_profiles',params={'id':'in.('+ids+')','select':'id,adult_id,grade_level,nickname,gender'})
+                rows=await backend._request('GET','child_profiles',params={'id':'in.('+ids+')','select':'id,adult_id,grade_level,nickname,gender,active'})
                 for row in rows:known[row['id']]=row
             for child in doc['students']:
                 existing=known.get(child['id'])
@@ -137,7 +137,10 @@ async def import_backup(user:Annotated[CurrentUser,Depends(educator)],file:Uploa
             if records:archive=records[0]
             else:
                 rows=await backend._request('POST','offline_collection_archives',headers={'Prefer':'return=representation'},json={'owner_id':str(user.id),'checksum':checksum,'object_path':path,'device_id':doc['device_id']});archive=rows[0]
-            if archive['status']=='complete' and archive.get('result',{}).get('transfer_protocol',0)>=3:return {**{k:v for k,v in archive['result'].items() if k!='recording_index'},'archive_id':archive['id'],'repeated':True}
+            if archive['status']=='complete' and archive.get('result',{}).get('transfer_protocol',0)>=3:
+                return {**{k:v for k,v in archive['result'].items() if k!='recording_index'},
+                    'archive_id':archive['id'],'repeated':True,'students_added_this_transfer':0,
+                    'activities_added_this_transfer':0,'guided_responses_checked':0,'reading_baselines_transferred':0}
             transferred=0;pending=[];new_students=0;baselines=0;guided_checked=0
             for child in doc['students']:
                 if child['id'] in known:continue
@@ -202,6 +205,8 @@ async def import_backup(user:Annotated[CurrentUser,Depends(educator)],file:Uploa
                             pending.append({'child_id':cid,'submission_id':attempt['submission_id'],'reason':'The offline mission sequence differs from the current classroom sequence. Original answers are preserved for teacher review.'});continue
                         if rows and (attempt['submission_id'] in guided_history.get(cid,set()) or guided_states.get(cid,{}).get(attempt['adventure_step_id'],{}).get('status')=='completed'):continue
                         if guided_checked>=100:pending.append({'type':'missions','reason':'More guided responses remain; transfer this backup again.'});break
+                    if known[cid].get('active') is False:
+                        pending.append({'child_id':cid,'submission_id':attempt['submission_id'],'reason':'This learner is inactive. The saved response remains in the private backup for teacher review.'});continue
                     if cid not in tokens:tokens[cid]=(await gateway._request('POST','rpc/open_child_session',json={'p_child_id':cid}))['token']
                     # Existing student RPC recomputes scoring from private current keys; exported counts are ignored.
                     payload={'p_token':tokens[cid],'p_submission_id':attempt['submission_id'],'p_answers':attempt.get('answers',{})}

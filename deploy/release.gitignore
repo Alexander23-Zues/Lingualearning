@@ -20,3 +20,6 @@ services/inference/models/
 *.pt
 *.pth
 .railway/.cac-migration.json
+**/predictions.private.jsonl
+**/labels.private.jsonl
+**/reading-validation-corpus/

@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, AsyncIterator
 
 import httpx
 from fastapi import Depends, Header, HTTPException, status
@@ -8,9 +8,13 @@ from .gateway import DataGateway, SupabaseGateway
 from .models import AccountRole, AccountStatus, CurrentUser
 
 
-def get_gateway(settings: Annotated[Settings, Depends(get_settings)], authorization: Annotated[str | None, Header()] = None) -> DataGateway:
+async def get_gateway(settings: Annotated[Settings, Depends(get_settings)], authorization: Annotated[str | None, Header()] = None) -> AsyncIterator[DataGateway]:
     token = authorization.removeprefix("Bearer ").strip() if authorization and authorization.startswith("Bearer ") else None
-    return SupabaseGateway(settings, user_token=token)
+    gateway = SupabaseGateway(settings, user_token=token)
+    try:
+        yield gateway
+    finally:
+        await gateway.client.aclose()
 
 
 async def student_learning_state(token: str, settings: Settings) -> dict:

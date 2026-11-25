@@ -4,14 +4,15 @@ import {LazyMotion,domAnimation,m,useReducedMotion} from 'framer-motion';
 import {Landscape,Mascot} from './Landscape';
 import {Modal} from '../ui';
 import {ListenButton} from '../listen-button';
-import type {AdventureState,AdventureStep,ConnectionStatus,MapStage,StudentProfile} from './types';
+import type {AdventureState,AdventureStep,ConnectionStatus,MapStage,StudentProfile,MissionRewards} from './types';
+import {StudentRewards} from './StudentRewards';
 import './adventure.css';
 
 interface Props {
   student:StudentProfile;
   adventure:AdventureState;
   stars:number;
-  badges?:string[];
+  rewards?:MissionRewards;
   connection:ConnectionStatus;
   reducedMotion?:boolean;
   onStart:(step:AdventureStep)=>void;
@@ -46,7 +47,7 @@ function Scene({index}:{index:number}){
   return <div className={`quest-card-scene scene-${index%5}`} aria-hidden="true"><img src="/assets/adventure/storybook-stage-atlas.png" alt="" draggable="false" decoding="async" style={{transform:`translateX(-${(index%5)*20}%)`}}/>{index%5===1&&<div className="quest-letter-tiles"><span>W</span><span>D</span></div>}</div>;
 }
 
-export function AdventureMap({student,adventure,stars,badges=[],connection,reducedMotion=false,onStart,onTeacher,onChooseStart,onRefresh,busy=false,error='',preview=false,previewControls}:Props){
+export function AdventureMap({student,adventure,stars,rewards,connection,reducedMotion=false,onStart,onTeacher,onChooseStart,onRefresh,busy=false,error='',preview=false,previewControls}:Props){
   const systemReduced=useReducedMotion();
   const calm=reducedMotion||Boolean(systemReduced);
   const rootRef=useRef<HTMLDivElement>(null),viewportRef=useRef<HTMLDivElement>(null);
@@ -159,7 +160,7 @@ export function AdventureMap({student,adventure,stars,badges=[],connection,reduc
     </footer>
 
     {currentStage&&<Modal title={currentStage.title} onClose={()=>setStage(null)}><div className="quest-drawer"><span className="quest-kicker">LEVEL {adventure.stages.findIndex(s=>s.id===currentStage.id)+1} · {currentStage.completed}/{currentStage.total} TAPOS</span><div className="quest-language-toggle" role="group" aria-label="Activity preview language"><button type="button" aria-pressed={language==='fil'} onClick={()=>{setLanguage('fil');setDemoListening(false);}}>Filipino</button><button type="button" aria-pressed={language==='en'} onClick={()=>{setLanguage('en');setDemoListening(false);}}>English</button></div><p lang={language}>{selectedIntro}</p><ListenButton text={selectedIntro} language={language} onPlay={preview?previewListen:undefined}>{preview?'Listen preview':'Pakinggan / Listen'}</ListenButton>{preview&&demoListening&&<div className="quest-audio-preview" role="status"><span aria-hidden="true">▂ ▅ ▃ ▇ ▄ ▆ ▂</span>Demo audio preview · Sa connected app, tunay na boses ang babasa.</div>}<p>Bawat quiz ay kailangan ng 80%; puwedeng umulit.</p><ol className="quest-step-list">{currentStage.steps.map((item,index)=><li key={item.id} className={`is-${item.status}`}><span className="quest-step-mark">{item.status==='completed'?'✓':index+1}</span><div><small>{stepName(item)}</small><strong>{item.title}</strong>{item.kind==='quiz'&&item.score&&<small>{item.score.correct} of {item.score.total} · {Math.round(item.score.correct/Math.max(item.score.total,1)*100)}%</small>}{item.status==='needs_review'&&<small>Reading check: maaaring magpatulong sa guro</small>}{item.status==='pending_online_scoring'&&<small>Nai-save · hinihintay ang online score</small>}</div>{item.id===adventure.current_step_id&&item.status!=='pending_online_scoring'&&<button type="button" className="quest-primary" onClick={()=>{setStage(null);onStart(item);}}>Simulan →</button>}{item.status==='locked'&&<span className="quest-step-lock" aria-label="Locked"><Glyph kind="lock"/></span>}</li>)}</ol>{currentStage.status==='completed'&&<p className="quest-success">★ Natapos mo na ang level na ito. Tuloy tayo sa susunod!</p>}</div></Modal>}
-    {panel==='badges'&&<Modal title="Mga medalya at natuklasan" onClose={()=>setPanel(null)}><div className="quest-drawer"><p>{stars} stars · {complete} completed levels</p><div className="quest-medals">{badges.length?badges.map(b=><div key={b}><span aria-hidden="true">🏅</span><strong>{b}</strong></div>):<p>Ang unang medalya mo ay naghihintay. Simulan ang unang gawain!</p>}</div><p>Ang bawat quiz attempt ay naitatala para makita ng iyong guro.</p></div></Modal>}
+    {panel==='badges'&&<Modal title="Mga medalya at natuklasan" onClose={()=>setPanel(null)} wide><div className="quest-drawer"><StudentRewards rewards={rewards} language={language}/></div></Modal>}
     {panel==='help'&&<Modal title="Gabay sa pakikipagsapalaran" onClose={()=>setPanel(null)}><div className="quest-drawer"><div className="quest-language-toggle" role="group" aria-label="Guide language"><button type="button" aria-pressed={language==='fil'} onClick={()=>setLanguage('fil')}>Filipino</button><button type="button" aria-pressed={language==='en'} onClick={()=>setLanguage('en')}>English</button></div><p lang={language}>{guide}</p><ListenButton {...listenProps}>{preview?'Listen preview':'Pakinggan / Listen'}</ListenButton>{preview&&demoListening&&<div className="quest-audio-preview" role="status"><span aria-hidden="true">▂ ▅ ▃ ▇ ▄ ▆ ▂</span>Demo audio preview</div>}<ol><li>Pindutin ang “Magpatuloy”.</li><li>Tapusin ang kasalukuyang gawain bago ang susunod.</li><li>Sa kuwento, makinig muna at mag-record ng sariling pagbasa.</li><li>Kung nahirapan, puwedeng umulit at magpatulong sa guro.</li></ol><p>Ang reading check ay tumutulong sa pagkilala ng salita. Maaari pa ring magkamali ang AI; ang guro ang tutulong kung hindi sigurado.</p></div></Modal>}
   </div></LazyMotion>;
 }

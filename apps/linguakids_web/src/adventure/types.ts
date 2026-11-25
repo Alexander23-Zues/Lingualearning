@@ -6,6 +6,20 @@ export interface StudentProfile {
   preferences?: { sound?: boolean; reduced_motion?: boolean; language?: string };
 }
 export type ConnectionStatus = 'online' | 'offline-collection' | 'offline' | 'awaiting-scoring';
+export interface MissionBadge {
+  id:string;title:string;difficulty:'beginner'|'intermediate'|'advanced';grade_level:number;
+  awarded_at:string;verification:'verified'|'local_pending_verification'|'preview';
+}
+export interface RankingEntry {
+  alias:string;rank:number|null;tied:boolean;completed_missions:number;assigned_missions:number;
+  completion_percent:number;placement_review_required:boolean;is_you?:boolean;
+}
+export interface MissionRewards extends RankingEntry {
+  grade_level:number;source:'cloud_verified'|'local_pending_verification'|'preview';
+  class_size:number;earned_count:number;mission_badges:MissionBadge[];is_demo:boolean;
+  milestones:{id:string;target:number;earned:boolean;progress:number}[];
+  ranking_basis:'completed_missions_then_assigned_percent';leaderboard?:RankingEntry[];
+}
 export type StepStatus = 'locked' | 'current' | 'completed' | 'needs_review' | 'pending_online_scoring' | 'not-assigned';
 export interface AdventureStep {
   id: string;

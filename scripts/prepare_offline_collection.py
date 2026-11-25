@@ -48,6 +48,7 @@ def prepare(root,target,credentials,admin_credentials):
     shutil.copyfile(Path(__file__).with_name('adventure_learning.py'),target/'adventure_learning.py')
     shutil.copyfile(Path(__file__).with_name('reading_assessments.py'),target/'reading_assessments.py')
     shutil.copyfile(Path(__file__).with_name('mission_placement.py'),target/'mission_placement.py')
+    shutil.copyfile(Path(__file__).with_name('mission_rewards.py'),target/'mission_rewards.py')
     for name in ['Open Offline Collection.ps1','Open Offline Collection.cmd','Export Collection Backup.cmd']:
         source=Path(__file__).with_name(name)
         if source.exists():shutil.copyfile(source,target/name)

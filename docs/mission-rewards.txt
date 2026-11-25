@@ -1,0 +1,62 @@
+LinguaKids — mission achievements and class rankings
+
+STUDENT
+Open Mga Medalya on the adventure map. My badges and Class ranking are separate
+views, with large controls and readable text. Finish every required task in the
+mission, including story reading and at least 80% on each quiz, to earn its badge.
+A newly earned badge is celebrated when the result reader closes. Historical
+badges are not announced again whenever the child opens the application.
+Milestones recognize 1, 3, 5 and 10 mission badges. A skipped mission gives no
+completion or badge. Repeating the same submission never earns another badge.
+
+RANKING
+Each active classroom is scoped to its teacher, grade and real/demo group.
+Higher completed-mission count ranks first. If counts tie, the percentage of
+current assigned missions completed breaks the tie. Equal values share a rank.
+Learners with no completed missions have no rank yet. Placement requiring
+teacher reconfirmation is excluded from ranking until it is resolved.
+Students and teachers see aliases in the ranking. The student response contains
+no other learner's name or ID. Only an authorized teacher can open the linked
+student record and identify the child. Rankings are progress indicators, not
+quiz grades, reading-ability diagnoses or validated pronunciation scores.
+
+TEACHER
+Missions -> Achievements & rankings -> select the assigned grade.
+Search by student or alias, choose rows per page, use Previous/Next or Jump to
+page, refresh progress, or export the filtered class. CSV includes every matching
+page and the teacher's student names/IDs, alias, rank, mission counts, percentage,
+badge count and verification status. Keep it private like the quiz gradebook.
+Students -> open a record -> Missions also shows retained badges and current rank.
+
+BADGE HISTORY AND CURRICULUM EDITS
+The protected ledger keeps one earned badge for each child, grade and mission ID.
+It records the original title, difficulty, revision, completion time and evidence
+step IDs. Renaming a mission does not rewrite its earned badge. Teacher updates
+can change current completion and rank; the historical badge remains earned.
+Activity stars stay separate and are never used to inflate mission rankings.
+
+OFFLINE
+Prepared laptop collection stores local badges durably with progress and backup.
+The local ranking describes only that laptop's roster and is marked pending
+cloud verification. A quiz without a local answer key stays pending and cannot
+award a mission badge. Export the collection and transfer it online; the cloud
+verifies original responses and awards from verified progress. Exported badge
+flags, scores and ranking values cannot create trusted cloud achievements.
+Downloaded PWA practice content is separate from the laptop collection service.
+
+SECURITY AND CLEANUP
+The award ledger is private with RLS and no browser table access. Award writers
+cannot be called by anonymous or ordinary authenticated browser roles. Existing
+child-session and teacher ownership/grade checks protect the read functions.
+Active migration files now match the recorded hosted history. Source variants,
+unapplied proposals and the unsafe bulk email-confirmation script are archived
+with disabled extensions; do not execute those archived files.
+
+REMAINING CLIENT-READINESS WORK
+Confirm SMTP settings and actual inbox delivery; enable/check leaked-password
+protection when the Auth configuration connection is available. Supply actual
+English assessments and independently teacher-rated child recordings. Complete
+physical Android/iPhone/tablet, microphone/PWA, offline restart and classroom-load
+tests. Publish/deploy only the reviewed source through an authorized connection;
+preserve the database and /data volume. These software tests do not justify a
+claim of 100% AI accuracy or universal device compatibility.

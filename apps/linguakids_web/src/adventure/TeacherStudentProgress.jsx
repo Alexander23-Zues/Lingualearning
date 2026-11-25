@@ -5,6 +5,7 @@ import {Button,Notice} from '../ui';
 import {useTeacherProgress} from './TeacherProgressContext';
 import {learnerProgress,quizPercent} from './teacher-progress';
 import './teacher-progress.css';
+import {TeacherRewardSummary} from './TeacherRewards';
 
 export function StudentMissionSummary({child}) {
   useUiLanguage();
@@ -45,6 +46,7 @@ export function StudentMissionRecord({child,onPreview}) {
   if(!learner)return <Notice>{uiText(!child.active?'This profile is inactive. Its recorded results remain available.':progress.loading?'Loading mission progress…':'Mission progress could not be loaded. Refresh to try again.')}{child.active&&<Button variant="secondary" disabled={progress.loading} onClick={progress.refresh}>{uiText('Refresh mission progress')}</Button>}</Notice>;
   return <div className="student-mission-record">
     <StudentMissionSummary child={child}/>
+    <TeacherRewardSummary rewards={learner.rewards}/>
     <p>{uiText('Completed tasks show sequence progress, not a pronunciation or mastery grade.')}</p>
     {summary.reviews.length>0&&<Link className="button secondary" to={`/workspace/journey?view=review&student=${encodeURIComponent(child.id)}`}>{uiText('Review observed reading')}</Link>}
     {summary.current&&<div className="mission-next"><div><small>{uiText('CURRENT TASK')}</small><h3>{summary.current.title}</h3><p>{uiText(summary.current.kind)} · {uiText(summary.label)}</p></div>{data.materials.some(m=>m.id===summary.current.material_id)&&<Button variant="secondary" onClick={()=>onPreview(data.materials.find(m=>m.id===summary.current.material_id))}>{uiText('Teacher preview')}</Button>}</div>}

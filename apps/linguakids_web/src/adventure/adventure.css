@@ -166,9 +166,6 @@ body:has(.lk-adventure) dialog .button { min-height: 46px; font-family: 'Nunito 
 .quest-step-list li.is-locked { color: #536452; background: #f0f1e9; }
 .quest-step-lock .quest-glyph svg { width: 24px; height: 24px; }
 .quest-success { border-radius: 13px; padding: 12px; background: #e2f0cf; color: #416a33; }
-.quest-medals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.quest-medals > div { display: grid; justify-items: center; gap: 7px; padding: 20px 10px; border: 1px solid #e2c87b; border-radius: 16px; background: #fff6d8; text-align: center; }
-.quest-medals span { font-size: 40px; }
 .quest-audio-preview { display: flex; align-items: center; gap: 12px; border: 1px solid #b8d0af; border-radius: 12px; padding: 12px; color: #487446; background: #eff7e6; font-size: 14px; }
 .quest-audio-preview > span { color: #00a896; white-space: nowrap; letter-spacing: 3px; animation: quest-audio 1s ease-in-out infinite alternate; }
 @keyframes quest-card-glow { 50% { box-shadow: 0 0 0 8px #ffe89c3d, 0 0 22px 8px #ffe05f73, 0 8px 0 #72502480; } }

@@ -12,7 +12,7 @@ def restore(backup:Path,prepared:Path,target:Path):
         if profile['id']!=expected['cloud_account_id']:raise ValueError('Backup belongs to a different prepared educator account.')
         target.mkdir(parents=True);(target/'data').mkdir()
         with closing(sqlite3.connect(target/'data/collection.sqlite3')) as destination:source.backup(destination);destination.execute('delete from sessions');destination.commit()
-    for name in ['web','offline_collection_server.py','adventure_learning.py','reading_assessments.py','mission_placement.py','Open Offline Collection.cmd','Open Offline Collection.ps1','Export Collection Backup.cmd','Open Local AI.ps1','private-ai.json','ai-paths.json','preparation.json','Private collection login.txt']:
+    for name in ['web','offline_collection_server.py','adventure_learning.py','reading_assessments.py','mission_placement.py','mission_rewards.py','Open Offline Collection.cmd','Open Offline Collection.ps1','Export Collection Backup.cmd','Open Local AI.ps1','private-ai.json','ai-paths.json','preparation.json','Private collection login.txt']:
         p=prepared/name
         if p.is_dir():shutil.copytree(p,target/name)
         elif p.is_file():shutil.copyfile(p,target/name)

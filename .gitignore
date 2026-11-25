@@ -42,6 +42,9 @@ flutter_windows_*/
 supabase/.temp/
 **/dist/
 apps/linguakids_web/public/config.json
+**/predictions.private.jsonl
+**/labels.private.jsonl
+**/reading-validation-corpus/
 
 **/*.sqlite*
 **/collection.json

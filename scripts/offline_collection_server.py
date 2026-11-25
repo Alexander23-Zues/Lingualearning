@@ -154,9 +154,14 @@ class Store:
             child=next((c for c in state['children'] if session and c['id']==session['child'] and c.get('active')),None)
             if session:require(child,'Reopen this learner.',403)
             if name=='student_adventure_state':
+                from mission_rewards import reward_summary
                 materials=engine.materials(child['grade_level']);attempts=[a for a in state['attempts'] if a['child_id']==child['id']]
                 result={'child':clean(child),'materials':materials,'attempts':attempts,'stars':sum(a.get('stars',0) for a in attempts),'badges':[],'saved_vocabulary':child.get('saved_vocabulary',[]),'adventure':engine.progress(child)}
+                result['rewards']=reward_summary(engine,child,include_board=True)
             elif name=='educator_adventure':result=engine.path(p['p_grade'])
+            elif name=='student_mission_rewards':
+                from mission_rewards import reward_summary
+                result=reward_summary(engine,child,include_board=True)
             elif name=='educator_adventure_progress':result=engine.teacher_progress(p['p_grade'])
             elif name=='save_adventure':result=engine.save(p['p_grade'],p['p_revision'],p['p_stages']);self.event(db,name,{'grade':p['p_grade'],'revision':result['revision']})
             elif name in ['educator_placement','confirm_adventure_placement']:
@@ -191,7 +196,7 @@ class Store:
             with self.connect() as db:db.execute('update state set value=? where id=1',(dump(state),))
         self.safe_backup();return result
     def student_rpc(self,name,p,_guided=False,_step=None,_revision=None):
-        if name in ['student_adventure_state','student_choose_adventure_start']:return self.adventure_rpc(name,p,student=p.get('p_token'))
+        if name in ['student_adventure_state','student_choose_adventure_start','student_mission_rewards']:return self.adventure_rpc(name,p,student=p.get('p_token'))
         if name=='student_adventure_complete':return self.adventure_complete(p)
         session=self.session(p.get('p_token'),'child');state=self.snapshot();child=next((c for c in state['children'] if c['id']==session['child'] and c.get('active')),None);require(child,'Reopen this learner.',403)
         if name=='close_child_session':

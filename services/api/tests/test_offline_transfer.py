@@ -76,7 +76,8 @@ def test_all_grade_account_cannot_mislabel_student_baseline_grade():
  with pytest.raises(ValueError,match='another classroom'):validate_archive(archive(d),owner)
 
 @pytest.mark.parametrize('changed_sequence',[False,True])
-def test_guided_backup_replays_through_mission_checker_or_stays_pending(monkeypatch,changed_sequence):
+@pytest.mark.parametrize('inactive',[False,True])
+def test_guided_backup_replays_through_mission_checker_or_stays_pending(monkeypatch,changed_sequence,inactive):
  import asyncio,httpx
  from types import SimpleNamespace
  from fastapi import UploadFile
@@ -84,7 +85,7 @@ def test_guided_backup_replays_through_mission_checker_or_stays_pending(monkeypa
  mid='00000000-0000-0000-0000-000000000003';sid='00000000-0000-0000-0000-000000000004'
  step={'id':mid+':1:read','material_id':mid,'material_version':1,'kind':'lesson'}
  cloud={'revision':1,'stages':[{'id':'mission-1','steps':[step]}]}
- doc=document();doc['attempts']=[{'submission_id':sid,'material_id':mid,'material_version':1,'grade_level':1,'child_id':CHILD,'answers':{},'adventure_step_id':step['id'],'adventure_revision':1,'correct_count':999}]
+ doc=document();doc['students'][0]['active']=not inactive;doc['attempts']=[{'submission_id':sid,'material_id':mid,'material_version':1,'grade_level':1,'child_id':CHILD,'answers':{},'adventure_step_id':step['id'],'adventure_revision':1,'correct_count':999}]
  doc['adventure']={'paths':{'1':{**cloud,'revision':2 if changed_sequence else 1}}}
  calls=[]
  class Client:
@@ -105,12 +106,72 @@ def test_guided_backup_replays_through_mission_checker_or_stays_pending(monkeypa
    if path=='learning_materials':return [{'id':mid,'grade_level':1,'version':1,'status':'published','owner_id':None}]
    if path=='rpc/educator_adventure':return cloud
    if path=='rpc/educator_adventure_progress':return [{'child_id':CHILD,'adventure':cloud,'quiz_attempts':[]}]
-   if path=='rpc/open_child_session':return {'token':'synthetic-token'}
+   if path=='rpc/open_child_session':
+    assert not inactive
+    return {'token':'synthetic-token'}
    raise AssertionError(path)
  monkeypatch.setattr(transfer,'service',lambda settings:Backend())
  result=asyncio.run(transfer.import_backup(user(),UploadFile(file=io.BytesIO(archive(doc))),Gateway(),SimpleNamespace(supabase_url='https://example.test',supabase_secret_key='synthetic-key',supabase_publishable_key='synthetic-publishable')))
- if changed_sequence:
+ if changed_sequence or inactive:
   assert not calls and result['items_needing_review']==1 and result['activities_added_this_transfer']==0
  else:
   assert calls[0][0].endswith('/rpc/student_adventure_complete')
   assert calls[0][1]['p_step_id']==step['id'] and result['guided_responses_checked']==1 and result['activities_added_this_transfer']==1
+
+def test_saved_backup_resumes_after_reading_review_without_duplicate_results(monkeypatch):
+ import asyncio,httpx
+ from types import SimpleNamespace
+ from fastapi import UploadFile
+ from app import offline_transfer as transfer,offline_retry
+ mid='00000000-0000-0000-0000-000000000003';sid='00000000-0000-0000-0000-000000000004'
+ step={'id':mid+':1:read','material_id':mid,'material_version':1,'kind':'story'}
+ path={'revision':1,'stages':[{'id':'mission-1','steps':[step]}]}
+ doc=document();doc['attempts']=[{'submission_id':sid,'material_id':mid,'material_version':1,'grade_level':1,'child_id':CHILD,'answers':{},'adventure_step_id':step['id'],'adventure_revision':1,'correct_count':999}]
+ doc['adventure']={'paths':{'1':path}}
+ raw=archive(doc);state={'saved':False,'reading_reviewed':False,'gate_calls':0,'archive':None}
+ class Client:
+  def __init__(self):self.download=httpx.AsyncClient(transport=httpx.MockTransport(lambda request:httpx.Response(200,content=raw)))
+  def stream(self,*args,**kwargs):return self.download.stream(*args,**kwargs)
+  async def post(self,url,**kwargs):
+   if '/rpc/student_adventure_complete' in url:
+    state['gate_calls']+=1;assert 'correct_count' not in kwargs['json']
+    if not state['reading_reviewed']:return httpx.Response(409,json={'message':'Reading review required'},request=httpx.Request('POST',url))
+    state['saved']=True
+    return httpx.Response(200,json={'adventure':path,'adventure_passed':True},request=httpx.Request('POST',url))
+   if hasattr(kwargs.get('content'),'__aiter__'):
+    async for _ in kwargs['content']:pass
+   return httpx.Response(200,json={},request=httpx.Request('POST',url))
+  async def aclose(self):await self.download.aclose()
+ class Backend:
+  def __init__(self):self.client=Client()
+  async def _request(self,method,resource,**kwargs):
+   if resource=='child_profiles':return doc['students']
+   if resource=='offline_collection_archives':
+    if method=='GET':return [state['archive']] if state['archive'] else []
+    if method=='POST':state['archive']={'id':OWNER,'status':'needs_review',**kwargs['json']};return [state['archive']]
+    if method=='PATCH':state['archive'].update(kwargs['json']);return None
+   raise AssertionError(resource)
+ class Gateway:
+  async def _request(self,method,resource,**kwargs):
+   if resource=='offline_collection_archives':
+    assert kwargs['params']['owner_id']=='eq.'+OWNER;return [state['archive']]
+   if resource=='learning_attempts':return [{'id':sid,'child_id':CHILD,'material_id':mid,'material_version':1}] if state['saved'] else []
+   if resource=='learning_materials':return [{'id':mid,'grade_level':1,'version':1,'status':'published','owner_id':None}]
+   if resource=='rpc/educator_adventure':return path
+   if resource=='rpc/educator_adventure_progress':return [{'child_id':CHILD,'adventure':{'stages':[{'steps':[{**step,'status':'completed' if state['saved'] else 'current'}]}]},'quiz_attempts':[]}]
+   if resource=='rpc/open_child_session':return {'token':'synthetic-token'}
+   raise AssertionError(resource)
+ settings=SimpleNamespace(supabase_url='https://example.test',supabase_secret_key='synthetic-key',supabase_publishable_key='synthetic-public')
+ monkeypatch.setattr(transfer,'service',lambda _:Backend())
+ async def scenario():
+  gateway=Gateway()
+  first=await transfer.import_backup(user(),UploadFile(file=io.BytesIO(raw)),gateway,settings)
+  assert first['items_needing_review']==1 and not state['saved']
+  # Separate teacher review changes the trusted server gate, not the ZIP flags.
+  state['reading_reviewed']=True
+  second=await offline_retry.retry_archive(UUID(OWNER),user(),gateway,settings)
+  assert second['items_needing_review']==0 and second['activities_added_this_transfer']==1
+  third=await offline_retry.retry_archive(UUID(OWNER),user(),gateway,settings)
+  assert third['repeated'] is True and state['gate_calls']==2
+  assert third['activities_added_this_transfer']==0 and third['students_added_this_transfer']==0
+ asyncio.run(scenario())

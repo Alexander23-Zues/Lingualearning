@@ -13,7 +13,7 @@ from .recording_archive import audio_object_path
 router=APIRouter(prefix='/v1/offline/recordings',tags=['offline'])
 
 async def owned_child(child_id,user,gateway):
- rows=await gateway._request('GET','child_profiles',params={'id':'eq.'+str(child_id),'adult_id':'eq.'+str(user.id),'select':'id,grade_level'})
+ rows=await gateway._request('GET','child_profiles',params={'id':'eq.'+str(child_id),'adult_id':'eq.'+str(user.id),'select':'id,grade_level,active'})
  if not rows or rows[0]['grade_level'] not in user.grade_levels:raise HTTPException(403,'Choose a learner in your assigned classroom.')
  return rows[0]
 
@@ -33,7 +33,8 @@ async def load_recording(archive_id,recording_id,user,gateway,settings):
  if not rows:raise HTTPException(404,'Private recording backup not found.')
  rec=next((r for r in (rows[0].get('result') or {}).get('recording_index',[]) if r.get('id')==str(recording_id)),None)
  if not rec or not rec.get('child_id'):raise HTTPException(404,'Recording not found in this backup.')
- await owned_child(UUID(rec['child_id']),user,gateway)
+ child=await owned_child(UUID(rec['child_id']),user,gateway)
+ rec={**rec,'learner_active':child.get('active',True)}
  path=rec.get('audio_object_path')
  if not path or path!=audio_object_path(user.id,rec):raise HTTPException(409,'Transfer the original backup again to prepare private recording playback.')
  backend=service(settings)
@@ -57,10 +58,16 @@ async def audio(archive_id:UUID,recording_id:UUID,user:Annotated[CurrentUser,Dep
 async def check(archive_id:UUID,recording_id:UUID,user:Annotated[CurrentUser,Depends(educator)],gateway=Depends(get_gateway),settings:Settings=Depends(get_settings)):
  from .ai_routes import student_reading
  rec,data=await load_recording(archive_id,recording_id,user,gateway,settings)
+ if rec.get('learner_active') is False:raise HTTPException(409,'This learner is inactive. Historical audio can be played, but new reading evidence is not recorded.')
  if not rec.get('complete') or not rec.get('adventure_step_id') or rec.get('language')!='en' or rec.get('part_index') is None:raise HTTPException(409,'A complete recording linked to the exact English mission part is required. Older or partial audio remains available for listening.')
- opened=await gateway._request('POST','rpc/open_child_session',json={'p_child_id':rec['child_id']});token=opened['token']
+ try:opened=await gateway._request('POST','rpc/open_child_session',json={'p_child_id':rec['child_id']})
+ except httpx.HTTPStatusError as error:raise HTTPException(409 if error.response.status_code<500 else 503,'The learner profile or access changed. Reopen the student record and try again.') from error
+ except httpx.RequestError as error:raise HTTPException(503,'The reading session could not be opened. Keep the original recording and retry.') from error
+ token=opened['token']
+ upload=UploadFile(file=io.BytesIO(data),filename='recording.wav')
  try:
-  return await student_reading(audio=UploadFile(file=io.BytesIO(data),filename='recording.wav'),expected_text=rec.get('expected_text',''),language='en',student_token=token,adventure_step_id=rec['adventure_step_id'],page_index=rec.get('page') or 0,part_index=rec['part_index'],settings=settings)
+  return await student_reading(audio=upload,expected_text=rec.get('expected_text',''),language='en',student_token=token,adventure_step_id=rec['adventure_step_id'],page_index=rec.get('page') or 0,part_index=rec['part_index'],settings=settings)
  finally:
+  await upload.close()
   try:await gateway._request('POST','rpc/close_child_session',json={'p_token':token})
   except httpx.HTTPError:pass

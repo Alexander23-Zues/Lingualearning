@@ -3,9 +3,10 @@ import {useApp} from '../context';
 import {Button,Field,Notice,Select,useAction} from '../ui';
 import {uiText,useUiLanguage} from '../i18n';
 import {normalizeMissionBands,readingProfiles} from './mission-difficulty';
+import {useTeacherProgress} from './TeacherProgressContext';
 
 export function TeacherPlacement({child}){
- useUiLanguage();const {repository,data,refresh}=useApp(),action=useAction();
+ useUiLanguage();const {repository,data,refresh}=useApp(),action=useAction(),progress=useTeacherProgress();
  const rows=data.records.filter(row=>row.kind==='english_assessment'&&row.data.child_id===child.id).sort((a,b)=>String(b.data.assessment_date||'').localeCompare(String(a.data.assessment_date||''))||String(b.created_at||'').localeCompare(String(a.created_at||'')));
  const [state,setState]=useState(null),[path,setPath]=useState(null),[loadError,setLoadError]=useState(''),[loading,setLoading]=useState(true),[adding,setAdding]=useState(false),[notice,setNotice]=useState('');
  const [evidenceId,setEvidenceId]=useState(''),[stageId,setStageId]=useState('');const request=useRef(0),sourceKey=useRef('english:'+crypto.randomUUID());
@@ -26,7 +27,7 @@ export function TeacherPlacement({child}){
  <Field label="English assessment source" name="source" required minLength={3} maxLength={180} placeholder={uiText('Name of the actual school assessment')}/><Field label="Assessment date" name="date" type="date" required/>
  <Select label="Source reading category" name="profile" required defaultValue="" values={[["","Choose the category recorded by the teacher"],...readingProfiles]}/>
  <Field label="Assessment notes"><textarea name="notes" rows={3} maxLength={1000}/></Field><label className="checkbox"><input type="checkbox" required/>{uiText('I am recording an actual English assessment, not the Mother Tongue sheet.')}</label><Button type="submit" disabled={action.busy}>{uiText('Save English assessment')}</Button></form>}
- {rows.length>0&&<form className="form-stack panel" onSubmit={event=>{event.preventDefault();const f=new FormData(event.currentTarget);action.run(async()=>{await repository.rpc('confirm_adventure_placement',{p_child_id:child.id,p_evidence_id:evidenceId,p_stage_id:stageId,p_revision:path.revision,p_reason:String(f.get('reason')).trim()});await load();setNotice(uiText('Teacher placement confirmed. The learner may start there or choose an earlier mission before beginning.'));});}}>
+ {rows.length>0&&<form className="form-stack panel" onSubmit={event=>{event.preventDefault();const f=new FormData(event.currentTarget);action.run(async()=>{await repository.rpc('confirm_adventure_placement',{p_child_id:child.id,p_evidence_id:evidenceId,p_stage_id:stageId,p_revision:path.revision,p_reason:String(f.get('reason')).trim()});await Promise.all([load(),progress.refresh()]);setNotice(uiText('Teacher placement confirmed. The learner may start there or choose an earlier mission before beginning.'));});}}>
  <Select label="English assessment evidence" value={evidenceId} onChange={e=>setEvidenceId(e.target.value)} values={rows.map(row=>[row.id,`${row.data.assessment_date} · ${row.data.source_title} · ${row.data.reading_profile}`])}/>
  <Notice>{uiText('System suggestion')}: <strong>{uiText(evidence?.data.recommended_difficulty||'Teacher review required')}</strong><p>{uiText('The source category suggests a difficulty group. The teacher decides the appropriate mission after reviewing the English evidence.')}</p></Notice>
  {state?.has_started&&!placement&&<Notice>{uiText('This learner has already started without a placement decision. Record the assessment for history; their existing mission progress is preserved.')}</Notice>}

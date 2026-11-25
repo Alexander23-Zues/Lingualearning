@@ -1,0 +1,84 @@
+LinguaKids — English reading validation
+
+PURPOSE
+Measure the actual automatic story-reading decision against independent teacher
+observations. This measures recognized words and referrals for teacher review.
+It does not certify phoneme-level pronunciation or guarantee any accuracy level.
+No command here trains a model, activates a candidate, or writes student grades.
+
+TEACHER WORKFLOW
+1. Use the separate actual English assessment in Students -> English placement.
+   Enter its source/date/category and confirm the suggested or another suitable
+   starting mission. The supplied Mother Tongue sheets are not English evidence.
+2. Obtain the school's permission and required consent for evaluation recordings.
+   Keep permission references and the child-to-code mapping in a private folder.
+3. Collect natural reading with the prepared laptop collection app. Keep its ZIP
+   backup and a second copy. Online-only audio is not automatically retained.
+4. Independently listen and transcribe what the child actually said BEFORE
+   viewing the AI result. Use a reviewer code, not a teacher name, in the corpus.
+   Record whether the reading is acceptable and why in the private teacher notes.
+   A slow pace, accent, or repetition alone is not proof of incorrect reading.
+5. Include normal, slow, accent, classroom_noise, and silence conditions, with
+   different children from Grades 1–6 and correct/incorrect readings as labelled
+   by teachers. Use actual natural miscues, not invented transcripts. Do not put
+   the same clip under multiple IDs. Record silence as empty human_transcript
+   and teacher_reading_correct=false. It must not produce completion credit.
+6. Keep test speakers separate from every known training/validation speaker.
+   An absent training-speaker list is reported as unverified, never as proof of
+   a speaker-disjoint test. Base-model pretraining provenance remains a limit.
+
+PILOT COVERAGE CHECKS
+The tool flags fewer than 10 recordings per condition, fewer than 3 speakers in
+a condition, fewer than 2 children in any grade, missing correct/incorrect labels
+in voiced conditions, and an absent training-speaker list. These are pilot
+coverage checks, not statistical proof that the model is accurate for all children.
+Meeting coverage requirements never activates a model automatically.
+
+PRIVATE INPUT FORMAT
+Use one JSON object per line in labels.jsonl. Required fields:
+  speaker_id, recording_id, reviewer_id: pseudonymous letters/numbers/_/- codes
+  consent_reference: existing private permission reference, not invented
+  is_child: true
+  grade_level: integer 1–6
+  language: "en"
+  condition: "normal", "slow", "accent", "silence", or "classroom_noise"
+  label_blinded: true only after the teacher labels before seeing AI predictions
+  expected_text: actual story part, at most 300 characters
+  human_transcript: exactly what the teacher heard; an empty string for silence
+  teacher_reading_correct: true/false teacher observation, not copied from AI
+  audio: relative path to the private WAV file
+Optional audio_sha256 locks the original audio. The runner always computes it.
+WAV must be mono 16-bit, 16 kHz, at most 45 seconds and 1.5 MB per story part.
+Keep the corpus outside the repository. Do not upload it to GitHub or Railway.
+
+TECHNICAL OPERATOR
+Run from the project folder with the prepared Python environment. Replace the
+PRIVATE paths with your real private files; every output folder must be new.
+
+Preflight (checks labels/audio without loading a model):
+  python scripts/benchmark_child_reading.py --labels PRIVATE/labels.jsonl --audio-root PRIVATE/audio --training-speakers PRIVATE/training-speakers.json --output PRIVATE/preflight-01 --validate-only
+
+Baseline replay (uses an installed local CTranslate2 Whisper model, no downloads):
+  python scripts/benchmark_child_reading.py --labels PRIVATE/labels.jsonl --audio-root PRIVATE/audio --training-speakers PRIVATE/training-speakers.json --model PRIVATE/baseline-model --output PRIVATE/baseline-run-01
+
+Candidate replay: use identical labels/audio, a different --model if available,
+and a different output folder. The tool runs one clip at a time and releases the
+model afterwards. Pause other memory-heavy work before loading a second model.
+
+Paired comparison:
+  python scripts/evaluate_child_reading.py --predictions PRIVATE/candidate-run-01/predictions.private.jsonl --baseline PRIVATE/baseline-run-01/predictions.private.jsonl --training-speakers PRIVATE/training-speakers.json --output PRIVATE/comparison-01.json
+
+OUTPUTS
+predictions.private.jsonl: contains private labels/transcripts and must stay private.
+evaluation.json: aggregates by grade/condition; false auto-passes, missed correct
+readings/referrals, false speech on silence, and word error rate. Empty conditions
+show null metrics, not invented zero errors. Each run identifies model weights,
+reading code, runtime package versions and source-audio checksums.
+The comparison rejects changed labels/audio and reports regressions separately.
+Review false passes and correct readings needing review with teachers. A better
+transcript score alone does not prove pronunciation grading is safe to activate.
+
+CURRENT EVIDENCE LIMIT
+The supplied assessment photographs are Mother Tongue data. No representative
+teacher-labelled English child corpus has been provided for this evaluation.
+Synthetic software tests verify the tooling and rules, not child-model accuracy.

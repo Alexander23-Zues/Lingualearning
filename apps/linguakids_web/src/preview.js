@@ -147,7 +147,7 @@ export function createPreviewRepository() {
   };
   async function rpc(name, p) {
     if(name==='educator_adventure')return missions.path(p.p_grade);
-    if(name==='educator_adventure_progress')return data.children.filter(c=>c.active&&c.grade_level===p.p_grade).map(c=>({child_id:c.id,nickname:c.nickname,adventure:missions.state(c),quiz_attempts:data.attempts.filter(a=>a.child_id===c.id&&a.activity_kind==='quiz'&&a.adventure_step_id).map(a=>({...a,step_id:a.adventure_step_id}))}));
+    if(name==='educator_adventure_progress')return data.children.filter(c=>c.active&&c.grade_level===p.p_grade).map(c=>({child_id:c.id,nickname:c.nickname,adventure:missions.state(c),rewards:missions.rewards(c),quiz_attempts:data.attempts.filter(a=>a.child_id===c.id&&a.activity_kind==='quiz'&&a.adventure_step_id).map(a=>({...a,step_id:a.adventure_step_id}))}));
     if(name==='save_adventure')return missions.save(p);
     if(name==='educator_placement')return {placement:data.preview_missions.placements[p.p_child_id]||null,has_started:missions.started(p.p_child_id),adventure:missions.state(data.children.find(c=>c.id===p.p_child_id))};
     if (name === "workspace_snapshot") return structuredClone(data);
@@ -227,7 +227,8 @@ export function createPreviewRepository() {
     if (!child) throw new Error("Reopen the preview profile.");
     if (name === "close_child_session") return;
     if(name==='student_choose_adventure_start')return missions.choose(child,p);
-    if(name==='student_adventure_state')return {...await studentRpc('student_learning_state',{},token),adventure:missions.state(child)};
+    if(name==='student_adventure_state')return {...await studentRpc('student_learning_state',{},token),adventure:missions.state(child),rewards:missions.rewards(child,true)};
+    if(name==='student_mission_rewards')return missions.rewards(child,true);
     if(name==='student_adventure_complete'){
       const adventure=missions.state(child),step=adventure.stages.flatMap(s=>s.steps).find(s=>s.id===p.p_step_id);
       if(p.p_revision!==adventure.revision||!step||step.id!==adventure.current_step_id)throw new Error('Finish the current mission activity first.');
