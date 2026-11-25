@@ -11,7 +11,8 @@ school release, English and Tagalog pronunciation models. See the deployed
 `/model-credits.txt` for their model licenses. The release directory excludes
 local secrets, private datasets, and local model weights.
 
-1. Authenticate Railway CLI, create/link a project, and upload this directory.
+1. Use the existing Railway service and its approved GitHub release commit.
+   Alternatively, use the upload command above in a supported Railway CLI environment.
 2. Attach a persistent volume mounted at `/data` BEFORE the first deployment.
 3. Set `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`, and a random
    `INFERENCE_SHARED_SECRET` as runtime variables. Supply `SUPABASE_SECRET_KEY`
@@ -34,4 +35,26 @@ local secrets, private datasets, and local model weights.
 This CPU image can also run on a Docker VPS with a `/data` volume. CPU training
 can be slow; resource sizing requires an actual model/load test. No database reset
 or migration is run by deployment. Existing Supabase accounts/data remain there.
+
+## Retired legacy deployment configuration
+
+The root `railway.json` is archived as `deploy/legacy/railway.json.disabled`.
+Before deploying this removal, preserve its settings on the existing Railway
+service: the Dockerfile builder and `Dockerfile` path, `/ready` healthcheck,
+300-second healthcheck timeout, `ON_FAILURE` restart policy and three retries.
+Clear the service's Config File path with an empty string. This settings update
+does not itself deploy or change a volume; a later release deployment uses the
+preserved service configuration. Keep the existing `/data` mount, variables,
+replicas, region and domain. Do not recreate the service or volume.
+
+The packager works when the legacy root file is absent. Its compatibility flag
+`--after-iac-cutover` also omits a legacy file in an older checkout after the
+service path has been cleared. `--include-school-voices` works with either the
+normal Dockerfile default or an already-enabled school release.
+
+The `.railway/railway.ts` file is prepared for future IaC adoption; a normal
+Git deployment does not apply it or assign IaC resource ownership. Preserving
+service settings and retiring the legacy file is not a completed IaC plan/apply.
+Inspect a supported CLI plan before any later apply, retaining the data volume
+and unmanaged secrets. See [Railway's migration guide](https://docs.railway.com/infrastructure-as-code#migrating-from-config-as-code).
 

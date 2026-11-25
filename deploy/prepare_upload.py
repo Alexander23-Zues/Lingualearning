@@ -45,7 +45,10 @@ def main():
         except FileExistsError:
             parser.error("--output must be a new directory")
 
-    for name in ROOT_FILES + (() if args.after_iac_cutover else ('railway.json',)):
+    # New releases have no active legacy file. Retain compatibility when this
+    # helper is used with an older checkout before its service is cut over.
+    legacy_files = ('railway.json',) if (ROOT / 'railway.json').is_file() and not args.after_iac_cutover else ()
+    for name in ROOT_FILES + legacy_files:
         shutil.copy2(ROOT / name, target / name)
     for name in DIRECTORIES:
         patterns = ["node_modules", "dist", "__pycache__", ".env", ".env.*"]
@@ -60,10 +63,14 @@ def main():
     if args.include_school_voices:
         dockerfile = target / "Dockerfile"
         source = dockerfile.read_text(encoding="utf-8")
-        default = "ARG INCLUDE_SCHOOL_VOICES=false"
-        if source.count(default) != 1:
+        arguments = [line.strip() for line in source.splitlines()
+                     if line.strip().startswith('ARG INCLUDE_SCHOOL_VOICES=')]
+        default = 'ARG INCLUDE_SCHOOL_VOICES=false'
+        enabled = 'ARG INCLUDE_SCHOOL_VOICES=true'
+        if len(arguments) != 1 or arguments[0] not in {default, enabled}:
             raise RuntimeError("The Dockerfile school voice build argument changed.")
-        dockerfile.write_text(source.replace(default, "ARG INCLUDE_SCHOOL_VOICES=true"), encoding="utf-8")
+        if arguments[0] == default:
+            dockerfile.write_text(source.replace(default, enabled, 1), encoding="utf-8")
     print(target)
 
 

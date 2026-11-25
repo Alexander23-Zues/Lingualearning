@@ -4,3 +4,5 @@ supabase/migrations/*.sql -text
 supabase/legacy/pre-canonical-history/*.sql -text
 # Frozen audit files have byte-level manifests; preserve the original line endings.
 ml/data/public/** -text
+# Archived deployment files retain their original recovery bytes.
+deploy/legacy/*.disabled -text
