@@ -297,7 +297,6 @@ export function Register({ setup = false }) {
   const [password, setPassword] = useState(""),
     [confirm, setConfirm] = useState("");
   const [registrationParams]=useSearchParams();
-  const [invitationCode,setInvitationCode]=useState(registrationParams.get('invite')||'');
   const [registeredEmail, setRegisteredEmail] = useState("");
   const [gradeFlags,setGradeFlags]=useState([]),[gradeLoading,setGradeLoading]=useState(false),[gradeError,setGradeError]=useState('');
   async function loadGrades() {
@@ -326,7 +325,6 @@ export function Register({ setup = false }) {
         password: form.get("new-password"),
         school_name: form.get("school") || "",
         grade_levels: setup ? [] : selected,
-        invitation_code: invitationCode.trim(),
       });} catch(error) {
         if(/already has an educator account/.test(error?.message||'')){await loadGrades();setSelected([]);}
         throw error;
@@ -341,7 +339,7 @@ export function Register({ setup = false }) {
       subtitle={
         setup
           ? "Only a verified administrator invitation can activate this account."
-          : uiText("Use your administrator invitation and a working email to register for your assigned grade.")
+          : uiText("Register with your own email and choose one available grade. No administrator approval is needed.")
       }
     >
       {!setup && locked && child ? (
@@ -372,8 +370,6 @@ export function Register({ setup = false }) {
           {!setup && (
             <>
               <Field label={uiText("School (optional)")} name="school" />
-              <Field label={uiText('Teacher invitation code')} aria-label={uiText('Teacher invitation code')} type="password" name="invitation-code" autoComplete="off" required minLength={64} maxLength={64}
-                value={invitationCode} onChange={e=>setInvitationCode(e.target.value)} hint={uiText('Open the private invitation from your administrator. It is tied to your email and grade.')}/>
               <div className="registration-grades">
                 <Field label={uiText("Grade you teach")}>
                   <select aria-label={uiText("Grade you teach")} value={selected[0]||""} required

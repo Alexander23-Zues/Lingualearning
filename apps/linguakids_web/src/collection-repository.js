@@ -46,7 +46,7 @@ async function acknowledged(item){const d=await db();return new Promise((resolve
   }
   window.addEventListener('online',flush);window.addEventListener('focus',flush);
   const saved=()=>update({lastSaved:new Date().toISOString()});
-  const unavailable=()=>{throw new Error('Register and verify invited teacher accounts online. This offline installation uses its prepared educator account.');};
+  const unavailable=()=>{throw new Error('Register and verify teacher accounts online. This offline installation uses its prepared educator account.');};
   return {
     collection:true,config,captureDraft,captureRecording,flush,
     collectionStatus:()=>status,subscribeCollection(fn){watchers.add(fn);items().then(rows=>{status={...status,pending:rows.length};fn(status);});return()=>watchers.delete(fn);},

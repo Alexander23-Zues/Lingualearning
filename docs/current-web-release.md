@@ -4,6 +4,11 @@ The current application is `apps/linguakids_web` (React). The earlier Flutter
 client remains in the repository for history. Use the root Dockerfile for the
 existing Railway service; it includes the protected API and private inference.
 
+Teachers register directly for one available grade and confirm their own email.
+Administrator approval and invitation codes are not required. Existing school
+records are retained; new registrations do not automatically inherit a prior
+teacher classroom. See `docs/teacher-registration.txt`.
+
 Teacher pages provide mission progress, latest/best quiz attempts, English
 assessment evidence and teacher-confirmed starting missions. Children follow
 the assigned sequence and need 80% on each quiz. Recognition compares heard
@@ -46,14 +51,8 @@ python -m pytest tests
 Deploy only this reviewed source. Preserve the existing `/data` volume and
 server-side variables. The Docker build downloads pinned baseline translation,
 Whisper, and noncommercial school voices. It does not activate a training run,
-reset data, or apply SQL migrations. The 29 canonical migrations match the hosted
+reset data, or apply SQL migrations. The 30 canonical migrations match the hosted
 history as of this release. See `deploy/README.md` for runtime configuration.
-
-Browser checks on the production frontend passed 80 layout cases and 10
-PWA offline cases in an isolated Microsoft Edge session. Ranking integration
-checks passed search, pagination, tie display, safe all-page CSV export and
-student-record navigation with 26 synthetic learners. These are browser tests,
-not physical-device or classroom-concurrency validation.
 
 Remaining release gates: verify actual confirmation/reset email delivery after
 correcting Gmail SMTP; teacher-labeled English speech/content evaluation; real

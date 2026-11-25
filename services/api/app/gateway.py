@@ -70,7 +70,7 @@ class SupabaseGateway:
         if not rows:return None
         row=rows[0]
         if row.get('retired_at') is not None:return None
-        if row['role']=='educator' and row.get('account_kind','teacher')=='teacher' and (not row.get('teacher_approved_at') or row.get('registered_grade') is None):return None
+        if row['role']=='educator' and row.get('account_kind','teacher')=='teacher' and row.get('registered_grade') not in range(1,7):return None
         return CurrentUser.model_validate(row)
 
     async def create_resource(self, owner_id: UUID, payload: ResourceCreate) -> dict[str, Any]:

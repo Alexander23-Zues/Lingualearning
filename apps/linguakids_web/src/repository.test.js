@@ -137,7 +137,7 @@ describe("Connected repository", () => {
     expect(body.options.data).toEqual({
       name: "Teacher",
       school_name: "School",
-      grade_levels: [1], invitation_code: "a".repeat(64),
+      grade_levels: [1],
     });
   });
   it("keeps existing classroom aliases out of educator registration", () => {
@@ -207,10 +207,9 @@ it('reports an occupied grade when two registrations race instead of a generic m
   expect(mock.client.auth.signUp).toHaveBeenCalledTimes(1);
 });
 
-it('blocks signup before Auth when the invitation proof is missing, expired, or assigned elsewhere',async()=>{
+it('registers directly without calling invitation validation or forwarding approval metadata',async()=>{
  const repo=createRepository(config);
- expect(()=>repo.register({email:'teacher@school.edu.ph',grade_levels:[1]})).toThrow(/invitation/);
- mock.client.rpc.mockResolvedValueOnce({data:false});
- await expect(repo.register({email:'teacher@school.edu.ph',grade_levels:[1],invitation_code:'a'.repeat(64)})).rejects.toThrow(/invalid, expired/);
- expect(mock.client.auth.signUp).not.toHaveBeenCalled();
+ await repo.register({name:'Teacher',email:'teacher@school.edu.ph',password:'fixture-password',school_name:'School',grade_levels:[1],invitation_code:'legacy-code',role:'administrator',teacher_approved_by:'forged'});
+ expect(mock.client.rpc).not.toHaveBeenCalledWith('teacher_invitation_valid',expect.anything());
+ expect(mock.client.auth.signUp).toHaveBeenCalledWith({email:'teacher@school.edu.ph',password:'fixture-password',options:{emailRedirectTo:window.location.origin,data:{name:'Teacher',school_name:'School',grade_levels:[1]}}});
 });

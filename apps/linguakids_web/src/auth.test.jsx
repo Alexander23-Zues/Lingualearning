@@ -88,7 +88,8 @@ it("blocks an incomplete educator login and registers a teacher with their own e
   await screen.findByRole("heading", { name: "Register as an educator" });
   fireEvent.change(screen.getByLabelText("Full name"), { target: { value: " Demo Teacher " } });
   fireEvent.change(screen.getByLabelText("Email", { exact: true }), { target: { value: "teacher@school.edu.ph" } });
-  fireEvent.change(screen.getByLabelText("Teacher invitation code"), {target:{value:"a".repeat(64)}});
+  expect(screen.queryByLabelText("Teacher invitation code")).toBeNull();
+  expect(screen.getByText(/No administrator approval is needed/)).toBeTruthy();
   fireEvent.change(screen.getByRole("combobox", { name: "Grade you teach" }), { target: { value: "4" } });
   fireEvent.change(screen.getByLabelText("Password", { exact: true }), { target: { value: "fixture-password" } });
   fireEvent.change(screen.getByLabelText("Confirm password"), { target: { value: "fixture-password" } });
@@ -97,7 +98,7 @@ it("blocks an incomplete educator login and registers a teacher with their own e
   fireEvent.click(await screen.findByRole("link", { name: "Go to login" }));
   expect(repo.register).toHaveBeenCalledExactlyOnceWith({
     name: "Demo Teacher", email: "teacher@school.edu.ph", password: "fixture-password",
-    school_name: "", grade_levels: [4], invitation_code:"a".repeat(64),
+    school_name: "", grade_levels: [4],
   });
   expect((await screen.findByRole("textbox", { name: "Email" })).value).toBe("teacher@school.edu.ph");
 });

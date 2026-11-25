@@ -257,12 +257,11 @@ export function createRepository(config) {
       return unwrap(client.from('educator_grade_availability').select('grade_level,occupied').order('grade_level'));
     },
     register(data) {
-      const { name, email, password, school_name, grade_levels, invitation_code } = data;
+      const { name, email, password, school_name, grade_levels } = data;
       requireMailbox(email);
       const setupInvite=config.ADMIN_SETUP_EMAIL && email.trim().toLowerCase()===config.ADMIN_SETUP_EMAIL.toLowerCase();
       if(!setupInvite && (!Array.isArray(grade_levels)||grade_levels.length!==1||![1,2,3,4,5,6].includes(grade_levels[0])))
         throw new Error('Choose one available grade for this educator account.');
-      if(!setupInvite && !/^[a-f0-9]{64}$/i.test(invitation_code||''))throw new Error('Use the private teacher invitation from your administrator.');
       const grade=grade_levels?.[0];
       const gradeAvailable=async()=>{
         if(setupInvite)return;
@@ -272,15 +271,13 @@ export function createRepository(config) {
       };
       return (async()=>{
         await gradeAvailable();
-        if(!setupInvite && !await rpc('teacher_invitation_valid',{p_grade:grade,p_email:email.trim(),p_code:invitation_code.trim()}))
-          throw new Error('This invitation is invalid, expired, or assigned to another email or grade. Contact your administrator.');
         try {return await emailRequest(
         client.auth.signUp({
           email: email.trim(),
           password,
           options: {
             emailRedirectTo: config.AUTH_REDIRECT_URL || window.location.origin,
-            data: { name, school_name, grade_levels, ...(!setupInvite?{invitation_code:invitation_code.trim()}: {}) },
+            data: { name, school_name, grade_levels },
           },
         }),
       );} catch(error) {
