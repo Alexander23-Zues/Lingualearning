@@ -1,0 +1,2228 @@
+[
+  {
+    "id": "03eabd1a-4afb-5e97-bcca-14c10eeba63d",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 1: Short a: cap and map",
+    "grade_level": 1,
+    "learning_level": "beginner",
+    "summary": "English · Phonics and word recognition. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Short a: cap and map",
+      "cover_scene": 0,
+      "pages": [
+        {
+          "english": "Learn: Some short words have a consonant, a vowel, and a consonant. Listen to the short a in cap, map, and bag. An adult can model each sound.",
+          "filipino": "Alamin: May maiikling salitang may katinig, patinig, at katinig. Pakinggan ang maikling tunog ng a sa cap, map, at bag. Magpabigkas muna sa nakatatanda.",
+          "scene": 0
+        },
+        {
+          "english": "Example: Say the sounds in map slowly, then blend them: m-a-p, map. A map shows places. Read: The map is in the bag.",
+          "filipino": "Halimbawa: Dahan-dahang bigkasin ang mga tunog sa map, saka pagdugtungin: m-a-p, map. Mapa ang kahulugan nito. Basahin: Nasa bag ang mapa.",
+          "scene": 3
+        },
+        {
+          "english": "Practice: Read cap, map, and bag with your teacher. Which word names something worn on the head? Which word names something used to carry things?",
+          "filipino": "Magsanay: Basahin ang cap, map, at bag kasama ang guro. Aling salita ang ngalan ng isinusuot sa ulo? Alin ang ginagamit na lalagyan ng mga gamit?",
+          "scene": 6
+        },
+        {
+          "english": "Check: Cap is worn on the head. Bag carries things. Read the three words again without rushing. Draw a cap and tell your teacher its English name.",
+          "filipino": "Suriin: Isinusuot sa ulo ang cap. Lalagyan ng gamit ang bag. Basahing muli ang tatlong salita nang dahan-dahan. Gumuhit ng sumbrero at sabihin ang English na pangalan nito.",
+          "scene": 9
+        }
+      ],
+      "source": {
+        "title": "Jumpstart Series 1 — Module 1",
+        "url": "https://lrmds.deped.gov.ph/detail/16950",
+        "portal_id": 16950,
+        "publication_year": 2019,
+        "curriculum_version": "K–12 archive · 2019",
+        "locator": "Portal description / listed topics: Phonics and word recognition",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2019",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/16950",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review"
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "eeaf58f1-578a-56d0-a548-0b687025fb20",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 1: Short i: sit and pin",
+    "grade_level": 1,
+    "learning_level": "beginner",
+    "summary": "English · Phonics and word recognition. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Short i: sit and pin",
+      "cover_scene": 1,
+      "pages": [
+        {
+          "english": "Learn: Listen to the short i sound in sit, pin, and fin. Keep the vowel sound short. Say each word after a trusted adult.",
+          "filipino": "Alamin: Pakinggan ang maikling tunog ng i sa sit, pin, at fin. Maikli lamang ang tunog ng patinig. Gayahin ang bigkas ng pinagkakatiwalaang nakatatanda.",
+          "scene": 1
+        },
+        {
+          "english": "Example: Blend s-i-t to read sit. Sit tells an action. A fin is a body part that helps a fish swim. Read: The fish has a fin.",
+          "filipino": "Halimbawa: Pagdugtungin ang s-i-t upang mabasa ang sit. Kilos ang kahulugan ng sit. Palikpik ang fin na tumutulong sa isda sa paglangoy. Basahin: May palikpik ang isda.",
+          "scene": 4
+        },
+        {
+          "english": "Practice: Read sit, pin, fin. Which word belongs with a fish? Which word tells an action you can do on a chair? Say your answers aloud.",
+          "filipino": "Magsanay: Basahin ang sit, pin, fin. Aling salita ang kaugnay ng isda? Alin ang kilos na ginagawa sa upuan? Sabihin nang malakas ang sagot.",
+          "scene": 7
+        },
+        {
+          "english": "Check: A fish has a fin. You sit on a chair. Notice that pin and fin end in the same sounds. Read them together and listen to the rhyme.",
+          "filipino": "Suriin: May fin ang isda. Sit ang kilos ng pag-upo. Magkatulad ang hulihang tunog ng pin at fin. Basahin ang dalawa at pakinggan ang tugma.",
+          "scene": 10
+        }
+      ],
+      "source": {
+        "title": "Jumpstart Series 1 — Module 1",
+        "url": "https://lrmds.deped.gov.ph/detail/16950",
+        "portal_id": 16950,
+        "publication_year": 2019,
+        "curriculum_version": "K–12 archive · 2019",
+        "locator": "Portal description / listed topics: Phonics and word recognition",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2019",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/16950",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review"
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "e2ca0c8e-84c8-5450-a71e-98c5ca5f1554",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 1: Short u: sun and bug",
+    "grade_level": 1,
+    "learning_level": "beginner",
+    "summary": "English · Phonics and word recognition. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Short u: sun and bug",
+      "cover_scene": 2,
+      "pages": [
+        {
+          "english": "Learn: Sun, bug, and cup contain the short u sound. Watch your teacher say each word, then try saying it yourself. Listen carefully rather than guessing from spelling.",
+          "filipino": "Alamin: May maikling tunog ng u ang sun, bug, at cup. Panoorin at pakinggan ang guro, saka gayahin. Makinig sa bigkas sa halip na manghula lamang sa baybay.",
+          "scene": 2
+        },
+        {
+          "english": "Example: Blend c-u-p to read cup. A cup holds a drink. Blend s-u-n to read sun. Read: A bug is near the cup.",
+          "filipino": "Halimbawa: Pagdugtungin ang c-u-p upang mabasa ang cup o tasa. Basahin din ang s-u-n, sun o araw. Basahin: May munting insekto sa tabi ng tasa.",
+          "scene": 5
+        },
+        {
+          "english": "Practice: Choose sun, bug, or cup. What can hold water? What shines in the daytime sky? What word can name a small insect?",
+          "filipino": "Magsanay: Pumili sa sun, bug, at cup. Alin ang maaaring lagyan ng tubig? Alin ang nagbibigay-liwanag sa araw? Alin ang maaaring tawag sa munting insekto?",
+          "scene": 8
+        },
+        {
+          "english": "Check: Cup can hold water, sun names the araw, and bug can name a small insect. Read each word once more. Tell an adult a sentence using cup.",
+          "filipino": "Suriin: Cup ang tasa, sun ang araw, at bug ang maaaring tawag sa munting insekto. Basahing muli ang bawat salita. Bumuo ng pangungusap gamit ang cup.",
+          "scene": 11
+        }
+      ],
+      "source": {
+        "title": "Jumpstart Series 1 — Module 1",
+        "url": "https://lrmds.deped.gov.ph/detail/16950",
+        "portal_id": 16950,
+        "publication_year": 2019,
+        "curriculum_version": "K–12 archive · 2019",
+        "locator": "Portal description / listed topics: Phonics and word recognition",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2019",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/16950",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review"
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "8e5d7bc3-33be-5d64-8f75-2eaf3cd7bd75",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 1: Pantig sa mga salitang pamilyar",
+    "grade_level": 1,
+    "learning_level": "beginner",
+    "summary": "Filipino · Phonological awareness; phonics and word recognition. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Pantig sa mga salitang pamilyar",
+      "cover_scene": 3,
+      "pages": [
+        {
+          "english": "Learn: A syllable is a spoken beat in a word. Say familiar Filipino words slowly. Listen to each part instead of counting the written letters.",
+          "filipino": "Alamin: Ang pantig ay bahagi ng salitang binibigkas sa isang bugso ng tinig. Sabihin nang dahan-dahan ang mga salitang pamilyar. Pakinggan ang mga bahagi, hindi ang dami ng titik.",
+          "scene": 3
+        },
+        {
+          "english": "Example: Bata has two spoken parts: ba-ta. Kamatis has three: ka-ma-tis. Say one part at a time and clap once for each part.",
+          "filipino": "Halimbawa: Dalawang pantig ang bata: ba-ta. Tatlo naman ang kamatis: ka-ma-tis. Bigkasin ang bawat pantig at pumalakpak nang isang beses sa bawat bahagi.",
+          "scene": 6
+        },
+        {
+          "english": "Practice: Say mesa, pusa, and saging slowly. Clap for each syllable. Which words have two syllables? Ask your teacher to listen to your pronunciation.",
+          "filipino": "Magsanay: Dahan-dahang sabihin ang mesa, pusa, at saging. Pumalakpak sa bawat pantig. Alin ang may dalawang pantig? Magpakinggan ng bigkas sa guro.",
+          "scene": 9
+        },
+        {
+          "english": "Check: Me-sa, pu-sa, and sa-ging each have two syllables. Choose a familiar object and say its name. With your teacher, break the name into spoken parts.",
+          "filipino": "Suriin: Tig-dalawang pantig ang me-sa, pu-sa, at sa-ging. Pumili ng bagay na kilala mo at sabihin ang pangalan nito. Ipagpantig ito kasama ang guro.",
+          "scene": 12
+        }
+      ],
+      "source": {
+        "title": "Basa Pilipinas Filipino 1 — Yunit 2",
+        "url": "https://lrmds.deped.gov.ph/detail/11677",
+        "portal_id": 11677,
+        "publication_year": 2016,
+        "curriculum_version": "K–12 archive · 2016",
+        "locator": "Portal description / listed topics: Phonological awareness; phonics and word recognition",
+        "publisher": "USAID/Basa Pilipinas; Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2016",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/11677",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review"
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "49af7466-bb37-5fba-b184-61250136c1db",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 1: Kilalanin ang ating aklat",
+    "grade_level": 1,
+    "learning_level": "beginner",
+    "summary": "Filipino · Book and print knowledge. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Kilalanin ang ating aklat",
+      "cover_scene": 4,
+      "pages": [
+        {
+          "english": "Learn: A book has a front cover and pages. Its title tells its name. A writer creates the words, while an illustrator makes the pictures.",
+          "filipino": "Alamin: May pabalat at mga pahina ang aklat. Pamagat ang pangalan nito. Manunulat ang lumilikha ng teksto, at tagaguhit ang gumagawa ng mga larawan.",
+          "scene": 4
+        },
+        {
+          "english": "Example: Imagine a cover that says Ang Munting Bangka. That is the title, not a sentence from the story. Open a book carefully and look for its first page.",
+          "filipino": "Halimbawa: Isipin ang pabalat na may nakasulat na Ang Munting Bangka. Ito ang pamagat, hindi pangungusap mula sa kuwento. Maingat na buksan ang aklat at hanapin ang unang pahina.",
+          "scene": 7
+        },
+        {
+          "english": "Practice: Use a book your teacher provides. Point to the cover, the title, and a page. Ask an adult to read the writer’s name to you.",
+          "filipino": "Magsanay: Gumamit ng aklat na ibinigay ng guro. Ituro ang pabalat, pamagat, at isang pahina. Ipabasa sa nakatatanda ang pangalan ng manunulat.",
+          "scene": 10
+        },
+        {
+          "english": "Check: The cover protects the book, and the title names it. Turn one page at a time with clean hands. Tell your teacher one thing you noticed in the book.",
+          "filipino": "Suriin: Pinangangalagaan ng pabalat ang aklat, at pinapangalanan ito ng pamagat. Magbuklat nang paisa-isang pahina gamit ang malinis na kamay. Ibahagi sa guro ang isang napansin mo.",
+          "scene": 13
+        }
+      ],
+      "source": {
+        "title": "Basa Pilipinas Filipino 1 — Yunit 2",
+        "url": "https://lrmds.deped.gov.ph/detail/11677",
+        "portal_id": 11677,
+        "publication_year": 2016,
+        "curriculum_version": "K–12 archive · 2016",
+        "locator": "Portal description / listed topics: Book and print knowledge",
+        "publisher": "USAID/Basa Pilipinas; Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2016",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/11677",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review"
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "46b39449-d9d6-509a-9b75-b288b38aca36",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 1: Makinig at tandaan ang detalye",
+    "grade_level": 1,
+    "learning_level": "beginner",
+    "summary": "Filipino · Listening comprehension. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Makinig at tandaan ang detalye",
+      "cover_scene": 5,
+      "pages": [
+        {
+          "english": "Learn: Listen for who, what, and where in a short story. Your teacher can read the next page aloud. Listen first, then tell what you remember.",
+          "filipino": "Alamin: Pakinggan kung sino, ano, at saan sa maikling kuwento. Maaaring basahin ng guro ang susunod na pahina. Makinig muna, saka sabihin ang natatandaan mo.",
+          "scene": 5
+        },
+        {
+          "english": "Story: Lira brought a yellow umbrella to school. Rain began after class. She opened her umbrella and walked beside her mother. They reached home dry.",
+          "filipino": "Kuwento: Nagdala si Lira ng dilaw na payong sa paaralan. Umulan pagkatapos ng klase. Binuksan niya ang payong at lumakad sa tabi ng kaniyang ina. Hindi sila nabasa pauwi.",
+          "scene": 8
+        },
+        {
+          "english": "Practice: Who brought an umbrella? What color was it? Where did Lira bring it? Listen again if you need help remembering a detail.",
+          "filipino": "Magsanay: Sino ang nagdala ng payong? Ano ang kulay nito? Saan ito dinala ni Lira? Pakinggan muli ang kuwento kung kailangan mong alalahanin ang detalye.",
+          "scene": 11
+        },
+        {
+          "english": "Check: Lira brought a yellow umbrella to school. These answers come from the story. Tell the story in your own words, keeping the same person and important events.",
+          "filipino": "Suriin: Si Lira ang nagdala ng dilaw na payong sa paaralan. Nasa kuwento ang mga sagot. Isalaysay ito sa sariling pananalita nang hindi binabago ang tauhan at mahahalagang pangyayari.",
+          "scene": 14
+        }
+      ],
+      "source": {
+        "title": "Basa Pilipinas Filipino 1 — Yunit 2",
+        "url": "https://lrmds.deped.gov.ph/detail/11677",
+        "portal_id": 11677,
+        "publication_year": 2016,
+        "curriculum_version": "K–12 archive · 2016",
+        "locator": "Portal description / listed topics: Listening comprehension",
+        "publisher": "USAID/Basa Pilipinas; Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2016",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/11677",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review"
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "5ac01ecd-7f0e-51c7-88a2-25b33c243714",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 2: Everyday sounds: loud and soft",
+    "grade_level": 2,
+    "learning_level": "beginner",
+    "summary": "English · Quarter 1, Module 1. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Everyday sounds: loud and soft",
+      "cover_scene": 6,
+      "pages": [
+        {
+          "english": "Learn: Sounds have sources, such as animals, instruments, and machines. A sound may be loud or soft. Its loudness can change with distance and how it is made.",
+          "filipino": "Alamin: Maaaring manggaling sa hayop, instrumento, o makina ang tunog. Maaari itong maging malakas o mahina. Nagbabago ang lakas ayon sa layo at paraan ng paglikha nito.",
+          "scene": 6
+        },
+        {
+          "english": "Example: A softly tapped drum makes a softer sound than the same drum struck strongly. A nearby dog may sound louder than one far away. Never make painful sounds.",
+          "filipino": "Halimbawa: Mas mahina ang marahang pagtapik sa tambol kaysa malakas na pagpalo rito. Maaaring mas malakas marinig ang malapit na aso kaysa malayong aso. Huwag lumikha ng masakit na tunog.",
+          "scene": 9
+        },
+        {
+          "english": "Practice: Your teacher softly taps a table, then taps it a little more firmly. Identify the source. Which sound is softer? Do not put your ears close to loud objects.",
+          "filipino": "Magsanay: Marahang tatapikin ng guro ang mesa, saka bahagyang lalakasan. Sabihin ang pinagmulan ng tunog. Alin ang mas mahina? Huwag ilapit ang tainga sa maingay na bagay.",
+          "scene": 12
+        },
+        {
+          "english": "Check: Both sounds came from the table being tapped. The gentle tap was softer. Name one sound from an animal and one from an instrument, then describe each safely.",
+          "filipino": "Suriin: Parehong mula sa pagtapik sa mesa ang tunog. Mas mahina ang marahang tapik. Magbigay ng tunog mula sa hayop at instrumento at ligtas na ilarawan ang bawat isa.",
+          "scene": 15
+        }
+      ],
+      "source": {
+        "title": "English 2 — Q1 Modules 1–5",
+        "url": "https://lrmds.deped.gov.ph/detail/20828",
+        "portal_id": 20828,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 1",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20828",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "4b06a28b-5134-5458-9cd4-dff3e6e5b857",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 2: Names for everyone and special names",
+    "grade_level": 2,
+    "learning_level": "beginner",
+    "summary": "English · Quarter 1, Module 3. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Names for everyone and special names",
+      "cover_scene": 7,
+      "pages": [
+        {
+          "english": "Learn: A common noun names a general person, place, or thing. A proper noun names a particular one. Proper nouns begin with capital letters.",
+          "filipino": "Alamin: Pangkalahatang ngalan ang common noun o pangngalang pambalana. Tiyak na ngalan ang proper noun o pangngalang pantangi. Nagsisimula sa malaking titik ang pangngalang pantangi.",
+          "scene": 7
+        },
+        {
+          "english": "Example: Girl is a general name; Nena is a particular girl’s name. City is general; Manila names a particular city. Read: Nena visits Manila.",
+          "filipino": "Halimbawa: Pangkalahatang ngalan ang girl; tiyak na pangalan ng batang babae ang Nena. Pangkalahatan ang city; tiyak na lungsod ang Manila. Basahin: Dumalaw si Nena sa Maynila.",
+          "scene": 10
+        },
+        {
+          "english": "Practice: Choose the proper noun in each pair: teacher and Ana; river and Pasig River; school and schoolbag. Does every pair contain a proper noun?",
+          "filipino": "Magsanay: Piliin ang pangngalang pantangi sa bawat pares: teacher at Ana; river at Pasig River; school at schoolbag. May pangngalang pantangi ba sa lahat ng pares?",
+          "scene": 13
+        },
+        {
+          "english": "Check: Ana and Pasig River are proper nouns. School and schoolbag are both common nouns. Write a general name and a particular name for one place you know.",
+          "filipino": "Suriin: Pangngalang pantangi ang Ana at Pasig River. Pambalana ang school at schoolbag. Sumulat ng pangkalahatan at tiyak na ngalan para sa isang lugar na kilala mo.",
+          "scene": 0
+        }
+      ],
+      "source": {
+        "title": "English 2 — Q1 Modules 1–5",
+        "url": "https://lrmds.deped.gov.ph/detail/20828",
+        "portal_id": 20828,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 3",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20828",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "0c542db3-d177-5ad2-a2cf-ecfbb408f92f",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 2: Choosing a or an",
+    "grade_level": 2,
+    "learning_level": "beginner",
+    "summary": "English · Quarter 1, Module 4. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Choosing a or an",
+      "cover_scene": 8,
+      "pages": [
+        {
+          "english": "Learn: Use a before a word beginning with a consonant sound. Use an before a word beginning with a vowel sound. Listen to the sound, not only the first letter.",
+          "filipino": "Alamin: Gamitin ang a bago ang salitang nagsisimula sa tunog-katinig at an bago ang tunog-patinig. Pakinggan ang unang tunog; hindi sapat ang pagtingin sa titik lamang.",
+          "scene": 8
+        },
+        {
+          "english": "Example: Say a basket, a pencil, an egg, and an orange. Basket begins with a consonant sound. Egg begins with a vowel sound. Each phrase names one item.",
+          "filipino": "Halimbawa: Bigkasin ang a basket, a pencil, an egg, at an orange. Tunog-katinig ang simula ng basket at tunog-patinig ang simula ng egg. Tig-iisang bagay ang tinutukoy.",
+          "scene": 11
+        },
+        {
+          "english": "Practice: Complete these phrases: __ apple, __ kite, __ umbrella, __ bag. Say each following word aloud before choosing a or an.",
+          "filipino": "Magsanay: Punan ang mga parirala: __ apple, __ kite, __ umbrella, __ bag. Bigkasin muna ang kasunod na salita bago pumili ng a o an.",
+          "scene": 14
+        },
+        {
+          "english": "Check: An apple, a kite, an umbrella, a bag. Apple and umbrella begin with vowel sounds. Tell your teacher two new phrases using objects you can see.",
+          "filipino": "Suriin: An apple, a kite, an umbrella, a bag ang mga sagot. Tunog-patinig ang simula ng apple at umbrella. Bumuo ng dalawa pang parirala tungkol sa nakikita mong bagay.",
+          "scene": 1
+        }
+      ],
+      "source": {
+        "title": "English 2 — Q1 Modules 1–5",
+        "url": "https://lrmds.deped.gov.ph/detail/20828",
+        "portal_id": 20828,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 4",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20828",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "9de784a8-a6c1-53fc-8d4b-3052dde2b652",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 2: Magalang na pagbati at pakiusap",
+    "grade_level": 2,
+    "learning_level": "beginner",
+    "summary": "Filipino · Quarter 1, Module 2. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Magalang na pagbati at pakiusap",
+      "cover_scene": 9,
+      "pages": [
+        {
+          "english": "Learn: Choose polite words for the person and situation. Greetings welcome others. A respectful request asks for help without ordering or shouting.",
+          "filipino": "Alamin: Piliin ang magagalang na salita ayon sa kausap at sitwasyon. Ang pagbati ay pagpapakita ng mabuting pakikitungo. Ang magalang na pakiusap ay hindi pag-uutos o pagsigaw.",
+          "scene": 9
+        },
+        {
+          "english": "Example: Good morning, teacher. May I borrow a pencil, please? After receiving help, say thank you. In Filipino, po and opo can show respect when speaking with elders.",
+          "filipino": "Halimbawa: Magandang umaga po, Guro. Maaari po bang makahiram ng lapis? Pagkatapos matulungan, magsabi ng salamat po. Maaaring gamitin ang po at opo sa pakikipag-usap sa nakatatanda.",
+          "scene": 12
+        },
+        {
+          "english": "Practice: You need to pass in front of someone. What could you say? Your classmate returns your notebook. How will you respond? Practice using a calm voice.",
+          "filipino": "Magsanay: Kailangan mong dumaan sa harap ng isang tao. Ano ang sasabihin mo? Ibinalik ng kaklase ang iyong kuwaderno. Paano ka tutugon? Magsanay sa mahinahong tinig.",
+          "scene": 15
+        },
+        {
+          "english": "Check: You could say excuse me and thank you. In Filipino: Makikiraan po and salamat. Respectful words work best with considerate actions and patient listening.",
+          "filipino": "Suriin: Maaaring sabihin ang makikiraan po at salamat. Mas naipakikita ang paggalang kung kasama ng magalang na salita ang mabuting kilos at pakikinig sa kausap.",
+          "scene": 2
+        }
+      ],
+      "source": {
+        "title": "Filipino 2 — Q1 Modules 1–7",
+        "url": "https://lrmds.deped.gov.ph/detail/20851",
+        "portal_id": 20851,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 2",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20851",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "0b0d494b-fdd6-57ee-a29a-3087d6ffd17b",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 2: Sundin ang mga hakbang",
+    "grade_level": 2,
+    "learning_level": "beginner",
+    "summary": "Filipino · Quarter 1, Module 5. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Sundin ang mga hakbang",
+      "cover_scene": 10,
+      "pages": [
+        {
+          "english": "Learn: Instructions tell what to do. Listen or read to the end before starting. Words such as first, next, and last show the correct order.",
+          "filipino": "Alamin: Sinasabi ng panuto ang dapat gawin. Pakinggan o basahin muna ang buong panuto bago magsimula. Ipinakikita ng una, kasunod, at huli ang tamang pagkakasunod-sunod.",
+          "scene": 10
+        },
+        {
+          "english": "Example: First, draw a circle. Next, write your nickname inside it. Last, underline the nickname. The underline belongs under the name, not around the circle.",
+          "filipino": "Halimbawa: Una, gumuhit ng bilog. Kasunod, isulat ang palayaw sa loob nito. Huli, salungguhitan ang palayaw. Nasa ilalim ng pangalan ang guhit, hindi sa paligid ng bilog.",
+          "scene": 13
+        },
+        {
+          "english": "Practice: Follow this instruction on paper: Draw a square. Put a small star inside the square. What should you draw first? Where should the star go?",
+          "filipino": "Magsanay: Sundin sa papel: Gumuhit ng parisukat. Maglagay ng munting bituin sa loob nito. Ano ang unang iguguhit? Saan ilalagay ang bituin?",
+          "scene": 0
+        },
+        {
+          "english": "Check: Draw the square first and put the star inside it. Compare your work with the instruction. If a direction is unclear, ask before continuing.",
+          "filipino": "Suriin: Iguhit muna ang parisukat at ilagay sa loob ang bituin. Ihambing ang ginawa sa panuto. Kung hindi malinaw ang isang hakbang, magtanong muna bago magpatuloy.",
+          "scene": 3
+        }
+      ],
+      "source": {
+        "title": "Filipino 2 — Q1 Modules 1–7",
+        "url": "https://lrmds.deped.gov.ph/detail/20851",
+        "portal_id": 20851,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 5",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20851",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "c884c5bc-e43b-5c25-b764-7490678e0473",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 2: Hanapin ang salitang-ugat",
+    "grade_level": 2,
+    "learning_level": "beginner",
+    "summary": "Filipino · Quarter 1, Module 6. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Hanapin ang salitang-ugat",
+      "cover_scene": 11,
+      "pages": [
+        {
+          "english": "Learn: A root word carries the basic meaning of related words. Filipino words can gain affixes at the beginning, inside, or end. Start with familiar examples.",
+          "filipino": "Alamin: Salitang-ugat ang salitang may pangunahing kahulugan sa magkakaugnay na salita. Maaaring lagyan ito ng panlapi sa unahan, gitna, o hulihan. Magsimula sa mga pamilyar na halimbawa.",
+          "scene": 11
+        },
+        {
+          "english": "Example: Basa is the root in bumasa and pagbasa. Sulat is the root in sumulat and sulatan. The added parts help change how the word is used.",
+          "filipino": "Halimbawa: Basa ang salitang-ugat ng bumasa at pagbasa. Sulat ang salitang-ugat ng sumulat at sulatan. Nakadaragdag sa gamit at kahulugan ng salita ang mga panlapi.",
+          "scene": 14
+        },
+        {
+          "english": "Practice: Find the root word in magluto, laruan, and nagtanim. Use luto, laro, and tanim as possible answers. Explain which words belong together.",
+          "filipino": "Magsanay: Hanapin ang salitang-ugat ng magluto, laruan, at nagtanim. Pumili sa luto, laro, at tanim. Ipaliwanag kung aling mga salita ang magkakaugnay.",
+          "scene": 1
+        },
+        {
+          "english": "Check: Magluto comes from luto, laruan from laro, and nagtanim from tanim. With your teacher, use one root and one related word in separate sentences.",
+          "filipino": "Suriin: Luto ang ugat ng magluto, laro ng laruan, at tanim ng nagtanim. Kasama ang guro, gamitin sa magkahiwalay na pangungusap ang isang ugat at kaugnay nitong salita.",
+          "scene": 4
+        }
+      ],
+      "source": {
+        "title": "Filipino 2 — Q1 Modules 1–7",
+        "url": "https://lrmds.deped.gov.ph/detail/20851",
+        "portal_id": 20851,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 6",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20851",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "cb515ede-56cc-539f-b598-d7f39f7dec45",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 3: Regular plurals in our classroom",
+    "grade_level": 3,
+    "learning_level": "developing",
+    "summary": "English · Quarter 1, Module 7. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Regular plurals in our classroom",
+      "cover_scene": 12,
+      "pages": [
+        {
+          "english": "Learn: A singular noun names one. A plural noun names more than one. Many nouns add s; some add es. Check how the word ends.",
+          "filipino": "Alamin: Isa ang tinutukoy ng pangngalang isahan at higit sa isa ang maramihan. Maraming English na pangngalan ang dinaragdagan ng s o es. Tingnan ang hulihan ng salita.",
+          "scene": 12
+        },
+        {
+          "english": "Example: One book becomes two books. One box becomes three boxes. Nouns ending in s, x, ch, or sh often add es: bus, buses; dish, dishes.",
+          "filipino": "Halimbawa: Books ang maramihan ng book at boxes ng box. Karaniwang dinaragdagan ng es ang mga nagtatapos sa s, x, ch, o sh: bus, buses; dish, dishes.",
+          "scene": 15
+        },
+        {
+          "english": "Practice: Write the plural of pencil, bench, and brush. Then complete this sentence: The children put three __ on the table. Use the plural of box.",
+          "filipino": "Magsanay: Isulat ang maramihan ng pencil, bench, at brush. Pagkatapos ay punan: The children put three __ on the table. Gamitin ang maramihan ng box.",
+          "scene": 2
+        },
+        {
+          "english": "Check: Pencils, benches, brushes, and boxes are correct. More than one object needs the plural form here. Write a sentence about two classroom objects.",
+          "filipino": "Suriin: Pencils, benches, brushes, at boxes ang tamang sagot. Maramihang anyo ang kailangan dahil higit sa isa ang bagay. Sumulat ng pangungusap tungkol sa dalawang gamit sa klase.",
+          "scene": 5
+        }
+      ],
+      "source": {
+        "title": "English 3 — Q1 Modules 1–12",
+        "url": "https://lrmds.deped.gov.ph/detail/20835",
+        "portal_id": 20835,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 7",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20835",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "4299f0ac-6aea-519b-96b0-511e6986983c",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 3: Plurals that change their spelling",
+    "grade_level": 3,
+    "learning_level": "developing",
+    "summary": "English · Quarter 1, Module 8. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Plurals that change their spelling",
+      "cover_scene": 13,
+      "pages": [
+        {
+          "english": "Learn: Some nouns do not form plurals by simply adding s. Their spelling changes. Learn these words through reading and repeated practice.",
+          "filipino": "Alamin: May mga pangngalang hindi basta dinaragdagan ng s upang maging maramihan. Nagbabago ang baybay ng mga ito. Matutuhan ang mga ito sa pagbabasa at pagsasanay.",
+          "scene": 13
+        },
+        {
+          "english": "Example: One child, two children. One foot, two feet. One tooth, many teeth. Read: The children washed their feet after playing outside.",
+          "filipino": "Halimbawa: Children ang maramihan ng child, feet ng foot, at teeth ng tooth. Basahin: Naghugas ng mga paa ang mga bata matapos maglaro sa labas.",
+          "scene": 0
+        },
+        {
+          "english": "Practice: Choose child or children: Three __ are reading. Choose tooth or teeth: I brush my __. Choose foot or feet: Both __ fit in my shoes.",
+          "filipino": "Magsanay: Pumili ng child o children: Three __ are reading. Tooth o teeth: I brush my __. Foot o feet: Both __ fit in my shoes.",
+          "scene": 3
+        },
+        {
+          "english": "Check: Children, teeth, and feet complete the sentences. The words three, both, and the meaning of the sentence help you decide when to use a plural.",
+          "filipino": "Suriin: Children, teeth, at feet ang sagot. Tinutulungan tayo ng three, both, at kahulugan ng pangungusap upang malaman kung kailan gagamit ng maramihang anyo.",
+          "scene": 6
+        }
+      ],
+      "source": {
+        "title": "English 3 — Q1 Modules 1–12",
+        "url": "https://lrmds.deped.gov.ph/detail/20835",
+        "portal_id": 20835,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 8",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20835",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "de02e747-f848-5296-a618-8bb733a3fbf2",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 3: Know a character through actions",
+    "grade_level": 3,
+    "learning_level": "developing",
+    "summary": "English · Quarter 1, Module 2. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Know a character through actions",
+      "cover_scene": 14,
+      "pages": [
+        {
+          "english": "Learn: A character is a person or other being in a story. A character’s actions can help us describe them. Support your description with something the character actually does.",
+          "filipino": "Alamin: Ang tauhan ay tao o ibang nilalang sa kuwento. Nakakatulong ang kaniyang kilos sa paglalarawan sa kaniya. Suportahan ang paglalarawan gamit ang ginawa mismo ng tauhan.",
+          "scene": 14
+        },
+        {
+          "english": "Story: A gust scattered Niko’s paper shapes. Bea stopped her drawing and helped him collect them. She gave him an envelope so the shapes would not blow away again.",
+          "filipino": "Kuwento: Tinangay ng hangin ang mga hugis na papel ni Niko. Itinigil ni Bea ang pagguhit upang tumulong mamulot. Binigyan din niya si Niko ng sobre para hindi muling tangayin ang mga papel.",
+          "scene": 1
+        },
+        {
+          "english": "Practice: Which word describes Bea better: helpful or careless? What action supports your answer? Name the other character and explain what happened to his paper shapes.",
+          "filipino": "Magsanay: Alin ang mas naglalarawan kay Bea: matulungin o pabaya? Anong kilos ang batayan mo? Pangalanan ang isa pang tauhan at sabihin ang nangyari sa kaniyang mga hugis na papel.",
+          "scene": 4
+        },
+        {
+          "english": "Check: Bea is helpful because she collected the shapes and offered an envelope. Niko is the other character. Use because to connect a description with story evidence.",
+          "filipino": "Suriin: Matulungin si Bea dahil namulot siya at nagbigay ng sobre. Si Niko ang isa pang tauhan. Gamitin ang dahil upang pag-ugnayin ang paglalarawan at patunay mula sa kuwento.",
+          "scene": 7
+        }
+      ],
+      "source": {
+        "title": "English 3 — Q1 Modules 1–12",
+        "url": "https://lrmds.deped.gov.ph/detail/20835",
+        "portal_id": 20835,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 2",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20835",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "f35cdb40-03da-5118-9e9f-e8a79a59a144",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 3: Gamitin ang diksyunaryo",
+    "grade_level": 3,
+    "learning_level": "developing",
+    "summary": "Filipino · Quarter 1, Module 8. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Gamitin ang diksyunaryo",
+      "cover_scene": 15,
+      "pages": [
+        {
+          "english": "Learn: A dictionary helps explain words. Printed entries are usually in alphabetical order. Compare the first letters; if they match, compare the next letters.",
+          "filipino": "Alamin: Nagpapaliwanag ng mga salita ang diksyunaryo. Karaniwang nakaayos ang mga lahok ayon sa alpabeto. Ihambing ang unang titik; kung magkapareho, tingnan ang susunod na titik.",
+          "scene": 15
+        },
+        {
+          "english": "Example: Aklat comes before bangka because a comes before b. Among bata, bato, and bayabas, compare the next differing letters: bata comes before bato, and both before bayabas.",
+          "filipino": "Halimbawa: Nauuna ang aklat sa bangka dahil nauuna ang a sa b. Sa bata, bato, at bayabas, ihambing ang unang magkaibang titik: bata, bato, saka bayabas ang ayos.",
+          "scene": 2
+        },
+        {
+          "english": "Practice: Arrange these words as dictionary entries: pusa, aso, ibon. Then arrange bata and batis by comparing the letters after bat.",
+          "filipino": "Magsanay: Ayusin na parang mga lahok sa diksyunaryo: pusa, aso, ibon. Pagkatapos, ayusin ang bata at batis sa pamamagitan ng paghahambing sa mga titik na kasunod ng bat.",
+          "scene": 5
+        },
+        {
+          "english": "Check: Aso, ibon, pusa is the first order. Bata comes before batis because a comes before i. Look up one word with your teacher and explain its meaning.",
+          "filipino": "Suriin: Aso, ibon, pusa ang unang ayos. Nauuna ang bata sa batis dahil nauuna ang a sa i. Humanap ng isang salita kasama ang guro at ipaliwanag ang kahulugan nito.",
+          "scene": 8
+        }
+      ],
+      "source": {
+        "title": "Filipino 3 — Q1 Modules 1–15",
+        "url": "https://lrmds.deped.gov.ph/detail/20849",
+        "portal_id": 20849,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 8",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20849",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "99b40ed1-57fc-54c1-a5e7-571d569357e5",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 3: Ito, iyan, at iyon",
+    "grade_level": 3,
+    "learning_level": "developing",
+    "summary": "Filipino · Quarter 1, Module 14. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Ito, iyan, at iyon",
+      "cover_scene": 0,
+      "pages": [
+        {
+          "english": "Learn: Filipino demonstrative pronouns can point to things without repeating their names. Choose according to the object’s position relative to the speaker and listener.",
+          "filipino": "Alamin: Maaaring ituro ng panghalip pamatlig ang isang bagay nang hindi inuulit ang pangalan nito. Piliin ang panghalip ayon sa layo ng bagay sa nagsasalita at kausap.",
+          "scene": 0
+        },
+        {
+          "english": "Example: Ito points to something near the speaker. Iyan points to something near the listener. Iyon points to something far from both. The viewpoint belongs to the person speaking.",
+          "filipino": "Halimbawa: Ito ang gamit sa malapit sa nagsasalita. Iyan ang gamit sa malapit sa kausap. Iyon naman sa malayo sa kanilang dalawa. Batayan ang pananaw ng taong nagsasalita.",
+          "scene": 3
+        },
+        {
+          "english": "Practice: You hold a book: __ ang aklat ko. Your listener holds a pencil: __ ang lapis mo. A kite is far from you both: __ ang saranggola.",
+          "filipino": "Magsanay: Hawak mo ang aklat: __ ang aklat ko. Hawak ng kausap ang lapis: __ ang lapis mo. Malayo sa inyong dalawa ang saranggola: __ ang saranggola.",
+          "scene": 6
+        },
+        {
+          "english": "Check: Ito, iyan, and iyon fit the three situations. Swap speaking roles with your teacher. Notice that the correct pronoun can change when the speaker changes.",
+          "filipino": "Suriin: Ito, iyan, at iyon ang tamang sagot. Magpalitan ng papel bilang nagsasalita at nakikinig. Maaaring magbago ang panghalip kapag nagbago ang nagsasalita.",
+          "scene": 9
+        }
+      ],
+      "source": {
+        "title": "Filipino 3 — Q1 Modules 1–15",
+        "url": "https://lrmds.deped.gov.ph/detail/20849",
+        "portal_id": 20849,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 14",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20849",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "84b947c8-f144-510f-9d44-6ca375745694",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 3: Malaking titik at tamang bantas",
+    "grade_level": 3,
+    "learning_level": "developing",
+    "summary": "Filipino · Quarter 1, Module 13. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Malaking titik at tamang bantas",
+      "cover_scene": 1,
+      "pages": [
+        {
+          "english": "Learn: Start a sentence with a capital letter. Capitalize particular names too. Use a period for a statement and a question mark for a direct question.",
+          "filipino": "Alamin: Simulan sa malaking titik ang pangungusap. Gumamit din nito sa tiyak na pangalan. Tuldok ang bantas sa pasalaysay at tandang pananong sa tuwirang tanong.",
+          "scene": 1
+        },
+        {
+          "english": "Example: Si Mila ay nagbabasa. Saan siya nagbabasa? The first sentence tells something, while the second asks something. Mila keeps its capital letter wherever it appears.",
+          "filipino": "Halimbawa: Si Mila ay nagbabasa. Saan siya nagbabasa? Nagsasalaysay ang unang pangungusap at nagtatanong ang ikalawa. Malaki ang unang titik ng Mila saanman ito ilagay.",
+          "scene": 4
+        },
+        {
+          "english": "Practice: Rewrite correctly: si arman ay nasa silid-aklatan. Then add the proper ending mark: Ano ang binabasa niya__ Tell why each mark is needed.",
+          "filipino": "Magsanay: Isulat nang wasto: si arman ay nasa silid-aklatan. Pagkatapos, lagyan ng tamang bantas: Ano ang binabasa niya__ Ipaliwanag kung bakit iyon ang bantas.",
+          "scene": 7
+        },
+        {
+          "english": "Check: Si Arman ay nasa silid-aklatan. Ano ang binabasa niya? Capitalize Si and Arman, and end the question with ?. Write one statement and one question of your own.",
+          "filipino": "Suriin: Si Arman ay nasa silid-aklatan. Ano ang binabasa niya? Malaki ang simula ng Si at Arman, at may ? ang tanong. Gumawa ng sariling pasalaysay at patanong.",
+          "scene": 10
+        }
+      ],
+      "source": {
+        "title": "Filipino 3 — Q1 Modules 1–15",
+        "url": "https://lrmds.deped.gov.ph/detail/20849",
+        "portal_id": 20849,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 13",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20849",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "ba5c36fc-d9da-5054-a5bc-753323b10f6f",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 4: Build a clear paragraph",
+    "grade_level": 4,
+    "learning_level": "developing",
+    "summary": "English · Quarter 1, Module 1. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Build a clear paragraph",
+      "cover_scene": 2,
+      "pages": [
+        {
+          "english": "Learn: A paragraph develops one main idea. A topic sentence introduces that idea. Supporting sentences add related details. A closing sentence can bring the idea together.",
+          "filipino": "Alamin: Naglilinang ng isang pangunahing ideya ang talata. Ipinapakilala ito ng paksang pangungusap. Nagbibigay ng kaugnay na detalye ang mga sumusuportang pangungusap. Maaaring ibuod ng pangwakas ang ideya.",
+          "scene": 2
+        },
+        {
+          "english": "Example: Our reading corner is inviting. Soft mats cover the floor. Books stand on a low shelf. This cozy space encourages us to read. Each sentence supports the opening idea.",
+          "filipino": "Halimbawa: Kaaya-aya ang aming sulok-basa. May malambot na banig sa sahig. Nasa mababang estante ang mga aklat. Nahihikayat kaming magbasa rito. Sinusuportahan ng mga detalye ang unang ideya.",
+          "scene": 5
+        },
+        {
+          "english": "Practice: Which sentence belongs in a paragraph about a clean playground: Children place wrappers in bins, or My cousin collects stamps? Explain why. Add one more relevant sentence.",
+          "filipino": "Magsanay: Alin ang kaugnay ng talata tungkol sa malinis na palaruan: Itinatapon ng mga bata sa basurahan ang balot, o Nangongolekta ng selyo ang pinsan ko? Ipaliwanag at magdagdag ng kaugnay na pangungusap.",
+          "scene": 8
+        },
+        {
+          "english": "Check: The sentence about wrappers supports playground cleanliness. Stamp collecting introduces a different topic. Write a short paragraph with one main idea and two supporting details.",
+          "filipino": "Suriin: Ang pangungusap tungkol sa balot ang sumusuporta sa kalinisan ng palaruan. Ibang paksa ang selyo. Sumulat ng maikling talata na may pangunahing ideya at dalawang sumusuportang detalye.",
+          "scene": 11
+        }
+      ],
+      "source": {
+        "title": "English 4 — Q1 Modules 1–7",
+        "url": "https://lrmds.deped.gov.ph/detail/20951",
+        "portal_id": 20951,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 1",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20951",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "5f7e51e6-fc06-56b0-98a0-09a9d297c9a3",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 4: Choose the right dictionary meaning",
+    "grade_level": 4,
+    "learning_level": "developing",
+    "summary": "English · Quarter 1, Module 2. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Choose the right dictionary meaning",
+      "cover_scene": 3,
+      "pages": [
+        {
+          "english": "Learn: A dictionary entry can have more than one meaning. Read the whole sentence to decide which meaning fits. Check the word’s use as well as its spelling.",
+          "filipino": "Alamin: Maaaring magkaroon ng higit sa isang kahulugan ang lahok sa diksyunaryo. Basahin ang buong pangungusap upang piliin ang angkop na kahulugan. Suriin ang gamit ng salita, hindi ang baybay lamang.",
+          "scene": 3
+        },
+        {
+          "english": "Example entry: Bank can mean land beside a river or a place for financial services. In The boat reached the river bank, the surrounding words point to land beside water.",
+          "filipino": "Halimbawang lahok: Ang bank ay maaaring pampang o lugar para sa serbisyong pinansiyal. Sa The boat reached the river bank, ipinahihiwatig ng ibang salita na pampang ang tinutukoy.",
+          "scene": 6
+        },
+        {
+          "english": "Practice entry: Light can mean illumination or not heavy. Which meaning fits a light backpack? Which fits Turn on the light? Give the clue in each phrase.",
+          "filipino": "Magsanay: Maaaring liwanag o hindi mabigat ang light. Alin ang kahulugan sa a light backpack? Alin sa Turn on the light? Tukuyin ang pahiwatig sa bawat isa.",
+          "scene": 9
+        },
+        {
+          "english": "Check: A light backpack is not heavy. Turn on the light refers to illumination. Use a classroom dictionary to find another word with two meanings and write two examples.",
+          "filipino": "Suriin: Hindi mabigat ang a light backpack. Liwanag ang tinutukoy sa Turn on the light. Humanap sa diksyunaryo ng isa pang salitang may dalawang kahulugan at gumawa ng halimbawa.",
+          "scene": 12
+        }
+      ],
+      "source": {
+        "title": "English 4 — Q1 Modules 1–7",
+        "url": "https://lrmds.deped.gov.ph/detail/20951",
+        "portal_id": 20951,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 2",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20951",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "6f59e331-6226-5c37-903c-c649fc82495e",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 4: Meaning clues in prefixes and suffixes",
+    "grade_level": 4,
+    "learning_level": "developing",
+    "summary": "English · Quarter 1, Module 5. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Meaning clues in prefixes and suffixes",
+      "cover_scene": 4,
+      "pages": [
+        {
+          "english": "Learn: A prefix comes before a base word; a suffix comes after it. These parts can give meaning clues. Check the complete word in context because meanings can vary.",
+          "filipino": "Alamin: Nasa unahan ng batayang salita ang prefix at nasa hulihan ang suffix. Nakapagbibigay ng pahiwatig ang mga ito. Suriin pa rin ang buong salita sa pangungusap dahil maaaring mag-iba ang kahulugan.",
+          "scene": 4
+        },
+        {
+          "english": "Example: Reread means read again; re- gives the clue again. Careless means lacking care; -less gives the clue without. Read: Reread the directions so you avoid careless mistakes.",
+          "filipino": "Halimbawa: Muling pagbasa ang reread; again ang pahiwatig ng re-. Kawalan ng pag-iingat ang careless; without ang pahiwatig ng -less. Basahin muli ang panuto upang maiwasan ang kapabayaan.",
+          "scene": 7
+        },
+        {
+          "english": "Practice: Use the clues to explain rebuild and hopeless. Then decide which word fits: The team will __ the damaged model. Explain the role of the added word part.",
+          "filipino": "Magsanay: Gamitin ang pahiwatig upang ipaliwanag ang rebuild at hopeless. Alin ang angkop: The team will __ the damaged model? Ipaliwanag ang ambag ng idinagdag na bahagi.",
+          "scene": 10
+        },
+        {
+          "english": "Check: Rebuild means build again; hopeless means without hope. Rebuild fits the sentence about the model. Find another familiar word containing re- or -less and discuss its meaning.",
+          "filipino": "Suriin: Muling paggawa ang rebuild at kawalan ng pag-asa ang hopeless. Rebuild ang angkop sa pangungusap. Humanap ng pamilyar na salitang may re- o -less at talakayin ang kahulugan.",
+          "scene": 13
+        }
+      ],
+      "source": {
+        "title": "English 4 — Q1 Modules 1–7",
+        "url": "https://lrmds.deped.gov.ph/detail/20951",
+        "portal_id": 20951,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 5",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20951",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "6ebd4e25-969c-5f5e-8f1c-69a90ae6d68b",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 4: Tauhan, tagpuan, at mga pangyayari",
+    "grade_level": 4,
+    "learning_level": "developing",
+    "summary": "Filipino · Quarter 1, Module 7. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Tauhan, tagpuan, at mga pangyayari",
+      "cover_scene": 5,
+      "pages": [
+        {
+          "english": "Learn: Characters take part in a story. Setting tells where and when it happens. Events show what the characters do and what changes as the story develops.",
+          "filipino": "Alamin: Kumikilos sa kuwento ang mga tauhan. Sinasabi ng tagpuan kung saan at kailan ito naganap. Ipinakikita ng mga pangyayari ang ginawa ng tauhan at pagbabagong naganap.",
+          "scene": 5
+        },
+        {
+          "english": "Story: One rainy afternoon, Iya noticed water dripping onto books in the school library. She called the librarian. Together, they moved the books to a dry shelf before more pages became wet.",
+          "filipino": "Kuwento: Isang maulang hapon, napansin ni Iya ang tubig na tumutulo sa mga aklat sa silid-aklatan. Tinawag niya ang tagapangasiwa. Inilipat nila ang mga aklat sa tuyong estante upang hindi mabasa ang iba pang pahina.",
+          "scene": 8
+        },
+        {
+          "english": "Practice: Name the characters. Identify both the place and time. What problem did they face? What action helped solve it? Base each answer on the story.",
+          "filipino": "Magsanay: Pangalanan ang mga tauhan. Tukuyin ang lugar at panahon. Ano ang naging suliranin? Anong kilos ang nakatulong sa paglutas nito? Ibatay sa kuwento ang bawat sagot.",
+          "scene": 11
+        },
+        {
+          "english": "Check: Iya and the librarian act in a school library on a rainy afternoon. The leaking water threatens the books. Moving them to a dry shelf helps protect them.",
+          "filipino": "Suriin: Tauhan sina Iya at ang tagapangasiwa. Sa silid-aklatan, isang maulang hapon, naganap ang kuwento. Iniligtas nila sa tumutulong tubig ang mga aklat sa pamamagitan ng paglipat sa tuyong estante.",
+          "scene": 14
+        }
+      ],
+      "source": {
+        "title": "Filipino 4 — Q1 Modules 1–17",
+        "url": "https://lrmds.deped.gov.ph/detail/21177",
+        "portal_id": 21177,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 7",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/21177",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "da189b0b-e698-5101-9c50-cbb45be13824",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 4: Panghalip na pamalit sa pangalan",
+    "grade_level": 4,
+    "learning_level": "developing",
+    "summary": "Filipino · Quarter 1, Module 14. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Panghalip na pamalit sa pangalan",
+      "cover_scene": 6,
+      "pages": [
+        {
+          "english": "Learn: Personal pronouns can replace names of people. The replacement must clearly refer to the intended person or group. Avoid a pronoun if readers cannot tell whom it means.",
+          "filipino": "Alamin: Maaaring ipalit ang panghalip panao sa ngalan ng tao. Dapat malinaw kung sino ang tinutukoy nito. Iwasan ang panghalip kung hindi mauunawaan ng mambabasa ang pinatutungkulan.",
+          "scene": 6
+        },
+        {
+          "english": "Example: Si Lara ay may dalang binhi. Siya ay magtatanim. Siya clearly refers to Lara. Sina Lara at Ben ay nagtanim. Sila ay nagdilig. Sila refers to both children.",
+          "filipino": "Halimbawa: Si Lara ay may dalang binhi. Siya ay magtatanim. Si Lara ang tinutukoy ng siya. Sina Lara at Ben ay nagtanim. Sila ay nagdilig. Parehong bata ang tinutukoy ng sila.",
+          "scene": 9
+        },
+        {
+          "english": "Practice: Replace the repeated names: Si Omar ay nagwalis. Si Omar ay namulot ng dahon. Then replace the group name: Sina Pia at Lani ay nagbasa. Sina Pia at Lani ay nagbahagi.",
+          "filipino": "Magsanay: Palitan ang paulit-ulit na pangalan: Si Omar ay nagwalis. Si Omar ay namulot ng dahon. Palitan din ang pangkat: Sina Pia at Lani ay nagbasa. Sina Pia at Lani ay nagbahagi.",
+          "scene": 12
+        },
+        {
+          "english": "Check: Use siya for Omar and sila for Pia and Lani in the second sentences. Read both versions aloud. Explain how pronouns reduce repetition while keeping meaning clear.",
+          "filipino": "Suriin: Siya ang ipalit kay Omar at sila kina Pia at Lani sa mga ikalawang pangungusap. Basahin ang dating at bagong anyo. Ipaliwanag kung paano nabawasan ang pag-uulit nang malinaw pa rin ang diwa.",
+          "scene": 15
+        }
+      ],
+      "source": {
+        "title": "Filipino 4 — Q1 Modules 1–17",
+        "url": "https://lrmds.deped.gov.ph/detail/21177",
+        "portal_id": 21177,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 14",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/21177",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "8e5ba101-a794-5d5d-aad6-25b0a045cb89",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 4: Magpahayag ng opinyon at reaksiyon",
+    "grade_level": 4,
+    "learning_level": "developing",
+    "summary": "Filipino · Quarter 1, Module 11. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Magpahayag ng opinyon at reaksiyon",
+      "cover_scene": 7,
+      "pages": [
+        {
+          "english": "Learn: An opinion expresses a view or preference. A reaction responds to something you read, hear, or experience. Explain your reason and respect people who think differently.",
+          "filipino": "Alamin: Nagpapahayag ng pananaw o kagustuhan ang opinyon. Tugon sa nabasa, narinig, o naranasan ang reaksiyon. Ipaliwanag ang dahilan at igalang ang naiibang pananaw ng iba.",
+          "scene": 7
+        },
+        {
+          "english": "Example: I think the new reading corner is useful because children can borrow books during break. The view is that it is useful; the borrowing opportunity gives a reason.",
+          "filipino": "Halimbawa: Sa palagay ko, kapaki-pakinabang ang bagong sulok-basa dahil nakakahiram ng aklat ang mga bata tuwing pahinga. Pananaw ang pagiging kapaki-pakinabang; dahilan ang pagkakataong makahiram.",
+          "scene": 10
+        },
+        {
+          "english": "Practice: Your class will choose between quiet reading and drawing for a free activity. State your preference and a reason. How could you respond respectfully to a different choice?",
+          "filipino": "Magsanay: Pipili ang klase sa tahimik na pagbabasa o pagguhit bilang libreng gawain. Sabihin ang napili at dahilan. Paano ka magalang na tutugon sa ibang napili ng kaklase?",
+          "scene": 13
+        },
+        {
+          "english": "Check: Answers may differ. A complete response states a preference and explains it. You might say I understand your choice, but I prefer reading because I enjoy stories.",
+          "filipino": "Suriin: Maaaring magkakaiba ang sagot. Dapat may pagpili at paliwanag. Halimbawa: Nauunawaan ko ang iyong napili, ngunit mas gusto kong magbasa dahil nasisiyahan ako sa mga kuwento.",
+          "scene": 0
+        }
+      ],
+      "source": {
+        "title": "Filipino 4 — Q1 Modules 1–17",
+        "url": "https://lrmds.deped.gov.ph/detail/21177",
+        "portal_id": 21177,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 11",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/21177",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "84102d12-eb58-5473-b334-78c806d7bb87",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 5: Unlock compound words with context",
+    "grade_level": 5,
+    "learning_level": "independent",
+    "summary": "English · Quarter 1, Module 2. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Unlock compound words with context",
+      "cover_scene": 8,
+      "pages": [
+        {
+          "english": "Learn: A compound word combines words into a new word or expression. Its parts and the surrounding sentence can help you infer meaning. Check whether your inference makes sense.",
+          "filipino": "Alamin: Pinagsasama sa compound word ang mga salita upang makabuo ng bagong salita o pahayag. Nakakatulong sa pag-unawa ang mga bahagi at pangungusap. Suriin kung makatuwiran ang iyong hinuha.",
+          "scene": 8
+        },
+        {
+          "english": "Example: Lina wore a raincoat to keep her clothes dry during the shower. Rain and coat, together with keep her clothes dry, suggest a coat that protects against rain.",
+          "filipino": "Halimbawa: Nagsuot si Lina ng raincoat upang hindi mabasa ang damit sa ulan. Ipinahihiwatig ng rain, coat, at hindi mabasa ang damit na pananggalang ito sa ulan.",
+          "scene": 11
+        },
+        {
+          "english": "Practice: The children used a footbridge to cross the stream without getting wet. Infer footbridge. Which word parts and sentence clues support your interpretation?",
+          "filipino": "Magsanay: Gumamit ang mga bata ng footbridge upang makatawid sa sapa nang hindi nababasa. Ano ang footbridge? Aling mga bahagi ng salita at pahiwatig ang batayan mo?",
+          "scene": 14
+        },
+        {
+          "english": "Check: A footbridge is a bridge for people walking. Foot suggests walking here, and crossing the stream supports bridge. Explain another compound, such as notebook, using a complete sentence.",
+          "filipino": "Suriin: Tulay na tawiran ng mga naglalakad ang footbridge. Nagbibigay ng pahiwatig ang foot at pagtawid sa sapa. Ipaliwanag sa pangungusap ang isa pang compound, gaya ng notebook.",
+          "scene": 1
+        }
+      ],
+      "source": {
+        "title": "English 5 — Q1 Modules 1–11",
+        "url": "https://lrmds.deped.gov.ph/detail/20852",
+        "portal_id": 20852,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 2",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20852",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "f37e912d-32c4-5603-8124-75ed09a064ae",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 5: Connect causes and effects with because",
+    "grade_level": 5,
+    "learning_level": "independent",
+    "summary": "English · Quarter 1, Module 6. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Connect causes and effects with because",
+      "cover_scene": 9,
+      "pages": [
+        {
+          "english": "Learn: A cause explains why something happens; an effect tells what happens. Because can connect an independent clause with a dependent clause that gives a reason.",
+          "filipino": "Alamin: Ipinapaliwanag ng sanhi kung bakit nangyari ang isang bagay; resulta naman ang bunga. Maaaring mag-ugnay ang because ng sugnay na makapag-iisa at di-makapag-iisang sugnay na nagbibigay-dahilan.",
+          "scene": 9
+        },
+        {
+          "english": "Example: The path became slippery because rain covered it with water. The slippery path is the effect; rain covering it is the cause. Because rain fell is not a complete sentence alone.",
+          "filipino": "Halimbawa: Naging madulas ang daan dahil nabasa ito ng ulan. Bunga ang madulas na daan; sanhi ang pagkabasa nito. Hindi buong pangungusap kapag nag-iisa ang Because rain fell.",
+          "scene": 12
+        },
+        {
+          "english": "Practice: Join these ideas with because: The seedlings stayed healthy. The pupils watered them regularly. Identify the cause and effect. Keep the meaning logical.",
+          "filipino": "Magsanay: Pag-ugnayin gamit ang because: The seedlings stayed healthy. The pupils watered them regularly. Tukuyin ang sanhi at bunga. Tiyaking makatuwiran ang ugnayan.",
+          "scene": 15
+        },
+        {
+          "english": "Check: The seedlings stayed healthy because the pupils watered them regularly. Regular watering is the cause; healthy seedlings are the effect. Write a new because sentence about classroom preparation.",
+          "filipino": "Suriin: The seedlings stayed healthy because the pupils watered them regularly. Sanhi ang regular na pagdidilig at bunga ang malusog na punla. Bumuo ng bagong pangungusap na may because tungkol sa paghahanda sa klase.",
+          "scene": 2
+        }
+      ],
+      "source": {
+        "title": "English 5 — Q1 Modules 1–11",
+        "url": "https://lrmds.deped.gov.ph/detail/20852",
+        "portal_id": 20852,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 6",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20852",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "513606a3-f55a-5990-8d5b-bdd1d6bc6b0e",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 5: Choose a conjunction that fits",
+    "grade_level": 5,
+    "learning_level": "independent",
+    "summary": "English · Quarter 1, Module 10. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Choose a conjunction that fits",
+      "cover_scene": 10,
+      "pages": [
+        {
+          "english": "Learn: Conjunctions connect words or ideas. And adds information, but shows contrast, and or offers a choice. Choose a connector according to the relationship you want to express.",
+          "filipino": "Alamin: Nag-uugnay ng salita o ideya ang pangatnig. Nagdaragdag ang and, nagpapakita ng pagsalungat ang but, at nagbibigay-pagpipilian ang or. Piliin ito ayon sa nais na ugnayan.",
+          "scene": 10
+        },
+        {
+          "english": "Example: We packed paper and crayons. I wanted to paint, but the paint had dried. We can draw inside or sketch outside. Each connector expresses a different relationship.",
+          "filipino": "Halimbawa: Nagdala kami ng papel at krayola. Nais kong magpinta, ngunit tuyo na ang pintura. Maaari kaming gumuhit sa loob o labas. Magkakaiba ang ugnayang ipinapakita ng pangatnig.",
+          "scene": 13
+        },
+        {
+          "english": "Practice: Choose and, but, or or: The bag is small, __ it holds many books. Would you like a story __ a poem? Explain each choice.",
+          "filipino": "Magsanay: Piliin ang and, but, o or: The bag is small, __ it holds many books. Would you like a story __ a poem? Ipaliwanag ang napiling pangatnig.",
+          "scene": 0
+        },
+        {
+          "english": "Check: But fits the surprising contrast about the bag. Or fits the choice between a story and a poem. Join two related ideas of your own using and.",
+          "filipino": "Suriin: But ang angkop sa magkasalungat na ideya tungkol sa bag. Or ang angkop sa pagpili sa kuwento at tula. Pag-ugnayin gamit ang and ang dalawang kaugnay na ideya.",
+          "scene": 3
+        }
+      ],
+      "source": {
+        "title": "English 5 — Q1 Modules 1–11",
+        "url": "https://lrmds.deped.gov.ph/detail/20852",
+        "portal_id": 20852,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 10",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20852",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "b451d25e-e33c-506e-be3a-c43dc31cd18c",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 5: Piliin ang mahahalagang pangyayari",
+    "grade_level": 5,
+    "learning_level": "independent",
+    "summary": "Filipino · Quarter 2, Module 1. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Piliin ang mahahalagang pangyayari",
+      "cover_scene": 11,
+      "pages": [
+        {
+          "english": "Learn: Important events explain the main experience in a diary or account. A summary keeps these events in order and leaves out details that do not affect the main experience.",
+          "filipino": "Alamin: Ipinapaliwanag ng mahahalagang pangyayari ang pangunahing karanasan sa talaarawan o salaysay. Pinananatili ng buod ang ayos ng mga ito at inaalis ang detalyeng hindi kailangan sa pangunahing diwa.",
+          "scene": 11
+        },
+        {
+          "english": "Diary: Monday. Our group prepared seedlings for the school garden. The seed tray cracked, so we transferred the seedlings to reused containers. By noon, every seedling had a safe place. My pencil was blue.",
+          "filipino": "Talaarawan: Lunes. Naghanda ang aming pangkat ng punla para sa hardin. Nabasag ang tray kaya inilipat namin ang mga punla sa lumang lalagyan. Pagsapit ng tanghali, ligtas na ang lahat. Asul ang aking lapis.",
+          "scene": 14
+        },
+        {
+          "english": "Practice: Choose three events needed to summarize the diary. Is the pencil color essential? Explain how the group responded to its problem.",
+          "filipino": "Magsanay: Pumili ng tatlong pangyayaring kailangan sa buod. Mahalaga ba ang kulay ng lapis? Ipaliwanag kung paano tumugon ang pangkat sa suliranin.",
+          "scene": 1
+        },
+        {
+          "english": "Check: The group prepared seedlings, found a broken tray, and transferred them safely. Pencil color can be omitted. Retell the experience in two sentences without inventing new events.",
+          "filipino": "Suriin: Naghanda ng punla ang pangkat, nasira ang tray, at ligtas nilang nailipat ang mga punla. Maaaring alisin ang kulay ng lapis. Ibuod sa dalawang pangungusap nang walang idinadagdag na pangyayari.",
+          "scene": 4
+        }
+      ],
+      "source": {
+        "title": "Filipino 5 — Q2 Modules 1–8",
+        "url": "https://lrmds.deped.gov.ph/detail/20912",
+        "portal_id": 20912,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 2, Module 1",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20912",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 2
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "37e9e14e-8c38-5e58-9251-b44db056777c",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 5: Paksa, layunin, at angkop na pamagat",
+    "grade_level": 5,
+    "learning_level": "independent",
+    "summary": "Filipino · Quarter 2, Module 3. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Paksa, layunin, at angkop na pamagat",
+      "cover_scene": 12,
+      "pages": [
+        {
+          "english": "Learn: Topic tells what a text is about. Purpose tells why it was made. A suitable title reflects the main topic rather than just one small detail.",
+          "filipino": "Alamin: Sinasabi ng paksa kung tungkol saan ang teksto. Ipinakikita ng layunin kung bakit ito isinulat. Sumasalamin sa pangunahing paksa ang angkop na pamagat, hindi sa isang maliit na detalye lamang.",
+          "scene": 12
+        },
+        {
+          "english": "Text: Wash a reusable bottle after each use. Scrub it with soap and clean water. Rinse well and let it dry. Keeping it clean helps make it ready for the next day.",
+          "filipino": "Teksto: Hugasan ang muling ginagamit na bote pagkatapos gamitin. Kuskusin gamit ang sabon at malinis na tubig. Banlawan at patuyuin. Sa paglilinis, naihahanda ito para sa susunod na araw.",
+          "scene": 15
+        },
+        {
+          "english": "Practice: What is the topic? Is the purpose to give instructions or tell a fantasy story? Which title fits better: A Red Bottle or Cleaning a Reusable Bottle?",
+          "filipino": "Magsanay: Ano ang paksa? Layunin bang magbigay ng panuto o magsalaysay ng pantasya? Aling pamagat ang mas angkop: Pulang Bote o Paglilinis ng Muling Ginagamit na Bote?",
+          "scene": 2
+        },
+        {
+          "english": "Check: The topic is cleaning a reusable bottle; the purpose is to instruct. The second title covers the whole text. Bottle color was never stated and is not the focus.",
+          "filipino": "Suriin: Paglilinis ng muling ginagamit na bote ang paksa at pagbibigay ng panuto ang layunin. Ikalawang pamagat ang angkop. Hindi binanggit ang kulay at hindi iyon ang pokus.",
+          "scene": 5
+        }
+      ],
+      "source": {
+        "title": "Filipino 5 — Q2 Modules 1–8",
+        "url": "https://lrmds.deped.gov.ph/detail/20912",
+        "portal_id": 20912,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 2, Module 3",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20912",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 2
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "728c381e-3d78-5055-ad19-81958c35e316",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 5: Sumulat ng malinaw na patalastas",
+    "grade_level": 5,
+    "learning_level": "independent",
+    "summary": "Filipino · Quarter 2, Module 8. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Sumulat ng malinaw na patalastas",
+      "cover_scene": 13,
+      "pages": [
+        {
+          "english": "Learn: An announcement gives important information to an audience. Include what, who, when, and where when relevant. A slogan is a short memorable line; it does not replace essential details.",
+          "filipino": "Alamin: Nagbibigay ng mahalagang impormasyon ang patalastas. Isama ang ano, sino, kailan, at saan kung kailangan. Maikling linyang madaling tandaan ang islogan; hindi nito napapalitan ang mahahalagang detalye.",
+          "scene": 13
+        },
+        {
+          "english": "Example: Book-sharing day for Grade 5 will be held Friday at 9 a.m. in Room 5. Bring one book with your guardian’s permission. Slogan: Share a book, share a discovery!",
+          "filipino": "Halimbawa: May araw ng pagbabahagi ng aklat ang Grade 5 sa Biyernes, alas-nuwebe ng umaga, sa Silid 5. Magdala ng isang aklat nang may pahintulot ng tagapag-alaga. Islogan: Aklat na ibahagi, tuklas ay lumalago!",
+          "scene": 0
+        },
+        {
+          "english": "Practice: Improve this notice: Join our clean-up! What details would readers still need? Draft an announcement for an imaginary class activity and add one short slogan.",
+          "filipino": "Magsanay: Pagandahin ang paunawang ito: Sumali sa paglilinis! Anong detalye ang kulang? Gumawa ng patalastas para sa kathang-isip na gawain ng klase at magdagdag ng maikling islogan.",
+          "scene": 3
+        },
+        {
+          "english": "Check: Readers need the intended participants, date, time, place, and instructions. Your invented activity may differ from others. Check that all details agree and the slogan fits the activity.",
+          "filipino": "Suriin: Kailangan ang mga sasali, petsa, oras, lugar, at panuto. Maaaring iba ang iyong kathang-isip na gawain. Tiyaking nagtutugma ang detalye at kaugnay ng gawain ang islogan.",
+          "scene": 6
+        }
+      ],
+      "source": {
+        "title": "Filipino 5 — Q2 Modules 1–8",
+        "url": "https://lrmds.deped.gov.ph/detail/20912",
+        "portal_id": 20912,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 2, Module 8",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20912",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 2
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "8dd95691-6318-58ce-831f-e2b84590837c",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 6: Reality and fantasy in stories",
+    "grade_level": 6,
+    "learning_level": "independent",
+    "summary": "English · Quarter 1, Module 1. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Reality and fantasy in stories",
+      "cover_scene": 14,
+      "pages": [
+        {
+          "english": "Learn: A realistic event could happen in the real world. A fantasy event depends on impossible or magical features. A made-up story can contain both realistic and fantasy events.",
+          "filipino": "Alamin: Maaaring mangyari sa tunay na mundo ang makatotohanang pangyayari. Umaasa sa mahika o imposibleng katangian ang pantasya. Maaaring may makatotohanan at pantasyang pangyayari sa kathang-isip na kuwento.",
+          "scene": 14
+        },
+        {
+          "english": "Example: Mira planted a seed in a pot is realistic. The seed grew into a staircase to the moon overnight is fantasy. A character feeling surprised is realistic even inside a fantasy story.",
+          "filipino": "Halimbawa: Makatotohanan ang pagtatanim ni Mira ng binhi sa paso. Pantasyang tumubo ito nang magdamag bilang hagdan patungong buwan. Makatotohanan pa rin ang pagkagulat ng tauhan sa isang pantasyang kuwento.",
+          "scene": 1
+        },
+        {
+          "english": "Practice: Classify each event: A child repairs a kite. The kite whispers a secret. Wind lifts the kite. Explain which detail makes an event fantasy rather than merely unusual.",
+          "filipino": "Magsanay: Uriin: Inayos ng bata ang saranggola. Bumulong ng lihim ang saranggola. Pinalipad ng hangin ang saranggola. Ipaliwanag kung anong detalye ang pantasya at hindi basta kakaiba lamang.",
+          "scene": 4
+        },
+        {
+          "english": "Check: Repairing and flying a kite are realistic. A kite whispering a secret is fantasy because ordinary kites cannot speak. Write a short scene containing one event of each kind.",
+          "filipino": "Suriin: Makatotohanan ang pag-aayos at paglipad ng saranggola. Pantasyang bumulong ito dahil hindi nakapagsasalita ang karaniwang saranggola. Sumulat ng tagpong may tig-isang uri ng pangyayari.",
+          "scene": 7
+        }
+      ],
+      "source": {
+        "title": "English 6 — Q1 Modules 1–3",
+        "url": "https://lrmds.deped.gov.ph/detail/20875",
+        "portal_id": 20875,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 1",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20875",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "c1a382e1-7cac-559f-b7dc-dac768bf7935",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 6: Read the message in a poster",
+    "grade_level": 6,
+    "learning_level": "independent",
+    "summary": "English · Quarter 1, Module 2. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Read the message in a poster",
+      "cover_scene": 15,
+      "pages": [
+        {
+          "english": "Learn: A visual message combines elements such as words, pictures, color, and size. Ask who made it, whom it addresses, and what it wants the viewer to understand or do.",
+          "filipino": "Alamin: Pinagsasama ng biswal na mensahe ang salita, larawan, kulay, at laki. Alamin kung sino ang gumawa, sino ang kausap, at ano ang nais nitong ipaunawa o ipagawa.",
+          "scene": 15
+        },
+        {
+          "english": "Imagine this poster: a drawing of a tap above a large message, TURN IT OFF, followed by Save water after washing. The picture and smaller words clarify what it refers to.",
+          "filipino": "Isipin ang poster: may guhit ng gripo sa ibabaw ng malaking PAHINTOIN ANG AGOS at mas maliit na Magtipid sa tubig matapos maghugas. Nililinaw ng larawan at maliliit na salita ang mensahe.",
+          "scene": 2
+        },
+        {
+          "english": "Practice: What action does the imagined poster encourage? What does the tap drawing add? Would the large words alone be equally clear? Explain using two poster elements.",
+          "filipino": "Magsanay: Anong kilos ang hinihikayat ng inilarawang poster? Ano ang naidagdag ng larawan ng gripo? Kasinglinaw ba kung malaking salita lamang ang nakalagay? Gumamit ng dalawang elemento sa paliwanag.",
+          "scene": 5
+        },
+        {
+          "english": "Check: It encourages turning off a tap after washing. The image identifies the object, and the smaller message explains why. Sketch your own classroom poster and explain how its elements work together.",
+          "filipino": "Suriin: Hinihikayat nitong isara ang gripo matapos maghugas. Tinutukoy ng larawan ang bagay at ipinapaliwanag ng maliit na mensahe ang dahilan. Gumuhit ng sariling poster at ipaliwanag ang ugnayan ng mga elemento.",
+          "scene": 8
+        }
+      ],
+      "source": {
+        "title": "English 6 — Q1 Modules 1–3",
+        "url": "https://lrmds.deped.gov.ph/detail/20875",
+        "portal_id": 20875,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 2",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20875",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "8f918e19-0926-5ed6-b5ca-48067ff69ede",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "English 6: Read with pauses and expression",
+    "grade_level": 6,
+    "learning_level": "independent",
+    "summary": "English · Quarter 1, Module 3; fluency topic. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Read with pauses and expression",
+      "cover_scene": 0,
+      "pages": [
+        {
+          "english": "Learn: Fluent reading combines accurate words, a suitable pace, and expression that fits meaning. Punctuation helps guide pauses and tone. Understanding matters more than racing through a passage.",
+          "filipino": "Alamin: Pinagsasama ng matatas na pagbasa ang wastong salita, angkop na bilis, at damdamin. Gabay ang bantas sa paghinto at tono. Mas mahalaga ang pag-unawa kaysa mabilisang pagbasa.",
+          "scene": 0
+        },
+        {
+          "english": "Read: The classroom grew quiet. “Is everyone ready?” asked Tess. A soft knock came from the door. Her brother entered with the missing poster. “You found it!” she said. The group smiled and began their presentation.",
+          "filipino": "Basahin: Tumahimik ang silid. “Handa na ba ang lahat?” tanong ni Tess. May marahang kumatok. Pumasok ang kaniyang kapatid, dala ang nawawalang poster. “Nahanap mo!” sabi niya. Ngumiti ang pangkat at sinimulan ang presentasyon.",
+          "scene": 3
+        },
+        {
+          "english": "Practice: Read the passage aloud. Pause at sentence endings. Let the question sound like a question and the excited reply express relief. What problem does the brother help resolve?",
+          "filipino": "Magsanay: Basahin nang malakas ang talata. Huminto sa dulo ng pangungusap. Iangkop sa tanong ang tono at ipakita ang tuwa sa sagot. Anong suliranin ang natulungan ng kapatid na malutas?",
+          "scene": 6
+        },
+        {
+          "english": "Check: The poster was missing and the brother brought it. Ask a partner whether your words were clear and your pace understandable. Reread a difficult phrase slowly, then read it naturally.",
+          "filipino": "Suriin: Nawawala ang poster at dinala ito ng kapatid. Itanong sa kapareha kung malinaw ang mga salita at angkop ang bilis. Dahan-dahang basahin ang mahirap na parirala, saka basahin nang natural.",
+          "scene": 9
+        }
+      ],
+      "source": {
+        "title": "English 6 — Q1 Modules 1–3",
+        "url": "https://lrmds.deped.gov.ph/detail/20875",
+        "portal_id": 20875,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 3; fluency topic",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "English",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20875",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "6a7db962-13df-5da0-9244-ef25df829817",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 6: Unawain ang sawikain sa konteksto",
+    "grade_level": 6,
+    "learning_level": "independent",
+    "summary": "Filipino · Quarter 1, Module 5. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Unawain ang sawikain sa konteksto",
+      "cover_scene": 1,
+      "pages": [
+        {
+          "english": "Learn: An idiom has a meaning that may differ from its literal words. Read the whole situation and test whether a literal interpretation makes sense.",
+          "filipino": "Alamin: May kahulugang naiiba sa literal na mga salita ang sawikain. Basahin ang buong sitwasyon at suriin kung makatuwiran ang literal na pagpapakahulugan.",
+          "scene": 1
+        },
+        {
+          "english": "Example: Bukas-palad si Alon; ibinahagi niya ang kaniyang baon sa kaklaseng walang pagkain. Bukas-palad means generous here, rather than merely holding a hand open.",
+          "filipino": "Halimbawa: Bukas-palad si Alon; ibinahagi niya ang kaniyang baon sa kaklaseng walang pagkain. Mapagbigay ang kahulugan ng bukas-palad sa pangungusap, hindi basta nakabukas ang kamay.",
+          "scene": 4
+        },
+        {
+          "english": "Practice: Magaan ang loob ni Mara sa bagong kaklase dahil magalang at maaasahan ito. Does magaan ang loob describe body weight or a comfortable, positive feeling? Identify the clues.",
+          "filipino": "Magsanay: Magaan ang loob ni Mara sa bagong kaklase dahil magalang at maaasahan ito. Timbang ba ng katawan o mabuting pakiramdam ang tinutukoy? Tukuyin ang mga pahiwatig.",
+          "scene": 7
+        },
+        {
+          "english": "Check: It describes feeling comfortable and positively disposed toward someone. Magalang and maaasahan provide context. Use bukas-palad in an original situation and explain its figurative meaning.",
+          "filipino": "Suriin: Panatag at mabuting pakiramdam sa isang tao ang tinutukoy. Pahiwatig ang magalang at maaasahan. Gamitin sa sariling sitwasyon ang bukas-palad at ipaliwanag ang di-literal na kahulugan nito.",
+          "scene": 10
+        }
+      ],
+      "source": {
+        "title": "Filipino 6 — Q1 Modules 1–15",
+        "url": "https://lrmds.deped.gov.ph/detail/20873",
+        "portal_id": 20873,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 5",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20873",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "b6a2e108-95de-5112-82f3-8aafe6b1769b",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 6: Hinuha na may sapat na batayan",
+    "grade_level": 6,
+    "learning_level": "independent",
+    "summary": "Filipino · Quarter 1, Module 7. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Hinuha na may sapat na batayan",
+      "cover_scene": 2,
+      "pages": [
+        {
+          "english": "Learn: An inference connects clues in a text with what you reasonably know. It is more than a guess. Distinguish what the text states from what you conclude.",
+          "filipino": "Alamin: Pinag-uugnay sa hinuha ang pahiwatig ng teksto at makatuwirang kaalaman. Hindi ito basta hula. Ihiwalay ang tahasang sinabi sa binuong palagay.",
+          "scene": 2
+        },
+        {
+          "english": "Text: Neri looked at the dark clouds. She placed her notebook inside a plastic folder and borrowed an umbrella before leaving. The text never directly states what weather she expects.",
+          "filipino": "Teksto: Tumingin si Neri sa maiitim na ulap. Inilagay niya ang kuwaderno sa plastik na folder at humiram ng payong bago umalis. Hindi tahasang sinabi kung anong panahon ang inaasahan niya.",
+          "scene": 5
+        },
+        {
+          "english": "Practice: What weather does Neri probably expect? Name two clues. Is the statement It definitely rained later proven by the passage? Explain the difference between likely and certain.",
+          "filipino": "Magsanay: Anong panahon ang malamang inaasahan ni Neri? Magbigay ng dalawang pahiwatig. Napatunayan bang Tiyak na umulan pagkatapos? Ipaliwanag ang kaibahan ng malamang at tiyak.",
+          "scene": 8
+        },
+        {
+          "english": "Check: She probably expects rain because of the clouds and umbrella. The passage does not confirm later rain. State an inference with its evidence, and acknowledge what remains unknown.",
+          "filipino": "Suriin: Malamang na inaasahan niya ang ulan batay sa ulap at payong. Hindi pinatutunayan ng teksto na umulan pagkatapos. Ilahad ang hinuha, batayan, at hindi pa tiyak na detalye.",
+          "scene": 11
+        }
+      ],
+      "source": {
+        "title": "Filipino 6 — Q1 Modules 1–15",
+        "url": "https://lrmds.deped.gov.ph/detail/20873",
+        "portal_id": 20873,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 7",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20873",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  },
+  {
+    "id": "134afdce-a2e3-529c-9d18-ed846ecc1d23",
+    "owner_id": null,
+    "kind": "lesson",
+    "title": "Filipino 6: Opinyong may dahilan at patunay",
+    "grade_level": 6,
+    "learning_level": "independent",
+    "summary": "Filipino · Quarter 1, Module 13. Four bilingual pages: explanation, example, practice, and feedback. DepEd topic-based adaptation.",
+    "source_label": "LinguaKids original lesson · DepEd topic reference · K–12 archive",
+    "body": {
+      "collection": "deped-topic-lessons-v1",
+      "unit_title": "Opinyong may dahilan at patunay",
+      "cover_scene": 3,
+      "pages": [
+        {
+          "english": "Learn: A supported opinion states a view, gives reasons, and uses relevant evidence. A reason should connect directly to the view. Check claims rather than treating every opinion as established fact.",
+          "filipino": "Alamin: May malinaw na pananaw, dahilan, at kaugnay na patunay ang suportadong opinyon. Dapat tuwirang sumuporta ang dahilan. Suriin ang pahayag sa halip na ituring na katotohanan ang bawat opinyon.",
+          "scene": 3
+        },
+        {
+          "english": "Scenario: A class record shows that eight books were returned damaged this month. Opinion: We should use protective book envelopes because they may reduce damage during transport. The record identifies a problem; it does not prove the proposed solution will work.",
+          "filipino": "Sitwasyon: Ayon sa tala ng klase, walong aklat ang naibalik na sira ngayong buwan. Opinyon: Dapat gumamit ng sobre para sa aklat dahil maaaring mabawasan ang pagkasira sa pagdadala. Ipinakikita ng tala ang problema, ngunit hindi nito napapatunayang gagana ang mungkahi.",
+          "scene": 6
+        },
+        {
+          "english": "Practice: Give one reason supporting or questioning the proposed envelopes. What information would help evaluate the idea? Suggest a respectful response to a classmate with a different opinion.",
+          "filipino": "Magsanay: Magbigay ng dahilang sumusuporta o nagtatanong sa mungkahing sobre. Anong impormasyon ang makatutulong sa pagsusuri? Magmungkahi ng magalang na tugon sa kaklaseng may ibang opinyon.",
+          "scene": 9
+        },
+        {
+          "english": "Check: Answers may differ. A useful response connects its reason to protecting books and asks for evidence, such as results from a small trial. Disagreement can remain respectful and specific.",
+          "filipino": "Suriin: Maaaring magkakaiba ang sagot. Dapat kaugnay ng pangangalaga sa aklat ang dahilan at humingi ng patunay, gaya ng resulta ng munting pagsubok. Maging magalang at tiyak sa hindi pagsang-ayon.",
+          "scene": 12
+        }
+      ],
+      "source": {
+        "title": "Filipino 6 — Q1 Modules 1–15",
+        "url": "https://lrmds.deped.gov.ph/detail/20873",
+        "portal_id": 20873,
+        "publication_year": 2022,
+        "curriculum_version": "K–12 archive · 2022",
+        "locator": "Portal description / listed topics: Quarter 1, Module 13",
+        "publisher": "Department of Education",
+        "checked_at": "2026-11-14",
+        "basis": "portal_topic_reference",
+        "authorship": "Original LinguaKids explanations, examples, practice, and feedback based on the source’s listed topics. Not an official DepEd module reproduction.",
+        "alignment_note": "Archived K–12 topic reference. Current school-year/MATATAG alignment and competency mapping still require educator review."
+      },
+      "teacher_notes": "Allow about 10–15 minutes. Read or model the example, let the learner attempt page 3 before opening page 4, then discuss the feedback. Open-ended answers can vary. Completion records participation, not a scored quiz."
+    },
+    "curriculum": {
+      "learning_area": "Filipino",
+      "version": "K–12 archive · 2022",
+      "reference_title": "DepEd topic reference · LinguaKids adaptation",
+      "source_url": "https://lrmds.deped.gov.ph/detail/20873",
+      "mapping_status": "supplemental_enrichment",
+      "alignment_status": "pending_review",
+      "quarter": 1
+    },
+    "status": "published",
+    "version": 1
+  }
+]

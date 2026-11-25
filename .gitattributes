@@ -2,3 +2,5 @@
 # Preserve its recorded bytes across Windows/Linux restores.
 supabase/migrations/*.sql -text
 supabase/legacy/pre-canonical-history/*.sql -text
+# Frozen audit files have byte-level manifests; preserve the original line endings.
+ml/data/public/** -text
