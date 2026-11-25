@@ -298,15 +298,10 @@ export function Register({ setup = false }) {
     [confirm, setConfirm] = useState("");
   const [registrationParams]=useSearchParams();
   const [registeredEmail, setRegisteredEmail] = useState("");
-  const [gradeFlags,setGradeFlags]=useState([]),[gradeLoading,setGradeLoading]=useState(false),[gradeError,setGradeError]=useState('');
-  async function loadGrades() {
-    setGradeLoading(true);setGradeError('');
-    try {setGradeFlags(repository.registrationGrades?await repository.registrationGrades():grades.map(grade_level=>({grade_level,occupied:false})));}
-    catch {setGradeError('Available grades could not be loaded. Try again.');}
-    finally {setGradeLoading(false);}
-  }
-  useEffect(()=>{if(!setup)loadGrades();},[repository,setup]);
-  useEffect(()=>{const g=Number(registrationParams.get('grade'));if(g>=1&&g<=6)setSelected([g]);},[registrationParams]);
+  useEffect(()=>{
+    const grade = Number(registrationParams.get('grade'));
+    if (grades.includes(grade)) setSelected([grade]);
+  }, [registrationParams]);
 
   async function submit(e) {
     e.preventDefault();
@@ -317,18 +312,15 @@ export function Register({ setup = false }) {
       if (!educatorName) throw new Error("Enter your full name.");
       requireMailbox(registrationEmail);
       if (form.get("new-password") !== form.get("confirm-password")) throw new Error("The passwords do not match.");
-      if (!setup && (selected.length!==1 || gradeLoading || gradeError))
-        throw new Error("Choose one available grade for this educator account.");
-      try {await repository.register({
+      if (!setup && selected.length !== 1)
+        throw new Error("Choose one grade for this educator account.");
+      await repository.register({
         name: educatorName,
         email: registrationEmail,
         password: form.get("new-password"),
         school_name: form.get("school") || "",
         grade_levels: setup ? [] : selected,
-      });} catch(error) {
-        if(/already has an educator account/.test(error?.message||'')){await loadGrades();setSelected([]);}
-        throw error;
-      }
+      });
       setRegisteredEmail(registrationEmail);
       setSent(true);
     });
@@ -339,7 +331,7 @@ export function Register({ setup = false }) {
       subtitle={
         setup
           ? "Only a verified administrator invitation can activate this account."
-          : uiText("Register with your own email and choose one available grade. No administrator approval is needed.")
+          : uiText("Register with your own email and choose the grade you teach.")
       }
     >
       {!setup && locked && child ? (
@@ -373,17 +365,15 @@ export function Register({ setup = false }) {
               <div className="registration-grades">
                 <Field label={uiText("Grade you teach")}>
                   <select aria-label={uiText("Grade you teach")} value={selected[0]||""} required
-                    disabled={gradeLoading || !!gradeError || action.busy}
+                    disabled={action.busy}
                     onChange={e=>setSelected(e.target.value?[Number(e.target.value)]:[])}>
                     <option value="">{uiText("Select a grade")}</option>
-                    {gradeFlags.map(({grade_level,occupied})=><option key={grade_level} value={grade_level} disabled={occupied}>
-                      {uiText(occupied?"Grade {0} — Account already registered":"Grade {0}",[grade_level])}
+                    {grades.map(grade=><option key={grade} value={grade}>
+                      {uiText("Grade {0}",[grade])}
                     </option>)}
                   </select>
                 </Field>
-                {gradeLoading && <small role="status">{uiText("Checking available grades…")}</small>}
-                {gradeError && <><Notice error>{uiText(gradeError)}</Notice><Button type="button" secondary onClick={loadGrades}>{uiText("Try again")}</Button></>}
-                <small>{uiText("One teacher account per grade. Your selected grade is permanent and determines your classroom, learning materials, and student progress.")}</small>
+                <small>{uiText("Teachers can choose the same grade. Each account has its own classroom and student progress.")}</small>
               </div>
             </>
           )}
@@ -408,7 +398,7 @@ export function Register({ setup = false }) {
           <label className="checkbox">
             <input type="checkbox" required />{uiText("I will use student profiles responsibly and review teaching materials before classroom use.")}</label>
           {action.error && <Notice error>{uiText(action.error)}</Notice>}
-          <Button type="submit" disabled={action.busy || (!setup && (gradeLoading || !!gradeError))}>
+          <Button type="submit" disabled={action.busy}>
             {action.busy
               ? uiText("Creating account…")
               : uiText("Create account & verify email")}

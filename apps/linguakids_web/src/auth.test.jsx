@@ -89,7 +89,7 @@ it("blocks an incomplete educator login and registers a teacher with their own e
   fireEvent.change(screen.getByLabelText("Full name"), { target: { value: " Demo Teacher " } });
   fireEvent.change(screen.getByLabelText("Email", { exact: true }), { target: { value: "teacher@school.edu.ph" } });
   expect(screen.queryByLabelText("Teacher invitation code")).toBeNull();
-  expect(screen.getByText(/No administrator approval is needed/)).toBeTruthy();
+  expect(screen.getByText(/Teachers can choose the same grade/)).toBeTruthy();
   fireEvent.change(screen.getByRole("combobox", { name: "Grade you teach" }), { target: { value: "4" } });
   fireEvent.change(screen.getByLabelText("Password", { exact: true }), { target: { value: "fixture-password" } });
   fireEvent.change(screen.getByLabelText("Confirm password"), { target: { value: "fixture-password" } });
@@ -220,15 +220,17 @@ it("uses an active email when verifying educator controls", async () => {
   expect(repo.signIn).toHaveBeenCalledExactlyOnceWith("teacher@school.edu.ph", "fixture-password");
 });
 
-it('offers only one permanent grade and disables already assigned grades',async()=>{
+it('offers every grade 1–6 without checking for existing teachers',async()=>{
   window.location.hash='#/register';const repo=repository();
   repo.registrationGrades=vi.fn(async()=>[1,2,3,4,5,6].map(grade_level=>({grade_level,occupied:grade_level===1})));
   render(<App repository={repo}/>);
-  await screen.findByRole('option',{name:'Grade 1 — Account already registered'});
-  expect(screen.getByRole('option',{name:'Grade 1 — Account already registered'}).disabled).toBe(true);
-  const picker=screen.getByRole('combobox',{name:'Grade you teach'});
-  fireEvent.change(picker,{target:{value:'2'}});fireEvent.change(picker,{target:{value:'4'}});
-  expect(picker.value).toBe('4');expect(screen.queryByRole('option',{name:'All grades'})).toBeNull();
+  const picker=await screen.findByRole('combobox',{name:'Grade you teach'});
+  expect(Array.from(picker.options).slice(1).map(option=>[option.value,option.disabled])).toEqual(
+    [1,2,3,4,5,6].map(grade=>[String(grade),false]),
+  );
+  fireEvent.change(picker,{target:{value:'1'}});
+  expect(picker.value).toBe('1');
+  expect(repo.registrationGrades).not.toHaveBeenCalled();
 });
 it('keeps a failed recovery request editable and does not claim an email was sent',async()=>{
   window.location.hash='#/forgot-password';const repo=repository();

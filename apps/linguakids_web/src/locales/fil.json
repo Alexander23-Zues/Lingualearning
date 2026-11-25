@@ -1011,10 +1011,14 @@
   "The saved dictionary could not be loaded. Try again.": "Hindi mabuksan ang naka-save na dictionary. Subukan muli.",
   "Saved bilingual word list · available offline": "Naka-save na talaan ng salita · available offline",
   "This word is not in the saved word list. Connect online for a broader dictionary lookup.": "Wala sa naka-save na talaan ang salitang ito. Mag-online para makapaghanap sa mas malawak na dictionary.",
-  "Register with your own email and choose one available grade. No administrator approval is needed.": "Mag-register gamit ang sariling email at pumili ng available na baitang. Hindi kailangan ng pag-apruba ng administrator.",
+  "Register with your own email and choose the grade you teach.": "Mag-register gamit ang sariling email at piliin ang baitang na tinuturuan mo.",
+  "Choose one grade for this educator account.": "Pumili ng isang baitang para sa account na ito.",
+  "Teachers can choose the same grade. Each account has its own classroom and student progress.": "Maaaring pumili ang mga guro ng parehong baitang. May sariling klase at tala ng progreso ang bawat account.",
   "Teacher registrations by grade": "Mga rehistradong guro ayon sa baitang",
-  "Teachers register directly for an available grade and verify their email. No administrator approval is needed. Each grade has one regular teacher.": "Direktang nagre-register ang guro sa available na baitang at bineberipika ang email. Hindi kailangan ng pag-apruba ng administrator. Isang regular na guro lamang bawat baitang.",
-  "Available for registration": "Available para sa registration",
+  "Teachers verify their own email. Multiple teachers can register for the same grade.": "Bineberipika ng mga guro ang sarili nilang email. Maaaring magrehistro ang maraming guro sa parehong baitang.",
   "No teacher registered yet.": "Wala pang rehistradong guro.",
-  "This closes the selected login and frees the grade for registration. Student profiles and activity history remain retained; a newly registered teacher does not automatically receive the previous classroom records.": "Isasara nito ang napiling login at magiging available ang baitang para sa registration. Mananatiling naka-save ang student profiles at activity history; hindi awtomatikong makukuha ng bagong guro ang dating classroom records."
+  "This closes the selected login. The account’s student profiles and activity history are kept.": "Isasara nito ang napiling login. Mananatili ang mga profile ng mag-aaral at tala ng aktibidad ng account.",
+  "Close educator account": "Isara ang account ng guro",
+  "Confirm account closure": "Kumpirmahin ang pagsasara ng account",
+  "The selected account was closed. Its student records were retained.": "Isinara ang napiling account. Napanatili ang mga tala ng mag-aaral."
 }

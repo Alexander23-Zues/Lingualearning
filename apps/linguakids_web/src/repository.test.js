@@ -190,21 +190,24 @@ it('rejects placeholder inboxes before any signup or reset request',()=>{
   expect(mock.client.auth.resetPasswordForEmail).not.toHaveBeenCalled();
 });
 
-it('rejects a second teacher for an occupied grade before signing up',async()=>{
+it('sends two distinct teacher signups for the same grade to Auth',async()=>{
   const repo=createRepository(config);
-  mock.client.from.mockImplementationOnce(()=>({select:()=>({order:async()=>({data:[{grade_level:1,occupied:true}]})})}));
-  await expect(repo.register({email:'teacher@school.edu.ph',grade_levels:[1],invitation_code:'a'.repeat(64)})).rejects.toThrow(/already has an educator account/);
-  expect(mock.client.auth.signUp).not.toHaveBeenCalled();
-  expect(()=>repo.register({email:'teacher@school.edu.ph',grade_levels:[1,2]})).toThrow(/Choose one available grade/);
+  for (const email of ['teacher@school.edu.ph', 'another@school.edu.ph']) {
+    await repo.register({email,grade_levels:[1]});
+    expect(mock.client.auth.signUp).toHaveBeenLastCalledWith(expect.objectContaining({
+      email, options:expect.objectContaining({data:expect.objectContaining({grade_levels:[1]})}),
+    }));
+  }
+  expect(mock.client.auth.signUp).toHaveBeenCalledTimes(2);
+  expect(mock.client.from).not.toHaveBeenCalledWith('educator_grade_availability');
 });
 
-it('reports an occupied grade when two registrations race instead of a generic mail error',async()=>{
+it('requires exactly one supported grade before sending a teacher signup',()=>{
   const repo=createRepository(config);
-  const flags=occupied=>({select:()=>({order:async()=>({data:[{grade_level:1,occupied}]})})});
-  mock.client.from.mockImplementationOnce(()=>flags(false)).mockImplementationOnce(()=>flags(true));
-  mock.client.auth.signUp.mockResolvedValueOnce({error:{code:'unexpected_failure',status:500,message:'Database error saving new user'}});
-  await expect(repo.register({email:'teacher@school.edu.ph',grade_levels:[1],invitation_code:'a'.repeat(64)})).rejects.toThrow(/Grade 1 already has an educator account/);
-  expect(mock.client.auth.signUp).toHaveBeenCalledTimes(1);
+  for (const grade_levels of [[],[1,2],[7],[1.5],['Other']]) {
+    expect(()=>repo.register({email:'teacher@school.edu.ph',grade_levels})).toThrow(/Choose one grade/);
+  }
+  expect(mock.client.auth.signUp).not.toHaveBeenCalled();
 });
 
 it('registers directly without calling invitation validation or forwarding approval metadata',async()=>{

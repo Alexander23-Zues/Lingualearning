@@ -4,7 +4,8 @@ The current application is `apps/linguakids_web` (React). The earlier Flutter
 client remains in the repository for history. Use the root Dockerfile for the
 existing Railway service; it includes the protected API and private inference.
 
-Teachers register directly for one available grade and confirm their own email.
+Teachers choose one grade from 1 to 6 and confirm their own email. Multiple
+teachers can register for the same grade, each with a separate classroom.
 Administrator approval and invitation codes are not required. Existing school
 records are retained; new registrations do not automatically inherit a prior
 teacher classroom. See `docs/teacher-registration.txt`.
@@ -51,7 +52,7 @@ python -m pytest tests
 Deploy only this reviewed source. Preserve the existing `/data` volume and
 server-side variables. The Docker build downloads pinned baseline translation,
 Whisper, and noncommercial school voices. It does not activate a training run,
-reset data, or apply SQL migrations. The 30 canonical migrations match the hosted
+reset data, or apply SQL migrations. The 31 canonical migrations match the hosted
 history as of this release. See `deploy/README.md` for runtime configuration.
 
 Remaining release gates: verify actual confirmation/reset email delivery after

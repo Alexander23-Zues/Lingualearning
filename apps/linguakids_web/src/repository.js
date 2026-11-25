@@ -253,25 +253,13 @@ export function createRepository(config) {
         await client.auth.signOut();
       }
     },
-    registrationGrades() {
-      return unwrap(client.from('educator_grade_availability').select('grade_level,occupied').order('grade_level'));
-    },
     register(data) {
       const { name, email, password, school_name, grade_levels } = data;
       requireMailbox(email);
       const setupInvite=config.ADMIN_SETUP_EMAIL && email.trim().toLowerCase()===config.ADMIN_SETUP_EMAIL.toLowerCase();
       if(!setupInvite && (!Array.isArray(grade_levels)||grade_levels.length!==1||![1,2,3,4,5,6].includes(grade_levels[0])))
-        throw new Error('Choose one available grade for this educator account.');
-      const grade=grade_levels?.[0];
-      const gradeAvailable=async()=>{
-        if(setupInvite)return;
-        const flags=await unwrap(client.from('educator_grade_availability').select('grade_level,occupied').order('grade_level'));
-        if(!flags.some(row=>row.grade_level===grade && !row.occupied))
-          throw new Error(`Grade ${grade} already has an educator account. Sign in with the assigned account or contact your administrator.`);
-      };
-      return (async()=>{
-        await gradeAvailable();
-        try {return await emailRequest(
+        throw new Error('Choose one grade for this educator account.');
+      return emailRequest(
         client.auth.signUp({
           email: email.trim(),
           password,
@@ -280,14 +268,7 @@ export function createRepository(config) {
             data: { name, school_name, grade_levels },
           },
         }),
-      );} catch(error) {
-        // Re-check after a simultaneous signup: the database unique index is authoritative.
-        try {await gradeAvailable();} catch(availabilityError) {
-          if(/already has an educator account/.test(availabilityError?.message||''))throw availabilityError;
-        }
-        throw error;
-      }
-      })();
+      );
     },
     resetEmail(email) {
       requireMailbox(email);
