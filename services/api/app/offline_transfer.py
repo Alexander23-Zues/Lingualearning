@@ -145,7 +145,14 @@ async def import_backup(user:Annotated[CurrentUser,Depends(educator)],file:Uploa
             for child in doc['students']:
                 if child['id'] in known:continue
                 if new_students>=50:pending.append({'type':'students','reason':'More students remain; transfer the same backup again.'});break
-                values={k:child[k] for k in ('id','nickname','grade_level','gender','learning_level','avatar_key') if k in child};values.update(adult_id=str(user.id),active=child.get('active',True))
+                values = {k: child[k] for k in ('id', 'nickname', 'grade_level', 'gender') if k in child}
+                avatar = child.get('avatar_key')
+                values.update(
+                    adult_id=str(user.id),
+                    active=child.get('active', True),
+                    learning_level=child.get('learning_level', 'beginner'),
+                    avatar_key=avatar if avatar in ('tarsier', 'owl', 'turtle', 'butterfly', 'cat', 'star') else 'owl',
+                )
                 await backend._request('POST','child_profiles',json=values);known[child['id']]=values;new_students+=1
             for record in doc.get('classroom_records',[]):
                 if record.get('kind') not in ('reading_assessment','english_assessment'):continue

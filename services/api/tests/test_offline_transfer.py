@@ -16,6 +16,47 @@ def archive(doc=None,extra=None,corrupt=False):
  return out.getvalue()
 def test_accepts_owner_backup_without_exposing_marking_keys():
  assert validate_archive(archive(),user())['students'][0]['id']==CHILD
+
+@pytest.mark.parametrize(('avatar','expected'),[(None,'owl'),('turtle','turtle')])
+def test_transfer_accepts_legacy_student_profile_with_optional_fields(monkeypatch,avatar,expected):
+ import asyncio
+ from types import SimpleNamespace
+ import httpx
+ from fastapi import UploadFile
+ from app import offline_transfer as transfer
+
+ doc=document()
+ doc['students'][0].pop('learning_level')
+ if avatar is not None:
+  doc['students'][0]['avatar_key']=avatar
+ inserted=[]
+
+ class Client:
+  async def post(self,url,**kwargs):
+   return httpx.Response(200,json={},request=httpx.Request('POST',url))
+  async def aclose(self):
+   pass
+
+ class Backend:
+  client=Client()
+  async def _request(self,method,resource,**kwargs):
+   if resource=='child_profiles':
+    if method=='GET':
+     return []
+    inserted.append(kwargs['json'])
+    return None
+   if resource=='offline_collection_archives' and method=='GET':
+    return []
+   if resource=='offline_collection_archives' and method=='POST':
+    return [{'id':OWNER,'status':'saved'}]
+   assert resource=='offline_collection_archives' and method=='PATCH'
+
+ monkeypatch.setattr(transfer,'service',lambda _:Backend())
+ result=asyncio.run(transfer.import_backup(user(),UploadFile(file=io.BytesIO(archive(doc))),
+                    None,SimpleNamespace(supabase_url='https://example.test',supabase_secret_key='synthetic-key')))
+ assert result['students_added_this_transfer']==1
+ assert inserted==[{**doc['students'][0],'adult_id':OWNER,'active':True,
+                    'avatar_key':expected,'learning_level':'beginner'}]
 def test_rejects_other_owner_and_grade():
  d=document();d['account_id']=CHILD
  with pytest.raises(ValueError,match='another educator'):validate_archive(archive(d),user())
