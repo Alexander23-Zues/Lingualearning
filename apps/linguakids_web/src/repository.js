@@ -6,6 +6,7 @@ export function createRepository(config) {
     throw new Error(
       "The public connection settings are missing. Open LinguaKids using its launcher.",
     );
+  const openedEmailLink = new URLSearchParams(window.location.search).has("code");
   const client = createClient(
     config.SUPABASE_URL,
     config.SUPABASE_PUBLISHABLE_KEY,
@@ -133,6 +134,7 @@ export function createRepository(config) {
     return data;
   }
   return {
+    openedEmailLink,
     client,
     config,
     rpc,

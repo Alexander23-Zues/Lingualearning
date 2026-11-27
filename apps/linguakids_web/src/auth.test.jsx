@@ -95,13 +95,30 @@ it("blocks an incomplete educator login and registers a teacher with their own e
   fireEvent.change(screen.getByLabelText("Confirm password"), { target: { value: "fixture-password" } });
   fireEvent.click(screen.getByRole("checkbox", { name: /use student profiles responsibly/ }));
   fireEvent.click(screen.getByRole("button", { name: "Create account & verify email" }));
-  fireEvent.click(await screen.findByRole("link", { name: "Go to login" }));
+  await screen.findByRole("heading", { name: "Check your email" });
+  expect(screen.getByText("teacher@school.edu.ph")).toBeTruthy();
+  fireEvent.click(screen.getByRole("button", { name: "Resend confirmation email" }));
+  await waitFor(() => expect(repo.resend).toHaveBeenCalledExactlyOnceWith("teacher@school.edu.ph"));
+  fireEvent.click(screen.getByRole("link", { name: "Go to login" }));
   expect(repo.register).toHaveBeenCalledExactlyOnceWith({
     name: "Demo Teacher", email: "teacher@school.edu.ph", password: "fixture-password",
     school_name: "", grade_levels: [4],
   });
   expect((await screen.findByRole("textbox", { name: "Email" })).value).toBe("teacher@school.edu.ph");
 });
+it("directs offline educators to online registration with their selected grade", async () => {
+  window.location.hash = "#/register?grade=4";
+  const repo = {...repository(), collection: true, subscribeCollection: () => () => {}};
+  render(<App repository={repo} />);
+
+  const signupLink = await screen.findByRole("link", { name: "Open online registration" });
+  expect(signupLink.getAttribute("href")).toBe("https://linguakids-production.up.railway.app/#/register?grade=4");
+  expect(screen.queryByRole("button", { name: "Create account & verify email" })).toBeNull();
+  expect(repo.register).not.toHaveBeenCalled();
+  fireEvent.click(screen.getByRole("link", { name: "Go to offline login" }));
+  expect(await screen.findByRole("button", { name: "Log in" })).toBeTruthy();
+});
+
 it("preserves admin login fields after a failure and retries into the admin workspace", async () => {
   window.location.hash = "#/admin-login";
   const repo = repository();
@@ -158,11 +175,24 @@ it("does not expose a new-password input without a verified recovery session", a
   await screen.findByRole("heading", { name: "Open your recovery email" });
   expect(screen.queryByLabelText("New password")).toBe(null);
 });
+it("opens the educator workspace after a verified signup link", async () => {
+  const educator = {...user, role:"educator", grade_levels:[6], registered_grade:6};
+  const repo = repository({
+    session: { user: { id: educator.id, email_confirmed_at: "2026-11-27T12:00:00Z" } },
+    recovery: false,
+  });
+  repo.openedEmailLink = true;
+  repo.profile = async () => educator;
+  render(<App repository={repo} />);
+  await waitFor(() => expect(window.location.hash).toBe("#/workspace/home"));
+});
+
 it("preserves an initial verified recovery callback and returns administrators to their own login after completion", async () => {
   const repo = repository({
     session: { user: { id: user.id } },
     recovery: true,
   });
+  repo.openedEmailLink = true;
   render(<App repository={repo} />);
   await screen.findByRole("heading", { name: "Choose your new password" });
   await waitFor(() => expect(window.location.hash).toBe("#/reset-password"));

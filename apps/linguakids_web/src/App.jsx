@@ -1,6 +1,6 @@
 import { AccountModeBanner } from './grade-admissions';
 import { uiText, useUiLanguage } from "./i18n";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
   HashRouter,
   Link,
@@ -11,6 +11,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { AppProvider, useApp } from "./context";
+import { homeFor } from "./domain";
 import {
   AdultUnlock,
   ForgotPassword,
@@ -65,13 +66,21 @@ function PublicAccount({ children, registration = false }) {
 }
 function AppRoutes() {
   useUiLanguage();
-  const { ready, recovery, authError, repository, locked } = useApp(),
+  const { ready, recovery, authError, repository, locked, session, user } = useApp(),
     location = useLocation(),
     navigate = useNavigate();
+  const openedEmailLink = useRef(repository.openedEmailLink);
   useEffect(() => {
     if (recovery && location.pathname !== "/reset-password")
       navigate("/reset-password", { replace: true });
   }, [recovery, location.pathname, navigate]);
+  useEffect(() => {
+    if (openedEmailLink.current && ready && !locked && !recovery && !authError
+      && location.pathname === "/" && session?.user?.email_confirmed_at && user?.status === "active") {
+      openedEmailLink.current = false;
+      navigate(homeFor(user), { replace: true });
+    }
+  }, [ready, locked, recovery, authError, location.pathname, session, user, navigate]);
   useEffect(() => {
     const callback = new URL(window.location.href);
     const fragment = callback.hash.replace(/^#/, "");

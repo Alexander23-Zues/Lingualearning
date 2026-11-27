@@ -1,4 +1,13 @@
 {
+  "Email confirmation is required before you can open your classroom.": "Kumpirmahin muna ang email para mabuksan ang classroom.",
+  "Open the LinguaKids confirmation link in the same browser you used to register. Check Spam if it is missing.": "Buksan ang confirmation link ng LinguaKids sa browser na ginamit mo sa pag-register. Tingnan ang Spam kung wala ito sa inbox.",
+  "Each email can be used for one account. If this email is already in use, sign in to that account or use another email.": "Isang account ang puwedeng gumamit sa bawat email. Kung ginagamit na ito, mag-login sa dati mong account o gumamit ng ibang email.",
+  "If verification is still pending, the latest confirmation link can be sent to this email.": "Kung hindi pa kumpirmado ang account, tingnan ang inbox para sa pinakabagong confirmation link.",
+  "Requesting email…": "Humihiling ng email…",
+  "Use another email": "Gumamit ng ibang email",
+  "Create your educator account online so you can verify your email. For offline collection, use the educator account prepared on this laptop.": "Gumawa ng educator account online para makumpirma ang iyong email. Para sa offline collection, gamitin ang educator account na inihanda sa laptop na ito.",
+  "Open online registration": "Buksan ang online registration",
+  "Go to offline login": "Pumunta sa offline login",
   "Go to page {0}": "Pumunta sa pahina {0}",
   "Jump to page": "Pumunta sa pahina",
   "Items per page": "Bilang sa bawat pahina",

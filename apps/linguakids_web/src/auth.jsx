@@ -12,6 +12,8 @@ import { Brand, Button, Field, Notice, Password, Icon, Select, useAction } from 
 import { grades, homeFor } from "./domain";
 import { isSectionLogin, requireMailbox } from './section-logins';
 
+const onlineEducatorRegistration = 'https://linguakids-production.up.railway.app/#/register';
+
 export function Landing() {
   useUiLanguage();
   const { user } = useApp();
@@ -298,10 +300,11 @@ export function Register({ setup = false }) {
     [confirm, setConfirm] = useState("");
   const [registrationParams]=useSearchParams();
   const [registeredEmail, setRegisteredEmail] = useState("");
+  const [resent, setResent] = useState(false);
+  const requestedGrade = Number(registrationParams.get('grade'));
   useEffect(()=>{
-    const grade = Number(registrationParams.get('grade'));
-    if (grades.includes(grade)) setSelected([grade]);
-  }, [registrationParams]);
+    if (grades.includes(requestedGrade)) setSelected([requestedGrade]);
+  }, [requestedGrade]);
 
   async function submit(e) {
     e.preventDefault();
@@ -322,14 +325,19 @@ export function Register({ setup = false }) {
         grade_levels: setup ? [] : selected,
       });
       setRegisteredEmail(registrationEmail);
+      setPassword("");
+      setConfirm("");
+      setResent(false);
       setSent(true);
     });
   }
   return (
     <AuthLayout
-      title={setup ? uiText("Administrator setup") : uiText("Register as an educator")}
+      title={sent ? uiText("Check your email") : setup ? uiText("Administrator setup") : uiText("Register as an educator")}
       subtitle={
-        setup
+        sent
+          ? uiText("Email confirmation is required before you can open your classroom.")
+          : setup
           ? "Only a verified administrator invitation can activate this account."
           : uiText("Register with your own email and choose the grade you teach.")
       }
@@ -342,10 +350,35 @@ export function Register({ setup = false }) {
         <Notice>{uiText("Administrator setup is not configured.")}{" "}
           <Link to="/admin-login">{uiText("Open administrator login")}</Link>.
         </Notice>
+      ) : !setup && repository.collection ? (
+        <div className="form-stack">
+          <Notice>{uiText("Create your educator account online so you can verify your email. For offline collection, use the educator account prepared on this laptop.")}</Notice>
+          <a className="button" href={grades.includes(requestedGrade)?`${onlineEducatorRegistration}?grade=${requestedGrade}`:onlineEducatorRegistration}>
+            {uiText("Open online registration")} <Icon name="arrow"/>
+          </a>
+          <Link to={returnPath}>{uiText("Go to offline login")}</Link>
+        </div>
       ) : sent ? (
-        <Notice>{uiText("Check your email and open the confirmation link. Then log in using the password you chose.")}{" "}
-          <Link to={returnPath} state={setup ? undefined : { educatorLogin: registeredEmail }}>{uiText("Go to login")}</Link>
-        </Notice>
+        <div className="form-stack">
+          <Notice>
+            <strong style={{overflowWrap:"anywhere"}}>{registeredEmail}</strong>{" "}
+            {uiText("Check your email and open the confirmation link. Then log in using the password you chose.")}
+          </Notice>
+          <small>{uiText("Open the LinguaKids confirmation link in the same browser you used to register. Check Spam if it is missing.")}</small>
+          {!setup && <p>{uiText("Each email can be used for one account. If this email is already in use, sign in to that account or use another email.")}</p>}
+          {resent && <Notice>{uiText("If verification is still pending, the latest confirmation link can be sent to this email.")}</Notice>}
+          {action.error && <Notice error>{uiText(action.error)}</Notice>}
+          <Button type="button" variant="secondary" disabled={action.busy} onClick={() => action.run(async () => {
+            setResent(false);
+            await repository.resend(registeredEmail);
+            setResent(true);
+          })}>{action.busy ? uiText("Requesting email…") : uiText("Resend confirmation email")}</Button>
+          <Link className="button" to={returnPath} state={setup ? undefined : { educatorLogin: registeredEmail }}>{uiText("Go to login")}</Link>
+          {!setup && <button type="button" className="text-button" disabled={action.busy} onClick={()=>{
+            action.setError("");
+            setSent(false);
+          }}>{uiText("Use another email")}</button>}
+        </div>
       ) : (
         <form onSubmit={submit} className="form-stack">
           <Field label={uiText("Full name")} name="name" required autoComplete="name" />
