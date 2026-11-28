@@ -217,7 +217,8 @@ export function WorkspaceShell() {
                 <small>{user.email}</small>
                 {user.role === "educator" && <Link className="mobile-account-action" to="/presentation" onClick={(e) => { e.currentTarget.closest("details").open = false; }}>{uiText("Present to class")}</Link>}
                 <button className="mobile-account-action account-signout" onClick={async () => {
-                  try { await repository.signOut(); navigate("/"); }
+                  try { await repository.signOut();
+                  navigate(user.role === "administrator" ? "/admin-login" : "/login", { replace: true }); }
                   catch (e) { alert(errorText(e)); }
                 }}>{uiText("Sign out of account")}</button>
                 <Link
@@ -248,7 +249,7 @@ export function WorkspaceShell() {
               onClick={async () => {
                 try {
                   await repository.signOut();
-                  navigate("/");
+                  navigate(user.role === "administrator" ? "/admin-login" : "/login", { replace: true });
                 } catch (e) {
                   alert(errorText(e));
                 }

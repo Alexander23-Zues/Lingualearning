@@ -1,22 +1,37 @@
 import { createClient } from "@supabase/supabase-js";
 import { educatorLoginEmail, isSectionLogin, requireMailbox } from './section-logins';
+import { requireStrongPassword } from "./account-password";
+
+export const schoolName = "Manihala Elementary School";
+
+const authStorageKey = "linguakids.react.auth";
+const verifyEmailMessage = "Please verify your email address before logging in.";
 
 export function createRepository(config) {
   if (!config.SUPABASE_URL || !config.SUPABASE_PUBLISHABLE_KEY)
     throw new Error(
       "The public connection settings are missing. Open LinguaKids using its launcher.",
     );
-  const openedEmailLink = new URLSearchParams(window.location.search).has("code");
+  const callbackUrl = new URL(window.location.href);
+  const callbackSearch = callbackUrl.searchParams;
+  const callbackHash = new URLSearchParams(callbackUrl.hash.slice(1));
+  const googleCallback = callbackSearch.get("auth") === "google";
+  const authCode = callbackSearch.get("code");
+  const authLinkType = callbackSearch.get("type") || callbackHash.get("type");
+  const authLinkError = callbackSearch.get("error") || callbackHash.get("error");
+  const implicitSignupToken = authLinkType === "signup" ? callbackHash.get("access_token") : null;
+  let resolvingEmailLink = Boolean(authCode || authLinkError || implicitSignupToken);
+  let initialization;
   const client = createClient(
     config.SUPABASE_URL,
     config.SUPABASE_PUBLISHABLE_KEY,
     {
       auth: {
         flowType: "pkce",
-        detectSessionInUrl: true,
+        detectSessionInUrl: false,
         persistSession: true,
         autoRefreshToken: true,
-        storageKey: "linguakids.react.auth",
+        storageKey: authStorageKey,
       },
     },
   );
@@ -26,22 +41,23 @@ export function createRepository(config) {
   const readMarker = (session) => {
     try {
       const value = JSON.parse(sessionStorage.getItem(marker));
-      return value?.user === session?.user.id && value.expires > Date.now();
+      return value?.user === session?.user?.id && value?.expires > Date.now();
     } catch {
       return false;
     }
   };
-  // Subscribe at construction so the initial email callback cannot outrun React.
+  function markRecovery(session) {
+    sessionStorage.setItem(marker, JSON.stringify({
+      user: session.user.id,
+      expires: Date.now() + 3600000,
+    }));
+  }
+  // A confirmation link can mint a temporary session. Publish only the final
+  // state after it is signed out, or identified as a password recovery session.
   client.auth.onAuthStateChange((event, session) => {
-    if (event === "PASSWORD_RECOVERY" && session)
-      sessionStorage.setItem(
-        marker,
-        JSON.stringify({
-          user: session.user.id,
-          expires: Date.now() + 3600000,
-        }),
-      );
+    if (event === "PASSWORD_RECOVERY" && session) markRecovery(session);
     if (event === "SIGNED_OUT") sessionStorage.removeItem(marker);
+    if (resolvingEmailLink) return;
     state = {
       session,
       recovery: !!session && readMarker(session),
@@ -54,6 +70,45 @@ export function createRepository(config) {
     if (error) throw error;
     return data;
   };
+  async function clearLocalLinkSession() {
+    try {
+      await unwrap(client.auth.signOut({ scope: "local" }));
+    } catch {
+      localStorage.removeItem(authStorageKey);
+    }
+  }
+  async function resolveEmailLink() {
+    if (googleCallback && (authLinkError || !authCode)) return { type: "google-error" };
+    if (authLinkError) return { type: authLinkType === "recovery" ? "recovery-error" : "link-error" };
+    if (implicitSignupToken) {
+      const { data, error } = await client.auth.getUser(implicitSignupToken);
+      if (error || !data.user?.email_confirmed_at) return { type: "link-error" };
+      await clearLocalLinkSession();
+      return { type: "confirmed", email: data.user.email };
+    }
+    const { data, error } = await client.auth.exchangeCodeForSession(authCode);
+    if (error) return { type: googleCallback ? "google-error" : "link-error" };
+    if (data.redirectType === "recovery" || readMarker(data.session)) {
+      markRecovery(data.session);
+      return null;
+    }
+    if (googleCallback) {
+      if (data.user?.email_confirmed_at && data.user.identities?.some(identity => identity.provider === "google"))
+        return { type: "google" };
+      await clearLocalLinkSession();
+      return { type: "google-error" };
+    }
+    const verified = data.user?.email_confirmed_at;
+    await clearLocalLinkSession();
+    return verified ? { type: "confirmed", email: data.user.email } : { type: "link-error" };
+  }
+  function cleanEmailLink() {
+    const url = new URL(window.location.href);
+    for (const param of ["auth", "code", "sb_flow_id", "error", "error_code", "error_description"])
+      url.searchParams.delete(param);
+    if (!url.hash.startsWith("#/")) url.hash = "";
+    window.history.replaceState(window.history.state, "", url);
+  }
   const emailRequest = async promise => {
     try { return await unwrap(promise); }
     catch(error) {
@@ -69,14 +124,14 @@ export function createRepository(config) {
   };
   const rpc = (name, parameters = {}) => unwrap(client.rpc(name, parameters));
   const profile = async (session) => {
-    if (!session) return null;
+    if (!session?.user?.email_confirmed_at) return null;
     await rpc("claim_initial_administrator").catch(() => {});
     return unwrap(
       client
         .from("profiles")
         .select("id,email,name,role,status,school_name,grade_levels,account_kind,teacher_approved_at,registered_grade")
         .eq("id", session.user.id)
-        .single(),
+        .maybeSingle(),
     );
   };
   async function api(path, body, { student = false, signal } = {}) {
@@ -134,7 +189,6 @@ export function createRepository(config) {
     return data;
   }
   return {
-    openedEmailLink,
     client,
     config,
     rpc,
@@ -159,7 +213,10 @@ export function createRepository(config) {
       }
       if (!response.ok) {
         const detail = (await response.json().catch(() => ({}))).detail;
-        throw new Error(typeof detail === 'string' ? detail : 'Speech is temporarily unavailable.');
+        throw Object.assign(new Error(typeof detail === 'string' ? detail : 'Speech is temporarily unavailable.'), {
+          status: response.status,
+          retryAfter: response.headers.get('Retry-After'),
+        });
       }
       return response.blob();
     },
@@ -185,18 +242,24 @@ export function createRepository(config) {
     },
     studentRpc,
     unwrap,
-    async initialize() {
-      const { data, error } = await client.auth.getSession();
-      if (error) {
-        state = { ...state, error };
+    initialize() {
+      initialization ??= (async () => {
+        let emailCallback;
+        if (resolvingEmailLink) {
+          try {
+            emailCallback = await resolveEmailLink();
+          } catch {
+            emailCallback = { type: "link-error" };
+          } finally {
+            cleanEmailLink();
+            resolvingEmailLink = false;
+          }
+        }
+        const { data, error } = await client.auth.getSession();
+        state = { session: data.session, recovery: !!data.session && readMarker(data.session), error, emailCallback };
         return state;
-      }
-      state = {
-        ...state,
-        session: data.session,
-        recovery: !!data.session && readMarker(data.session),
-      };
-      return state;
+      })();
+      return initialization;
     },
     subscribe(listener) {
       listeners.add(listener);
@@ -207,6 +270,27 @@ export function createRepository(config) {
       // Local scope leaves the teacher's other devices signed in.
       const {error}=await client.auth.signOut({scope:'local'});
       if(error)throw new Error('Teacher sign-out could not be confirmed. Retry before handing this device to the learner.');
+    },
+    async signInWithGoogle() {
+      const redirect = new URL(config.AUTH_REDIRECT_URL || window.location.origin);
+      redirect.hash = "";
+      redirect.searchParams.set("auth", "google");
+      await unwrap(client.auth.signInWithOAuth({provider: "google", options: {
+        redirectTo: redirect.href, queryParams: {prompt: "select_account"},
+      }}));
+    },
+    async finishGoogleSignup(name, grade, password) {
+      const session = (await unwrap(client.auth.getSession())).session;
+      if (!session?.user?.email_confirmed_at || session.user.app_metadata?.provider !== "google")
+        throw new Error("Sign in with Google to finish your educator profile.");
+      if (await profile(session)) throw new Error("Your educator profile is already set up. Return to login.");
+      if (!name || name.length > 160 || !Number.isInteger(grade) || grade < 1 || grade > 6)
+        throw new Error("Enter your full name and choose a grade from 1 to 6.");
+      requireStrongPassword(password);
+      await unwrap(client.auth.updateUser({password}));
+      await rpc("finish_google_educator_signup", {p_full_name:name, p_grade:grade});
+      await rpc("record_account_event", {p_event:"session_started"}).catch(()=>{});
+      return profile(session);
     },
     async signIn(email, password, role) {
       if(role === 'administrator' && isSectionLogin(email))
@@ -225,15 +309,13 @@ export function createRepository(config) {
         if (error?.name === 'AuthRetryableFetchError') {
           throw new Error('Cannot reach the login service. Check your internet connection and try again.');
         }
-        if (code === 'email_not_confirmed') {
-          throw new Error(
-            "Verify your email before logging in. Check your inbox or contact support if you registered recently."
-          );
-        }
+        if (code === 'email_not_confirmed') throw new Error(verifyEmailMessage);
         throw error;
       }
       try {
+        if (!result.session?.user?.email_confirmed_at) throw new Error(verifyEmailMessage);
         const user = await profile(result.session);
+        if (!user) throw new Error("Continue with Google to finish setting up your account.");
         if (user.status !== "active" || (role && user.role !== role)) {
           throw new Error(
             user.status !== "active"
@@ -249,28 +331,33 @@ export function createRepository(config) {
       }
     },
     async signOut() {
-      try {
-        await rpc("record_account_event", { p_event: "session_ended" });
-      } finally {
-        await client.auth.signOut();
-      }
+      await rpc("record_account_event", { p_event: "session_ended" }).catch(() => {});
+      await unwrap(client.auth.signOut({ scope: "local" }));
     },
-    register(data) {
-      const { name, email, password, school_name, grade_levels } = data;
+    register({ name, email, password, grade_levels }) {
       requireMailbox(email);
       const setupInvite=config.ADMIN_SETUP_EMAIL && email.trim().toLowerCase()===config.ADMIN_SETUP_EMAIL.toLowerCase();
       if(!setupInvite && (!Array.isArray(grade_levels)||grade_levels.length!==1||![1,2,3,4,5,6].includes(grade_levels[0])))
         throw new Error('Choose one grade for this educator account.');
+      name = (name || "").trim();
+      if (!name || name.length > 160) throw new Error("Enter your full name (up to 160 characters).");
+      requireStrongPassword(password);
       return emailRequest(
         client.auth.signUp({
           email: email.trim(),
           password,
           options: {
             emailRedirectTo: config.AUTH_REDIRECT_URL || window.location.origin,
-            data: { name, school_name, grade_levels },
+            data: { name, school_name: schoolName, grade_levels },
           },
         }),
-      );
+      ).then(async result => {
+        if (result.session) {
+          await clearLocalLinkSession();
+          throw new Error("Email verification is unavailable. Contact your administrator for help.");
+        }
+        return { confirmationRequested: Boolean(result.user?.identities?.length) };
+      });
     },
     resetEmail(email) {
       requireMailbox(email);
@@ -293,9 +380,11 @@ export function createRepository(config) {
       );
     },
     async updatePassword(password) {
+      if (!state.recovery) throw new Error("Open your password reset link before choosing a new password.");
+      requireStrongPassword(password);
       await unwrap(client.auth.updateUser({ password }));
+      await clearLocalLinkSession();
       sessionStorage.removeItem(marker);
-      await client.auth.signOut();
     },
     async snapshot() {
       const value = await rpc("workspace_snapshot");

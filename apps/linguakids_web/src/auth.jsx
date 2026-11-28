@@ -1,8 +1,10 @@
+import {schoolName} from "./repository";
 import { uiText, useUiLanguage } from "./i18n";
 import { useEffect, useRef, useState } from "react";
 import { AnimalScene } from './art';
 import {
   Link,
+  Navigate,
   useLocation,
   useNavigate,
   useSearchParams,
@@ -11,6 +13,7 @@ import { useApp } from "./context";
 import { Brand, Button, Field, Notice, Password, Icon, Select, useAction } from "./ui";
 import { grades, homeFor } from "./domain";
 import { isSectionLogin, requireMailbox } from './section-logins';
+import { passwordHint, passwordMinimum, requireStrongPassword } from "./account-password";
 
 const onlineEducatorRegistration = 'https://linguakids-production.up.railway.app/#/register';
 
@@ -157,7 +160,7 @@ export function AuthLayout({ title, subtitle, children }) {
         </Link>
         <div>
           <span className="eyebrow">{uiText("WELCOME TO LINGUAKIDS")}</span>
-          <h1>{uiText("Growing minds.")}<br />{uiText("Brighter futures.")}</h1>
+          <h2>{uiText("Growing minds.")}<br />{uiText("Brighter futures.")}</h2>
           <p>{uiText("A joyful place to learn English and Filipino, one discovery at a time.")}</p>
           <img
             src="/assets/landing-reading-garden-v1.webp"
@@ -185,7 +188,7 @@ export function Login({ admin = false }) {
   const { repository, user, setUser, authError, setAuthError } = useApp(),
     navigate = useNavigate(),
     location = useLocation();
-  const [email, setEmail] = useState(() => !admin && typeof location.state?.educatorLogin === 'string' ? location.state.educatorLogin : ""),
+  const [email, setEmail] = useState(() => typeof location.state?.educatorLogin === 'string' ? location.state.educatorLogin : ""),
     [password, setPassword] = useState(""),
     [sent, setSent] = useState(false);
   const action = useAction();
@@ -228,6 +231,11 @@ export function Login({ admin = false }) {
       }
     >
       {location.state?.passwordReset && <Notice>{uiText("Your password has been changed. Log in with your new password.")}</Notice>}
+      {location.state?.emailConfirmed && <Notice>{uiText("Your email is verified. Log in with the password you chose.")}</Notice>}
+      {location.state?.emailLinkError && <Notice>{uiText("If you opened a confirmation link, try logging in. To use a new link, request another email and open it in this browser.")}</Notice>}
+      {location.state?.googleError && <Notice error>{uiText("Google sign-in did not finish. You can try again.")}</Notice>}
+      {!admin && repository.signInWithGoogle && <Button type="button" variant="secondary" disabled={action.busy}
+        onClick={()=>action.run(()=>repository.signInWithGoogle())}>{uiText("Continue with Google")}</Button>}
       <form onSubmit={submit} className="form-stack">
         <Field
           label={uiText("Email")}
@@ -312,28 +320,29 @@ export function Register({ setup = false }) {
     await action.run(async () => {
       const educatorName = String(form.get("name") ?? "").trim();
       const registrationEmail = setup ? repository.config.ADMIN_SETUP_EMAIL : String(form.get("email") ?? "").trim();
-      if (!educatorName) throw new Error("Enter your full name.");
+      if (!educatorName || educatorName.length > 160) throw new Error("Enter your full name (up to 160 characters).");
       requireMailbox(registrationEmail);
       if (form.get("new-password") !== form.get("confirm-password")) throw new Error("The passwords do not match.");
+      requireStrongPassword(form.get("new-password"));
       if (!setup && selected.length !== 1)
         throw new Error("Choose one grade for this educator account.");
-      await repository.register({
+      const outcome = await repository.register({
         name: educatorName,
         email: registrationEmail,
         password: form.get("new-password"),
-        school_name: form.get("school") || "",
+        school_name: schoolName,
         grade_levels: setup ? [] : selected,
       });
       setRegisteredEmail(registrationEmail);
       setPassword("");
       setConfirm("");
       setResent(false);
-      setSent(true);
+      setSent(outcome?.confirmationRequested === false ? "pending" : "sent");
     });
   }
   return (
     <AuthLayout
-      title={sent ? uiText("Check your email") : setup ? uiText("Administrator setup") : uiText("Register as an educator")}
+      title={sent === "sent" ? uiText("Check your email") : sent ? uiText("Continue with your email") : setup ? uiText("Administrator setup") : uiText("Register as an educator")}
       subtitle={
         sent
           ? uiText("Email confirmation is required before you can open your classroom.")
@@ -342,6 +351,8 @@ export function Register({ setup = false }) {
           : uiText("Register with your own email and choose the grade you teach.")
       }
     >
+      {!setup&&!locked&&!sent&&repository.signInWithGoogle&&<Button type="button" variant="secondary" disabled={action.busy}
+        onClick={()=>action.run(()=>repository.signInWithGoogle())}>{uiText("Continue with Google")}</Button>}
       {!setup && locked && child ? (
         <Notice>{uiText("An educator must exit the current student session before registering on this device.")}{" "}
           <Link to="/adult-unlock">{uiText("Return to educator controls")}</Link>
@@ -362,10 +373,11 @@ export function Register({ setup = false }) {
         <div className="form-stack">
           <Notice>
             <strong style={{overflowWrap:"anywhere"}}>{registeredEmail}</strong>{" "}
-            {uiText("Check your email and open the confirmation link. Then log in using the password you chose.")}
+            {sent === "sent"
+              ? uiText("Registration successful! Please check your Gmail inbox and verify your email address before logging in.")
+              : uiText("If this email already has an account, log in or reset your password. If verification is pending, request another confirmation email.")}
           </Notice>
           <small>{uiText("Open the LinguaKids confirmation link in the same browser you used to register. Check Spam if it is missing.")}</small>
-          {!setup && <p>{uiText("Each email can be used for one account. If this email is already in use, sign in to that account or use another email.")}</p>}
           {resent && <Notice>{uiText("If verification is still pending, the latest confirmation link can be sent to this email.")}</Notice>}
           {action.error && <Notice error>{uiText(action.error)}</Notice>}
           <Button type="button" variant="secondary" disabled={action.busy} onClick={() => action.run(async () => {
@@ -381,20 +393,23 @@ export function Register({ setup = false }) {
         </div>
       ) : (
         <form onSubmit={submit} className="form-stack">
-          <Field label={uiText("Full name")} name="name" required autoComplete="name" />
+          <Field label={uiText("Full name")} name="name" required maxLength={160} autoComplete="name" />
           <Field
             label={uiText("Email")}
             name="email"
             type="email"
             required
+            maxLength={254}
             autoComplete="email"
+            autoCapitalize="none"
+            spellCheck={false}
             defaultValue={setup ? repository.config.ADMIN_SETUP_EMAIL : ""}
             readOnly={setup}
           />
           {!setup && <small>{uiText("Use your own working email. Open its confirmation link before logging in.")}</small>}
           {!setup && (
             <>
-              <Field label={uiText("School (optional)")} name="school" />
+              <p>{schoolName}</p>
               <div className="registration-grades">
                 <Field label={uiText("Grade you teach")}>
                   <select aria-label={uiText("Grade you teach")} value={selected[0]||""} required
@@ -413,8 +428,9 @@ export function Register({ setup = false }) {
           <Password
             name="new-password"
             required
-            minLength={12}
+            minLength={passwordMinimum}
             autoComplete="new-password"
+            aria-describedby="registration-password-rules"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -422,12 +438,12 @@ export function Register({ setup = false }) {
             label={uiText("Confirm password")}
             name="confirm-password"
             required
-            minLength={12}
+            minLength={passwordMinimum}
             autoComplete="new-password"
             value={confirm}
             onChange={(e) => setConfirm(e.target.value)}
           />
-          <small>{uiText("Use at least 12 characters for your password.")}</small>
+          <small id="registration-password-rules">{uiText(passwordHint)}</small>
           <label className="checkbox">
             <input type="checkbox" required />{uiText("I will use student profiles responsibly and review teaching materials before classroom use.")}</label>
           {action.error && <Notice error>{uiText(action.error)}</Notice>}
@@ -442,6 +458,50 @@ export function Register({ setup = false }) {
     </AuthLayout>
   );
 }
+export function GoogleSetup() {
+  useUiLanguage();
+  const {repository,session,user,setUser}=useApp();
+  const navigate=useNavigate();
+  const action=useAction();
+  const [selected,setSelected]=useState("");
+  useEffect(()=>{
+    if (user?.role==="educator" && user.status==="active") navigate(homeFor(user),{replace:true});
+  },[user,navigate]);
+  if (!session?.user?.email_confirmed_at || !repository.finishGoogleSignup) return <Navigate to="/login" replace/>;
+  const validGoogleAccount=session.user.app_metadata?.provider==="google";
+  return <AuthLayout title={uiText("Finish your educator profile")} subtitle={schoolName}>
+    {user && (user.status!=="active" || user.role!=="educator") ? <Notice error>{uiText("Use an active educator account.")}</Notice> :
+    !user && validGoogleAccount && <form className="form-stack" onSubmit={event=>{
+      event.preventDefault();
+      const fields=new FormData(event.currentTarget);
+      action.run(async()=>{
+        if(fields.get("password")!==fields.get("confirm")) throw new Error("The passwords do not match.");
+        const educator=await repository.finishGoogleSignup(String(fields.get("name")).trim(),Number(selected),fields.get("password"));
+        setUser(educator);
+        navigate(homeFor(educator),{replace:true});
+      });
+    }}>
+      <p>{session.user.email}</p>
+      <Field name="name" label={uiText("Full name")} defaultValue={session.user.user_metadata?.full_name||session.user.user_metadata?.name||""} maxLength={160} required autoComplete="name"/>
+      <Field label={uiText("Grade you teach")}>
+        <select aria-label={uiText("Grade you teach")} value={selected} required onChange={event=>setSelected(event.target.value)}>
+          <option value="">{uiText("Choose your grade")}</option>
+          {grades.map(grade=><option key={grade} value={grade}>{uiText("Grade {0}",[grade])}</option>)}
+        </select>
+      </Field>
+      <p>{uiText("Set a password to return to educator controls after handing this device to a student.")}</p>
+      <Password name="password" label={uiText("Classroom password")} required autoComplete="new-password"/>
+      <Password name="confirm" label={uiText("Confirm password")} required autoComplete="new-password"/>
+      {action.error&&<Notice error>{uiText(action.error)}</Notice>}
+      <Button type="submit" disabled={action.busy}>{uiText("Open my classroom")}</Button>
+    </form>}
+    {!user&&!validGoogleAccount&&<p role="status">{uiText("Opening your educator account…")}</p>}
+    <Button type="button" variant="ghost" disabled={action.busy} onClick={()=>action.run(async()=>{
+      await repository.signOut();navigate("/login",{replace:true});
+    })}>{uiText("Use another account")}</Button>
+  </AuthLayout>;
+}
+
 export function ForgotPassword() {
   useUiLanguage();
   const { repository, authError } = useApp(),
@@ -485,7 +545,7 @@ export function ForgotPassword() {
         {sent && (
           <Notice>{uiText("If this account exists, a reset link has been sent. Open the latest email in this same browser. Check spam too.")}</Notice>
         )}
-        {action.error && <Notice error>{action.error}</Notice>}
+        {action.error && <Notice error>{uiText(action.error)}</Notice>}
         <Button disabled={action.busy || cooldown > 0} type="submit">
           {cooldown
             ? uiText("Resend in {0}s", [cooldown])
@@ -524,6 +584,7 @@ export function ResetPassword() {
             action.run(async () => {
               if (password !== confirm)
                 throw new Error("The passwords do not match.");
+              requireStrongPassword(password);
               const target =
                 user?.role === "administrator" ? "/admin-login" : "/login";
               await repository.updatePassword(password);
@@ -535,20 +596,22 @@ export function ResetPassword() {
           <Password
             label={uiText("New password")}
             required
-            minLength={12}
+            minLength={passwordMinimum}
             autoComplete="new-password"
+            aria-describedby="reset-password-rules"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <Password
             label={uiText("Confirm password")}
             required
-            minLength={12}
+            minLength={passwordMinimum}
             autoComplete="new-password"
             value={confirm}
             onChange={(e) => setConfirm(e.target.value)}
           />
-          {action.error && <Notice error>{action.error}</Notice>}
+          <small id="reset-password-rules">{uiText(passwordHint)}</small>
+          {action.error && <Notice error>{uiText(action.error)}</Notice>}
           <Button disabled={action.busy} type="submit">
             {action.busy ? uiText("Saving…") : uiText("Save new password")}
           </Button>

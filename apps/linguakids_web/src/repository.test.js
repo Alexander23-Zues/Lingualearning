@@ -19,10 +19,14 @@ beforeEach(() => {
         data: { session: { access_token: "adult-fixture-jwt" } },
       })),
       signOut: vi.fn(async () => ({})),
+      getUser: vi.fn(async () => ({ data: { user: { email: "teacher@school.edu.ph", email_confirmed_at: "2026-11-27T12:00:00Z" } } })),
       signInWithPassword: vi.fn(async () => ({
-        data: { session: { user: { id: "fixture-user" } } },
+        data: { session: { user: { id: "fixture-user", email_confirmed_at: "2026-11-27T12:00:00Z" } } },
       })),
-      signUp: vi.fn(async () => ({ data: {} })),
+      signInWithOAuth: vi.fn(async () => ({data:{}})),
+      signUp: vi.fn(async () => ({ data: { user: { identities: [{ provider: "email" }] } } })),
+      exchangeCodeForSession: vi.fn(),
+      updateUser: vi.fn(async () => ({ data: {} })),
       resetPasswordForEmail: vi.fn(async () => ({ data: {} })),
       resend: vi.fn(async () => ({ data: {} })),
     },
@@ -30,7 +34,7 @@ beforeEach(() => {
     from: vi.fn(table => table==='educator_grade_availability'?{select:()=>({order:async()=>({data:[1,2,3,4,5,6].map(grade_level=>({grade_level,occupied:false}))})})}:({
       select: () => ({
         eq: () => ({
-          single: async () => ({
+          maybeSingle: async () => ({
             data: { id: "fixture-user", role: "educator", status: "active" },
           }),
         }),
@@ -127,8 +131,8 @@ describe("Connected repository", () => {
     await createRepository(config).register({
       name: "Teacher",
       email: " a@school.edu.ph ",
-      password: "fixture-password",
-      school_name: "School",
+      password: "Fixture-password!2",
+      school_name: "Manihala Elementary School",
       grade_levels: [1], invitation_code: "a".repeat(64),
       role: "administrator",
     });
@@ -136,7 +140,7 @@ describe("Connected repository", () => {
     expect(body.email).toBe("a@school.edu.ph");
     expect(body.options.data).toEqual({
       name: "Teacher",
-      school_name: "School",
+      school_name: "Manihala Elementary School",
       grade_levels: [1],
     });
   });
@@ -178,7 +182,7 @@ it('uses real email confirmation and recovery redirects and reports delivery fai
   mock.client.auth.resetPasswordForEmail.mockResolvedValueOnce({error:{code:'email_address_not_authorized'}});
   await expect(repo.resetEmail('teacher@school.edu.ph')).rejects.toThrow(/Email delivery is currently unavailable/);
   mock.client.auth.signUp.mockResolvedValueOnce({error:{code:'over_email_send_rate_limit'}});
-  await expect(repo.register({email:'teacher@school.edu.ph',grade_levels:[1],invitation_code:'a'.repeat(64)})).rejects.toThrow(/Too many email requests/);
+  await expect(repo.register({name:'Teacher',email:'teacher@school.edu.ph',school_name:'School',password:'Fixture-password!2',grade_levels:[1]})).rejects.toThrow(/Too many email requests/);
 });
 it('rejects placeholder inboxes before any signup or reset request',()=>{
   const repo=createRepository(config);
@@ -193,7 +197,7 @@ it('rejects placeholder inboxes before any signup or reset request',()=>{
 it('sends two distinct teacher signups for the same grade to Auth',async()=>{
   const repo=createRepository(config);
   for (const email of ['teacher@school.edu.ph', 'another@school.edu.ph']) {
-    await repo.register({email,grade_levels:[1]});
+    await repo.register({name:'Teacher',email,school_name:'School',password:'Fixture-password!2',grade_levels:[1]});
     expect(mock.client.auth.signUp).toHaveBeenLastCalledWith(expect.objectContaining({
       email, options:expect.objectContaining({data:expect.objectContaining({grade_levels:[1]})}),
     }));
@@ -212,7 +216,83 @@ it('requires exactly one supported grade before sending a teacher signup',()=>{
 
 it('registers directly without calling invitation validation or forwarding approval metadata',async()=>{
  const repo=createRepository(config);
- await repo.register({name:'Teacher',email:'teacher@school.edu.ph',password:'fixture-password',school_name:'School',grade_levels:[1],invitation_code:'legacy-code',role:'administrator',teacher_approved_by:'forged'});
+ await repo.register({name:'Teacher',email:'teacher@school.edu.ph',password:'Fixture-password!2',school_name:'School',grade_levels:[1],invitation_code:'legacy-code',role:'administrator',teacher_approved_by:'forged'});
  expect(mock.client.rpc).not.toHaveBeenCalledWith('teacher_invitation_valid',expect.anything());
- expect(mock.client.auth.signUp).toHaveBeenCalledWith({email:'teacher@school.edu.ph',password:'fixture-password',options:{emailRedirectTo:window.location.origin,data:{name:'Teacher',school_name:'School',grade_levels:[1]}}});
+ expect(mock.client.auth.signUp).toHaveBeenCalledWith({email:'teacher@school.edu.ph',password:'Fixture-password!2',options:{emailRedirectTo:window.location.origin,data:{name:'Teacher',school_name:'Manihala Elementary School',grade_levels:[1]}}});
+});
+
+it("blocks missing school, weak passwords, and misleading success for an obfuscated signup", async () => {
+  const repo = createRepository(config);
+  const fields = { name: "Teacher", email: "teacher@school.edu.ph", school_name: "School", password: "Fixture-password!2", grade_levels: [6] };
+  expect(() => repo.register({ ...fields, password: "letters-only" })).toThrow(/uppercase and lowercase/);
+  expect(mock.client.auth.signUp).not.toHaveBeenCalled();
+  mock.client.auth.signUp.mockResolvedValueOnce({ data: { user: { identities: [] } } });
+  await expect(repo.register(fields)).resolves.toEqual({ confirmationRequested: false });
+});
+
+it("does not open a workspace for an unverified login", async () => {
+  const repo = createRepository(config);
+  mock.client.auth.signInWithPassword.mockResolvedValueOnce({ error: { code: "email_not_confirmed" } });
+  await expect(repo.signIn("teacher@school.edu.ph", "Fixture-password!2", "educator"))
+    .rejects.toThrow("Please verify your email address before logging in.");
+  expect(mock.client.from).not.toHaveBeenCalled();
+});
+
+it("exchanges a verification code only once and clears the temporary session before returning the confirmation", async () => {
+  window.history.replaceState(null, "", "/?code=verification-fixture&sb_flow_id=fixture#/");
+  const user = { email: "teacher@school.edu.ph", email_confirmed_at: "2026-11-27T12:00:00Z" };
+  mock.client.auth.exchangeCodeForSession.mockResolvedValue({ data: { user, session: { user } } });
+  mock.client.auth.getSession.mockResolvedValue({ data: { session: null } });
+  const repo = createRepository(config);
+  const expected = { session: null, emailCallback: { type: "confirmed", email: user.email } };
+  await expect(repo.initialize()).resolves.toMatchObject(expected);
+  await expect(repo.initialize()).resolves.toMatchObject(expected);
+  expect(mock.client.auth.exchangeCodeForSession).toHaveBeenCalledExactlyOnceWith("verification-fixture");
+  expect(mock.client.auth.signOut).toHaveBeenCalledExactlyOnceWith({ scope: "local" });
+  expect(window.location.search).toBe("");
+  expect(window.location.hash).toBe("#/");
+});
+
+it("clears a legacy implicit verification session before requiring password login", async () => {
+  window.history.replaceState(null, "", "/#access_token=verification-fixture&type=signup");
+  mock.client.auth.getSession.mockResolvedValue({ data: { session: null } });
+  const repo = createRepository(config);
+  await expect(repo.initialize()).resolves.toMatchObject({
+    session: null,
+    emailCallback: { type: "confirmed", email: "teacher@school.edu.ph" },
+  });
+  expect(mock.client.auth.getUser).toHaveBeenCalledExactlyOnceWith("verification-fixture");
+  expect(mock.client.auth.signOut).toHaveBeenCalledExactlyOnceWith({ scope: "local" });
+});
+
+it("keeps a verified recovery session for reset and signs it out after updating the password", async () => {
+  window.history.replaceState(null, "", "/?code=recovery-fixture#/");
+  const user = { id: "fixture-user", email_confirmed_at: "2026-11-27T12:00:00Z" };
+  const session = { user };
+  mock.client.auth.getSession.mockResolvedValue({ data: { session } });
+  mock.client.auth.exchangeCodeForSession.mockResolvedValue({ data: { user, session, redirectType: "recovery" } });
+  const repo = createRepository(config);
+  await expect(repo.updatePassword("Fixture-password!2")).rejects.toThrow(/Open your password reset link/);
+  await expect(repo.initialize()).resolves.toMatchObject({ session, recovery: true });
+  expect(mock.client.auth.signOut).not.toHaveBeenCalled();
+  await repo.updatePassword("Fixture-password!2");
+  expect(mock.client.auth.updateUser).toHaveBeenCalledExactlyOnceWith({ password: "Fixture-password!2" });
+  expect(mock.client.auth.signOut).toHaveBeenCalledExactlyOnceWith({ scope: "local" });
+});
+it("keeps a verified Google callback session without treating it as email confirmation", async () => {
+  window.history.replaceState(null, "", "/?auth=google&code=google-fixture");
+  try {
+    const user={id:"fixture-user",email_confirmed_at:"2026-11-27",identities:[{provider:"google"}]};
+    const session={user};
+    mock.client.auth.exchangeCodeForSession.mockResolvedValue({data:{user,session}});
+    mock.client.auth.getSession.mockResolvedValue({data:{session}});
+    const repo=createRepository(config);
+    await repo.signInWithGoogle();
+    expect(mock.client.auth.signInWithOAuth).toHaveBeenCalledWith({provider:"google",options:{
+      redirectTo:window.location.origin+"/?auth=google",queryParams:{prompt:"select_account"},
+    }});
+    expect(await repo.initialize()).toMatchObject({session,emailCallback:{type:"google"}});
+    expect(mock.client.auth.signOut).not.toHaveBeenCalled();
+    expect(window.location.search).toBe("");
+  } finally {window.history.replaceState(null,"","/");}
 });

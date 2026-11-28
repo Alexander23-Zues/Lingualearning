@@ -1,6 +1,6 @@
 import { AccountModeBanner } from './grade-admissions';
 import { uiText, useUiLanguage } from "./i18n";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import {
   HashRouter,
   Link,
@@ -11,10 +11,10 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { AppProvider, useApp } from "./context";
-import { homeFor } from "./domain";
 import {
   AdultUnlock,
   ForgotPassword,
+  GoogleSetup,
   Landing,
   Login,
   Register,
@@ -31,8 +31,8 @@ function PreviewAccess() {
     navigate = useNavigate();
   return (
     <div className="preview-access panel">
-      <h1>{uiText("Explore LinguaKids")}</h1>
-      <p>{uiText("This is a browser preview. Changes stay on this browser and no real account password is requested.")}</p>
+      <h1>{uiText("LinguaKids")}</h1>
+      <p>{uiText("Choose your workspace for local testing.")}</p>
       <div className="actions">
         {["educator", "administrator"].map((role) => (
           <Button
@@ -45,14 +45,10 @@ function PreviewAccess() {
                   : "/workspace/home",
               );
             }}
-          >{uiText("Preview ")}{role}
+          >{uiText(role === 'educator' ? 'Educator' : 'Administrator')}
           </Button>
         ))}
       </div>
-      <p>
-        <a href="http://localhost:3000/#/login">{uiText("Use real account login")}</a>
-      </p>
-      <Link to="/">{uiText("Back to home")}</Link>
     </div>
   );
 }
@@ -66,33 +62,25 @@ function PublicAccount({ children, registration = false }) {
 }
 function AppRoutes() {
   useUiLanguage();
-  const { ready, recovery, authError, repository, locked, session, user } = useApp(),
+  const { ready, recovery, emailCallback, setEmailCallback, repository, locked } = useApp(),
     location = useLocation(),
     navigate = useNavigate();
-  const openedEmailLink = useRef(repository.openedEmailLink);
   useEffect(() => {
-    if (recovery && location.pathname !== "/reset-password")
-      navigate("/reset-password", { replace: true });
-  }, [recovery, location.pathname, navigate]);
-  useEffect(() => {
-    if (openedEmailLink.current && ready && !locked && !recovery && !authError
-      && location.pathname === "/" && session?.user?.email_confirmed_at && user?.status === "active") {
-      openedEmailLink.current = false;
-      navigate(homeFor(user), { replace: true });
-    }
-  }, [ready, locked, recovery, authError, location.pathname, session, user, navigate]);
-  useEffect(() => {
-    const callback = new URL(window.location.href);
-    const fragment = callback.hash.replace(/^#/, "");
-    if (
-      callback.searchParams.has("error") ||
-      new URLSearchParams(fragment).has("error") ||
-      (authError &&
-        location.pathname === "/" &&
-        callback.searchParams.has("code"))
-    )
-      navigate("/forgot-password?expired=1", { replace: true });
-  }, [authError, navigate]);
+    if (!ready || !emailCallback || recovery) return;
+    setEmailCallback(null);
+    if (locked) return;
+    const adminSetupEmail = repository.config?.ADMIN_SETUP_EMAIL;
+    const admin = adminSetupEmail && adminSetupEmail.toLowerCase() === emailCallback.email?.toLowerCase();
+    navigate(emailCallback.type === "google" ? "/google-setup" : emailCallback.type === "recovery-error" ? "/forgot-password?expired=1" : admin ? "/admin-login" : "/login", {
+      replace: true,
+      state: {
+        educatorLogin: emailCallback.email,
+        emailConfirmed: emailCallback.type === "confirmed",
+        emailLinkError: emailCallback.type === "link-error",
+        googleError: emailCallback.type === "google-error",
+      },
+    });
+  }, [ready, emailCallback, recovery, locked, repository, setEmailCallback, navigate]);
   useEffect(() => {
     function key(e) {
       if (e.ctrlKey && e.shiftKey && e.code === "Digit9") {
@@ -104,17 +92,21 @@ function AppRoutes() {
     return () => window.removeEventListener("keydown", key);
   }, [navigate, locked]);
   if (!ready) return <Loading text="Opening LinguaKids…" />;
+  if (recovery && location.pathname !== "/reset-password")
+    return <Navigate to="/reset-password" replace />;
+  if (emailCallback && !locked && !recovery) return <Loading text="Opening your email link…" />;
   return (
     <>
       {repository.preview && (
-        <div className="preview-banner">{uiText("Browser preview · changes stay on this device ·")}{" "}
+        <div className="preview-banner">{uiText("Local testing ·")}{" "}
           <Link to="/login">{uiText("Switch workspace")}</Link>
         </div>
       )}
       <AccountModeBanner/><CollectionBanner/><CollectionCapture/>
       <Routes>
+        <Route path="/google-setup" element={<PublicAccount><GoogleSetup/></PublicAccount>}/>
         <Route path="/collection" element={<CollectionPage/>}/>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={repository.preview ? <Navigate to={locked ? "/student" : "/login"} replace /> : <Landing />} />
         <Route
           path="/login"
           element={

@@ -10,6 +10,7 @@ const user = {
 };
 function repository(state = { session: null, recovery: false }) {
   let current = { ...state };
+  let activeProfile = user;
   let listener;
   return {
     config: {},
@@ -18,7 +19,12 @@ function repository(state = { session: null, recovery: false }) {
       return () => {};
     },
     initialize: async () => current,
-    profile: async () => (current.session ? user : null),
+    profile: async () => (current.session ? activeProfile : null),
+    publishLogin(profile) {
+      activeProfile = profile;
+      current = { session: { user: { id: profile.id, email_confirmed_at: "2026-11-27T12:00:00Z" } }, recovery: false };
+      listener(current);
+    },
     preferences: async () => ({
       locale: "en",
       text_scale: 1,
@@ -44,7 +50,10 @@ function repository(state = { session: null, recovery: false }) {
       .fn()
       .mockRejectedValueOnce(new Error("Incorrect email or password."))
       .mockResolvedValueOnce(user),
-    signOut: vi.fn(),
+    signOut: vi.fn(async () => {
+      current = { session: null, recovery: false };
+      listener(current);
+    }),
   };
 }
 beforeEach(() => {
@@ -88,21 +97,23 @@ it("blocks an incomplete educator login and registers a teacher with their own e
   await screen.findByRole("heading", { name: "Register as an educator" });
   fireEvent.change(screen.getByLabelText("Full name"), { target: { value: " Demo Teacher " } });
   fireEvent.change(screen.getByLabelText("Email", { exact: true }), { target: { value: "teacher@school.edu.ph" } });
+  expect(screen.getByText("Manihala Elementary School")).toBeTruthy();
   expect(screen.queryByLabelText("Teacher invitation code")).toBeNull();
   expect(screen.getByText(/Teachers can choose the same grade/)).toBeTruthy();
   fireEvent.change(screen.getByRole("combobox", { name: "Grade you teach" }), { target: { value: "4" } });
-  fireEvent.change(screen.getByLabelText("Password", { exact: true }), { target: { value: "fixture-password" } });
-  fireEvent.change(screen.getByLabelText("Confirm password"), { target: { value: "fixture-password" } });
+  fireEvent.change(screen.getByLabelText("Password", { exact: true }), { target: { value: "Fixture-password!2" } });
+  fireEvent.change(screen.getByLabelText("Confirm password"), { target: { value: "Fixture-password!2" } });
   fireEvent.click(screen.getByRole("checkbox", { name: /use student profiles responsibly/ }));
   fireEvent.click(screen.getByRole("button", { name: "Create account & verify email" }));
   await screen.findByRole("heading", { name: "Check your email" });
+  expect(screen.getByText(/Registration successful! Please check your Gmail inbox/)).toBeTruthy();
   expect(screen.getByText("teacher@school.edu.ph")).toBeTruthy();
   fireEvent.click(screen.getByRole("button", { name: "Resend confirmation email" }));
   await waitFor(() => expect(repo.resend).toHaveBeenCalledExactlyOnceWith("teacher@school.edu.ph"));
   fireEvent.click(screen.getByRole("link", { name: "Go to login" }));
   expect(repo.register).toHaveBeenCalledExactlyOnceWith({
-    name: "Demo Teacher", email: "teacher@school.edu.ph", password: "fixture-password",
-    school_name: "", grade_levels: [4],
+    name: "Demo Teacher", email: "teacher@school.edu.ph", password: "Fixture-password!2",
+    school_name: "Manihala Elementary School", grade_levels: [4],
   });
   expect((await screen.findByRole("textbox", { name: "Email" })).value).toBe("teacher@school.edu.ph");
 });
@@ -175,16 +186,30 @@ it("does not expose a new-password input without a verified recovery session", a
   await screen.findByRole("heading", { name: "Open your recovery email" });
   expect(screen.queryByLabelText("New password")).toBe(null);
 });
-it("opens the educator workspace after a verified signup link", async () => {
-  const educator = {...user, role:"educator", grade_levels:[6], registered_grade:6};
+it("requires a separate password login after a verified signup link", async () => {
+  const educator = {...user, name: "Fixture Grade Six Teacher", role:"educator", grade_levels:[6], registered_grade:6};
   const repo = repository({
-    session: { user: { id: educator.id, email_confirmed_at: "2026-11-27T12:00:00Z" } },
+    session: null,
     recovery: false,
+    emailCallback: { type: "confirmed", email: educator.email },
   });
-  repo.openedEmailLink = true;
-  repo.profile = async () => educator;
+  repo.signIn.mockReset().mockImplementation(async () => {
+    repo.publishLogin(educator);
+    return educator;
+  });
   render(<App repository={repo} />);
+  await screen.findByText("Your email is verified. Log in with the password you chose.");
+  expect(window.location.hash).toBe("#/login");
+  expect(screen.getByRole("textbox", { name: "Email" }).value).toBe(educator.email);
+  expect(repo.signIn).not.toHaveBeenCalled();
+  fireEvent.change(screen.getByLabelText("Password", { exact: true }), { target: { value: "Fixture-password!2" } });
+  fireEvent.click(screen.getByRole("button", { name: "Log in" }));
+  expect((await screen.findAllByText(educator.name)).length).toBeGreaterThan(0);
   await waitFor(() => expect(window.location.hash).toBe("#/workspace/home"));
+  fireEvent.click(screen.getByRole("button", { name: "Sign out", exact: true }));
+  await screen.findByRole("heading", { name: "Welcome back, educator" });
+  await waitFor(() => expect(window.location.hash).toBe("#/login"));
+  expect(repo.signOut).toHaveBeenCalledTimes(1);
 });
 
 it("preserves an initial verified recovery callback and returns administrators to their own login after completion", async () => {
@@ -192,21 +217,20 @@ it("preserves an initial verified recovery callback and returns administrators t
     session: { user: { id: user.id } },
     recovery: true,
   });
-  repo.openedEmailLink = true;
   render(<App repository={repo} />);
   await screen.findByRole("heading", { name: "Choose your new password" });
   await waitFor(() => expect(window.location.hash).toBe("#/reset-password"));
   fireEvent.change(screen.getByLabelText("New password", { exact: true }), {
-    target: { value: "new-fixture-password" },
+    target: { value: "New-fixture-password!2" },
   });
   fireEvent.change(screen.getByLabelText("Confirm password", { exact: true }), {
-    target: { value: "new-fixture-password" },
+    target: { value: "New-fixture-password!2" },
   });
   fireEvent.submit(
     screen.getByRole("button", { name: "Save new password" }).closest("form"),
   );
   await screen.findByRole("heading", { name: "Administrator login" });
-  expect(repo.updatePassword).toHaveBeenCalledWith("new-fixture-password");
+  expect(repo.updatePassword).toHaveBeenCalledWith("New-fixture-password!2");
   expect(screen.getByText("Your password has been changed. Log in with your new password.")).toBeTruthy();
 });
 it("keeps a signed-out visitor out of administrator data", async () => {
@@ -271,4 +295,20 @@ it('keeps a failed recovery request editable and does not claim an email was sen
   await screen.findByText('Email delivery is currently unavailable. Contact your administrator for help.');
   expect(screen.queryByRole('heading',{name:'Check your email'})).toBeNull();
   expect(screen.getByRole('button',{name:'Send reset link'}).disabled).toBe(false);
+});
+it("lets a verified Google educator choose a grade and protect student mode with a password",async()=>{
+  window.history.replaceState(null,"","/#/google-setup");
+  const google={id:"google-fixture",email:"google@fixture.invalid",email_confirmed_at:"2026-11-27",
+    app_metadata:{provider:"google"},user_metadata:{full_name:"Teacher Google"}};
+  const repo=repository({session:{user:google},recovery:false});
+  repo.profile=vi.fn(async()=>null);
+  repo.finishGoogleSignup=vi.fn(async()=>({...google,name:"Teacher Google",role:"educator",status:"active",grade_levels:[6]}));
+  render(<App repository={repo}/>);
+  expect((await screen.findByLabelText("Full name")).value).toBe("Teacher Google");
+  fireEvent.change(screen.getByRole("combobox",{name:"Grade you teach"}),{target:{value:"6"}});
+  fireEvent.change(screen.getByLabelText("Classroom password"),{target:{value:"Fixture-river!27"}});
+  fireEvent.change(screen.getByLabelText("Confirm password"),{target:{value:"Fixture-river!27"}});
+  fireEvent.click(screen.getByRole("button",{name:"Open my classroom"}));
+  await waitFor(()=>expect(repo.finishGoogleSignup).toHaveBeenCalledWith("Teacher Google",6,"Fixture-river!27"));
+  await waitFor(()=>expect(window.location.hash).toBe("#/workspace/home"));
 });

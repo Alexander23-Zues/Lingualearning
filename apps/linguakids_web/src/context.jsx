@@ -23,6 +23,7 @@ export function AppProvider({ repository, children }) {
     [ready, setReady] = useState(false);
   const [recovery, setRecovery] = useState(false),
     [authError, setAuthError] = useState("");
+  const [emailCallback, setEmailCallback] = useState(null);
   const [locked, setLockedState] = useState(
     () =>
       localStorage.getItem("linguakids.adult_locked") === "true" ||
@@ -65,6 +66,7 @@ export function AppProvider({ repository, children }) {
       }
       setSession(state.session);
       setRecovery(state.recovery);
+      if (state.emailCallback) setEmailCallback(state.emailCallback);
       if (state.error) setAuthError(errorText(state.error));
     }
     const unsubscribe = repository.subscribe(receive);
@@ -99,7 +101,7 @@ export function AppProvider({ repository, children }) {
       });
   }, [session, repository]);
   const refresh = useCallback(async () => {
-    if (!user || user.status !== "active" || locked) return;
+    if (!user || user.status !== "active" || locked || recovery) return;
     const current = ++snapshotVersion.current;
     setLoading(true);
     setDataError("");
@@ -114,7 +116,7 @@ export function AppProvider({ repository, children }) {
       if (mounted.current && snapshotVersion.current === current)
         setLoading(false);
     }
-  }, [repository, user, locked]);
+  }, [repository, user, locked, recovery]);
   useEffect(() => {
     if (locked || user?.status !== "active") return;
     const retry = () => refresh();
@@ -240,6 +242,8 @@ export function AppProvider({ repository, children }) {
         setUser,
         ready:ready&&!clearingLegacyAdult,
         recovery,
+        emailCallback,
+        setEmailCallback,
         authError,
         setAuthError,
         locked,
