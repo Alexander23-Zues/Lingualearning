@@ -20,7 +20,7 @@ jobs:
       - run: python -m pip install -r requirements.txt pytest==8.4.2 pytest-asyncio==1.2.0
       - run: python -m pytest tests
         working-directory: services/api
-      - run: python -m pytest tests/test_vercel_deployment.py
+      - run: python -m pytest tests/test_vercel_deployment.py tests/test_react_build.py tests/test_offline_collection.py tests/test_offline_restore.py tests/test_mission_placement.py tests/test_adventure_collection.py tests/test_mission_rewards.py tests/test_release_package.py
   dataset-validation:
     runs-on: ubuntu-latest
     steps:
@@ -28,33 +28,34 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install pytest==8.4.2
-      - run: python -m pytest tests
-        working-directory: ml
-  flutter:
+      - run: python -m pip install -r requirements.txt numpy==2.3.4 pytest==8.4.2
+      - run: python -m pytest ml/tests
+  inference-contract:
     runs-on: ubuntu-latest
-    env:
-      PUB_CACHE: ${{ github.workspace }}/.vercel/cache/pub
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - uses: actions/cache@v4
+      - run: python -m pip install -r requirements.txt numpy==2.3.4 pytest==8.4.2
+      - run: python -m pytest tests
+        working-directory: services/inference
+  react:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          path: |
-            .vercel/cache/flutter-3.44.4
-            .vercel/cache/pub
-          key: flutter-3.44.4-${{ runner.os }}-${{ hashFiles('apps/linguakids_app/pubspec.lock') }}
-      - run: python scripts/build_vercel.py --sdk-only
-      - run: echo "$GITHUB_WORKSPACE/.vercel/cache/flutter-3.44.4/flutter/bin" >> "$GITHUB_PATH"
-      - run: flutter pub get
-        working-directory: apps/linguakids_app
-      - run: flutter analyze --no-pub
-        working-directory: apps/linguakids_app
-      - run: flutter test --no-pub
-        working-directory: apps/linguakids_app
-      - run: python scripts/build_vercel.py
-        env:
-          SUPABASE_URL: https://example.supabase.co
-          SUPABASE_PUBLISHABLE_KEY: sb_publishable_ci_build_only
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/linguakids_web/package-lock.json
+      - run: npm ci --no-audit --no-fund
+        working-directory: apps/linguakids_web
+      - run: npm test -- --maxWorkers=1 --exclude 'src/live-*'
+        working-directory: apps/linguakids_web
+      - run: npm exec -- tsc -p tsconfig.adventure.json --noEmit
+        working-directory: apps/linguakids_web
+      - run: python scripts/build_react.py --preview

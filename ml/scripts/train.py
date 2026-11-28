@@ -2,6 +2,7 @@ import argparse
 import json
 from pathlib import Path
 
+import torch
 import numpy as np
 import sacrebleu
 from datasets import load_dataset
@@ -78,7 +79,7 @@ def main() -> None:
         metric_for_best_model="eval_loss",
         greater_is_better=False,
         save_total_limit=3,
-        fp16=True,
+        fp16=torch.cuda.is_available(),
         report_to="none",
         seed=args.seed,
     )

@@ -1,0 +1,35 @@
+{
+  "dataset": "OPUS Tatoeba en-tl",
+  "release": "v2023-04-12",
+  "source_url": "https://object.pouta.csc.fi/OPUS-Tatoeba/v2023-04-12/moses/en-tl.txt.zip",
+  "source_archive_sha256": "9abddc7d2fcea307e8582285617d1a10246fdb9050b6c6345243cb4b9991f40b",
+  "original_pairs": 8785,
+  "license": "CC BY 2.0 FR",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/fr/",
+  "attribution": "Tatoeba contributors (https://tatoeba.org) via OPUS (https://opus.nlpl.eu). Exact release and aligned Moses row retained. J. Tiedemann (2012), Parallel Data, Tools and Interfaces in OPUS.",
+  "modifications": "Topic/length/content filters, exact deduplication, single attested alternative selection, grouped seed-42 splits.",
+  "classroom_approved": false,
+  "human_review_pending": true,
+  "upstream_training_overlap": "unknown",
+  "summary": {
+    "unique_pairs": 1227,
+    "splits": {
+      "train": 982,
+      "validation": 123,
+      "test": 122
+    }
+  },
+  "excluded": {
+    "length_topic_or_content_filter": 7455,
+    "existing_smoke_overlap": 2,
+    "exact_duplicate": 1,
+    "alternative_translation_removed": 100,
+    "not_selected_by_limit": 0
+  },
+  "files": {
+    "candidate.csv": "80ab4296a77b4381bad76411430d741948e6ac8a4b1d2ff31913be1d516a40fc",
+    "train.csv": "71dd23ceafd3e9c0ce9d5be34fab5c870af2a2e18417651cd3146bb872dd9d0e",
+    "validation.csv": "6bc54949b64a75b7eb6666c60d4d8665540fb64bc41a7b352bee667777a917df",
+    "test.csv": "8b03167917ce4a621b39eafc1d914df8f175ec6f4499a13abfc460648106dc0b"
+  }
+}

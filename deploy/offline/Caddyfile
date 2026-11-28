@@ -1,0 +1,14 @@
+{
+    auto_https disable_redirects
+}
+
+{$SITE_URL} {
+    tls internal
+    @supabase path /auth/v1/* /rest/v1/* /storage/v1/* /realtime/v1/*
+    handle @supabase {
+        reverse_proxy api-gw:8000
+    }
+    handle {
+        reverse_proxy linguakids:8080
+    }
+}

@@ -1,0 +1,36 @@
+.material-page-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.material-page-actions .button { min-height: 44px; }
+.material-page-actions .ghost { font-size: .85rem; padding-inline: 12px; }
+.material-active-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: -4px 0 18px; }
+.material-filter-chip { display: inline-flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px; max-width: 100%; padding: 8px 12px; border: 1px solid #dcd4ed; border-radius: 12px; background: #fff; color: #57446e; font: inherit; font-size: .8rem; cursor: pointer; text-align: left; }
+.material-filter-chip span { overflow-wrap: anywhere; min-width: 0; }
+.material-filter-chip svg { flex-shrink: 0; }
+.material-filter-chip:hover { background: #f1edf9; }
+.material-active-filters > .button { min-height: 44px; font-size: .8rem; padding: 8px 12px; }
+.workspace .material-grid { scroll-margin-top: 100px; }
+.material-guide > p { font-size: .9rem; line-height: 1.7; }
+.material-guide-steps { list-style: none; counter-reset: material-step; padding: 0; display: grid; gap: 20px; margin: 24px 0; }
+.material-guide-steps li { position: relative; padding-left: 44px; counter-increment: material-step; }
+.material-guide-steps li::before { content: counter(material-step); position: absolute; top: 0; left: 0; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #eee7fa; color: #5636a3; font-size: .85rem; font-weight: 700; }
+.material-guide-steps strong { font-size: .95rem; }
+.material-guide-steps p { font-size: .86rem; line-height: 1.7; margin: 5px 0 0; color: var(--muted); }
+.material-visibility-hint { border-left: 3px solid #c6b5e4; padding: 10px 14px; background: #f7f4fc; color: #685978; border-radius: 0 10px 10px 0; font-size: .82rem; line-height: 1.6; margin: 0; }
+.material-visibility-hint strong { display: block; color: #4e3a69; margin-bottom: 3px; font-size: .86rem; }
+.material-guide-statuses { border: 1px solid var(--line); padding: 4px 14px 14px; border-radius: 12px; }
+.material-guide-statuses summary { padding: 10px 0; min-height: 44px; color: var(--purple); cursor: pointer; font-size: .88rem; font-weight: 600; }
+.material-guide-statuses .material-visibility-hint { margin-top: 10px; }
+.material-guide-tip { color: var(--muted); }
+.lesson-single-text > .field + .field { margin-top: 18px; }
+.workspace-load-error { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+.workspace-load-error .notice { flex: 1; margin: 0; min-width: min(100%,260px); }
+.workspace-load-error .notice small { display: block; margin-top: 5px; }
+.workspace-load-error > .button { min-height: 44px; }
+@media(max-width:600px) {
+  .material-page-actions { width: 100%; flex-wrap: wrap; }
+  .material-page-actions > .button:first-child { flex: 1; justify-content: center; }
+  .material-page-actions > .button { font-size: .83rem; }
+  .material-active-filters { gap: 6px; }
+  .material-filter-chip { font-size: .75rem; padding-inline: 10px; }
+  .material-guide-steps { gap: 18px; }
+  .material-guide-steps li { padding-left: 38px; }
+}

@@ -22,9 +22,12 @@ class CurrentUser(BaseModel):
     name: str
     role: AccountRole
     status: AccountStatus
+    grade_levels: list[int] = Field(default_factory=list)
+    account_kind: Literal["teacher", "review"] = "teacher"
 
 
 class TranslationRequest(BaseModel):
+    save_history: bool = False
     text: str
     source_language: str
     target_language: str

@@ -1,4 +1,4 @@
-from scripts.prepare_dataset import assign_related_group_keys, assign_splits, expand_directions
+from ml.scripts.prepare_dataset import assign_related_group_keys, assign_splits, expand_directions
 
 
 def test_related_pairs_never_cross_splits():

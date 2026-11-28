@@ -1,0 +1,30 @@
+Teacher registration — current workflow
+
+Teachers open Register as an educator, enter their own working email and
+password, and select the grade they teach from 1 to 6. No administrator
+approval, invitation link or teacher invitation code is required.
+
+Multiple teachers can select the same grade using their own email addresses.
+A pending verification does not block other teachers from registering.
+The grade remains fixed after registration. Editing Auth metadata
+does not change the server-managed role, grade, or account type.
+
+Email verification is still required before classroom access. SMTP delivery
+must work; a Gmail 535 error is an email-provider configuration issue and
+removing administrator approval does not bypass email confirmation.
+
+Administrator -> Educator management shows Teacher registrations by grade,
+with one entry per teacher and their verification status. An administrator can
+close a selected account through the existing audited account-release process.
+
+Student records, results, recordings and previous accounts are not deleted by
+this change. New self-registered teachers start with their own classroom and
+the published content for their fixed grade. They do not automatically adopt
+retained records belonging to a previous teacher. Administrator and private
+review-account provisioning remain separate protected workflows.
+
+The legacy teacher_approved_at database field records automatic enrollment
+time for compatibility with an older API deployment. It no longer means that
+an administrator must approve an ordinary teacher registration. Historical
+invitation tables remain private for audit/history; browser access to the
+retired authorization and invitation-check endpoints is revoked.
