@@ -6,7 +6,7 @@ import { createPreviewRepository } from './preview';
 beforeEach(()=>{localStorage.clear();sessionStorage.clear();window.history.replaceState(null,'','/#/');});
 async function mount(role) {
   const repository=createPreviewRepository();if(role)await repository.enterPreview(role);
-  render(<App repository={repository}/>);
+  render(<App repository={{...repository,preview:false}}/>);
   await screen.findByRole('heading',{name:/A little learning/});
   return repository;
 }

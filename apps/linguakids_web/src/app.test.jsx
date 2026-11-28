@@ -68,11 +68,11 @@ for (const [role, nav] of [
 it("keeps the public landing page available while a saved student lock protects adult destinations", async () => {
   localStorage.setItem("linguakids.adult_locked", "true");
   const repository = createPreviewRepository();
-  render(<App repository={repository} />);
+  render(<App repository={{...repository,preview:false}} />);
   await screen.findByRole("heading", { name: /A little learning/ });
   window.location.hash = "#/workspace/ai";
   await screen.findByRole("heading", {
-    name: "Return to the preview workspace",
+    name: "Return to educator controls",
   });
   expect(window.location.hash).toBe("#/adult-unlock");
   expect(localStorage.getItem("linguakids.adult_locked")).toBe("true");
